@@ -13,7 +13,7 @@
         .cart-sidebar { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .black-marketing-section { background-color: #000; color: #fff; }
         .timer-unit { background: #1a1a1a; color: #BC8F8F; padding: 10px; min-width: 65px; border-radius: 4px; border: 1px solid #333; display: inline-block; margin: 0 5px; }
-        .founder-avatar { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 2px solid #BC8F8F; }
+        .founder-avatar { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 2px solid #BC8F8F; background: #eee; }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -27,12 +27,12 @@
     </nav>
 
     <section class="min-h-[85vh] flex flex-col justify-center items-center px-6 text-center">
-        <span class="text-[10px] tracking-[0.6em] text-[#BC8F8F] font-bold uppercase mb-6 block">Premium 22 Momme Mulberry Silk</span>
+        <span class="text-[10px] tracking-[0.6em] text-[#BC8F8F] font-bold uppercase mb-6 block">22 Momme Premium Mulberry Silk</span>
         <h1 class="text-6xl md:text-8xl mb-8 leading-tight tracking-tight font-bold">
             愛自己 <span class="italic serif text-[#BC8F8F]">從「頭」開始</span>
         </h1>
-        <p class="max-w-xl mx-auto text-gray-400 font-light text-lg mb-12">
-            SilkDream 讓頂級蠶絲走進生活。<br>剔除品牌溢價，拒絕奢侈標籤，回歸最純粹的修復力。
+        <p class="max-w-xl mx-auto text-gray-400 font-light text-lg mb-12 italic">
+            "We believe healthy hair is a right, not a luxury."
         </p>
         <a href="#shop" class="bg-black text-white px-14 py-5 tracking-[0.3em] text-xs hover:bg-[#BC8F8F] transition-all duration-500 uppercase">立即選購雲感系列</a>
     </section>
@@ -41,115 +41,147 @@
         <div class="max-w-4xl mx-auto">
             <span class="text-[#BC8F8F] text-xs tracking-[0.5em] uppercase mb-4 block">Flash Sale Limited</span>
             <h2 class="text-3xl md:text-5xl mb-6 serif italic font-bold">Buy THREE Get ONE FREE</h2>
-            <p class="text-gray-400 mb-10 tracking-widest text-sm">平均單價低至 HK$147（含禮盒裝）</p>
+            <p class="text-gray-400 mb-4 tracking-widest text-sm uppercase">套裝平均單價僅 HK$147 | 現省 HK$200</p>
             
             <div id="timer" class="mb-12 font-bold serif text-3xl">
                 <div class="timer-unit"><span id="hours">00</span><p class="text-[9px] font-sans mt-1">HRS</p></div>
                 <div class="timer-unit"><span id="mins">00</span><p class="text-[9px] font-sans mt-1">MINS</p></div>
                 <div class="timer-unit"><span id="secs">00</span><p class="text-[9px] font-sans mt-1">SECS</p></div>
             </div>
+            <p class="text-[#BC8F8F] text-xs font-bold tracking-tighter italic">首批限量 50 件抵港，售完即止</p>
         </div>
     </section>
 
     <main id="shop" class="max-w-7xl mx-auto px-6 py-24">
         
-        <div class="mb-24">
-            <h2 class="text-2xl serif mb-12 text-center tracking-widest uppercase">The Solo Ritual <span class="text-sm font-sans block text-gray-400 mt-2">單件裝系列</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="mb-32">
+            <div class="text-center mb-16">
+                <h2 class="text-2xl serif tracking-[0.2em] uppercase">The Solo Ritual</h2>
+                <p class="text-gray-400 text-sm mt-2 font-light">單件基礎裝 | 每日護髮的開始</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
                 <div class="group relative">
                     <div class="aspect-[3/4] overflow-hidden bg-white mb-6 relative">
                         <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                        <button onclick="addToCart('Cloud-Wrap (Rose)', 198, this)" class="absolute bottom-0 left-0 w-full bg-black text-white py-5 opacity-0 group-hover:opacity-100 transition-all text-xs tracking-[0.2em] uppercase">Add To Bag</button>
+                        <button onclick="addToCart('Solo - Rose Quartz', 198, this)" class="absolute bottom-0 left-0 w-full bg-black text-white py-5 opacity-0 group-hover:opacity-100 transition-all text-xs tracking-[0.2em] uppercase">Add To Bag</button>
                     </div>
-                    <h3 class="text-sm tracking-wider uppercase font-bold">Cloud-Wrap (Rose Quartz)</h3>
-                    <p class="text-[#BC8F8F] font-bold mt-2">HK$198</p>
+                    <h3 class="text-xs tracking-widest uppercase font-bold">Cloud-Wrap (Rose Quartz)</h3>
+                    <div class="flex gap-3 mt-2 items-center">
+                        <span class="text-gray-300 line-through text-xs font-sans">HK$268</span>
+                        <span class="text-[#BC8F8F] font-bold text-lg font-sans">HK$198</span>
+                    </div>
                 </div>
                 <div class="group relative">
                     <div class="aspect-[3/4] overflow-hidden bg-white mb-6 relative">
                         <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000">
-                        <button onclick="addToCart('Cloud-Wrap (Gold)', 198, this)" class="absolute bottom-0 left-0 w-full bg-black text-white py-5 opacity-0 group-hover:opacity-100 transition-all text-xs tracking-[0.2em] uppercase">Add To Bag</button>
+                        <button onclick="addToCart('Solo - Champagne Gold', 198, this)" class="absolute bottom-0 left-0 w-full bg-black text-white py-5 opacity-0 group-hover:opacity-100 transition-all text-xs tracking-[0.2em] uppercase">Add To Bag</button>
                     </div>
-                    <h3 class="text-sm tracking-wider uppercase font-bold">Cloud-Wrap (Champagne Gold)</h3>
-                    <p class="text-[#BC8F8F] font-bold mt-2">HK$198</p>
+                    <h3 class="text-xs tracking-widest uppercase font-bold">Cloud-Wrap (Champagne Gold)</h3>
+                    <div class="flex gap-3 mt-2 items-center">
+                        <span class="text-gray-300 line-through text-xs font-sans">HK$268</span>
+                        <span class="text-[#BC8F8F] font-bold text-lg font-sans">HK$198</span>
+                    </div>
                 </div>
                 <div class="group relative">
                     <div class="aspect-[3/4] overflow-hidden bg-white mb-6 relative">
                         <img src="https://images.unsplash.com/photo-1582562124811-c8026933ca8b?w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000">
-                        <button onclick="addToCart('Cloud-Wrap (Black)', 198, this)" class="absolute bottom-0 left-0 w-full bg-black text-white py-5 opacity-0 group-hover:opacity-100 transition-all text-xs tracking-[0.2em] uppercase">Add To Bag</button>
+                        <button onclick="addToCart('Solo - Midnight Black', 198, this)" class="absolute bottom-0 left-0 w-full bg-black text-white py-5 opacity-0 group-hover:opacity-100 transition-all text-xs tracking-[0.2em] uppercase">Add To Bag</button>
                     </div>
-                    <h3 class="text-sm tracking-wider uppercase font-bold">Cloud-Wrap (Midnight Black)</h3>
-                    <p class="text-[#BC8F8F] font-bold mt-2">HK$198</p>
+                    <h3 class="text-xs tracking-widest uppercase font-bold">Cloud-Wrap (Midnight Black)</h3>
+                    <div class="flex gap-3 mt-2 items-center">
+                        <span class="text-gray-300 line-through text-xs font-sans">HK$268</span>
+                        <span class="text-[#BC8F8F] font-bold text-lg font-sans">HK$198</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="py-20 border-t border-[#E8DCCA]">
-            <h2 class="text-2xl serif mb-4 text-center tracking-widest uppercase">The Glow-Up Collection</h2>
-            <p class="text-center text-gray-400 text-sm mb-12">買三送一豪華套裝（升級奢華禮盒）</p>
-            <div class="max-w-2xl mx-auto group relative">
-                <div class="discount-badge">買三送一 (BEST VALUE)</div>
-                <div class="aspect-video overflow-hidden bg-white mb-8 relative">
-                    <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=1200" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
-                    <button onclick="addToCart('Glow-Up Collection (4-Pack)', 588, this)" class="absolute bottom-0 left-0 w-full bg-black text-white py-6 opacity-0 group-hover:opacity-100 transition-all text-sm tracking-[0.3em] uppercase font-bold">立即節省 HK$200</button>
+        <div class="py-24 border-t border-[#E8DCCA]">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl serif tracking-widest uppercase italic font-bold">The Glow-Up Bundle</h2>
+                <p class="text-gray-500 text-sm mt-4 tracking-[0.2em] font-bold">買三送一 | 閨蜜分享首選</p>
+            </div>
+            <div class="max-w-4xl mx-auto group relative flex flex-col md:flex-row gap-12 items-center">
+                <div class="flex-1 relative">
+                    <div class="discount-badge">SAVE HK$200</div>
+                    <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=1200" class="w-full grayscale group-hover:grayscale-0 transition-all duration-1000">
                 </div>
-                <div class="flex justify-between items-end">
-                    <div>
-                        <h3 class="text-xl serif italic font-bold">豪華雲感套裝 (共4件)</h3>
-                        <p class="text-xs text-gray-400 mt-2 uppercase tracking-widest">包含 4x 22姆米頂級桑蠶絲護理帽 + 禮盒</p>
+                <div class="flex-1 text-left">
+                    <h3 class="text-2xl serif mb-4">買三送一全色系套裝</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                        一次擁有一整年的護髮能量。套裝包含四件頂級蠶絲護理帽，讓您在替換清洗時護髮不中斷。
+                    </p>
+                    <ul class="text-xs text-[#BC8F8F] space-y-2 mb-8 uppercase tracking-widest font-bold">
+                        <li>✦ 平均單價僅 HK$147</li>
+                        <li>✦ 全港順豐包郵 (HK$0 運費)</li>
+                        <li>✦ 100% 22姆米雙面桑蠶絲</li>
+                    </ul>
+                    <div class="mb-8">
+                        <span class="text-gray-300 line-through text-lg font-sans italic">HK$792</span>
+                        <span class="text-black font-bold text-4xl font-sans ml-4">HK$588</span>
                     </div>
-                    <div class="text-right">
-                        <span class="text-gray-300 line-through text-sm italic font-sans">HK$792</span>
-                        <span class="block text-[#BC8F8F] font-bold text-2xl font-sans">HK$588</span>
-                    </div>
+                    <button onclick="addToCart('Glow-Up Bundle (Buy 3 Get 1)', 588, this)" class="w-full bg-black text-white py-6 tracking-[0.3em] text-xs hover:bg-[#BC8F8F] transition-all uppercase font-bold">立即搶購並節省 $200</button>
                 </div>
             </div>
         </div>
     </main>
 
-    <section class="py-24 black-marketing-section px-6">
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div class="flex-shrink-0 flex gap-4">
+    <section class="py-32 black-marketing-section px-6">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-16">
+            <div class="flex-shrink-0 flex gap-6">
                 <div class="text-center">
-                    <img src="https://via.placeholder.com/150" alt="Founder A" class="founder-avatar mb-4">
-                    <p class="text-[10px] tracking-widest uppercase text-[#BC8F8F]">Founder</p>
+                    <div class="founder-avatar mb-4 flex items-center justify-center text-gray-500 italic">Portrait 1</div>
+                    <p class="text-[10px] tracking-widest uppercase text-[#BC8F8F]">Co-Founder</p>
                 </div>
                 <div class="text-center">
-                    <img src="https://via.placeholder.com/150" alt="Founder B" class="founder-avatar mb-4">
-                    <p class="text-[10px] tracking-widest uppercase text-[#BC8F8F]">Founder</p>
+                    <div class="founder-avatar mb-4 flex items-center justify-center text-gray-500 italic">Portrait 2</div>
+                    <p class="text-[10px] tracking-widest uppercase text-[#BC8F8F]">Co-Founder</p>
                 </div>
             </div>
             <div class="text-left">
-                <h2 class="text-3xl serif mb-6 italic">「高品質護髮，不應是奢侈品的特權。」</h2>
-                <p class="text-gray-400 leading-relaxed font-light mb-6">
-                    我們創辦 SilkDream，是因為厭倦了市場上那些層層抽成、虛高標價的蠶絲產品。長期以來，桑蠶絲被貼上了「高端名媛」的標籤，但我們認為，健康的髮絲是一項基本權利。
+                <h2 class="text-4xl serif mb-8 italic">剔除溢價，回歸品質</h2>
+                <p class="text-gray-400 leading-relaxed font-light mb-6 text-lg">
+                    「我們創辦 SilkDream，是因為厭倦了那些動輒上千元的『奢侈標籤』。蠶絲的護髮效果源於其天然氨基酸，而不是包裝袋上的 Logo。」
                 </p>
-                <p class="text-gray-400 leading-relaxed font-light">
-                    透過優化從工廠到床頭的每一個環節，我們將 6A 級頂級蠶絲的價格降到了最普惠的水平。我們不玩削價競爭，我們追求的是品質與價格的真實對等。
+                <p class="text-gray-500 leading-relaxed font-light text-sm">
+                    我們剔除層層經銷商的抽成，直接將 6A 級頂級蠶絲從工廠送至您的床頭。對我們來說，這不是一場價格戰，而是一場關於「美」的權利回收。
                 </p>
             </div>
         </div>
     </section>
 
-    <section class="py-24 px-6 max-w-3xl mx-auto">
-        <h2 class="text-3xl serif mb-12 text-center">Frequency Asked Questions</h2>
-        <div class="space-y-8">
+    <section class="py-32 px-6 max-w-4xl mx-auto">
+        <h2 class="text-3xl serif mb-16 text-center tracking-[0.2em] uppercase">Frequency Asked Questions</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-                <h4 class="font-bold mb-2 uppercase text-xs tracking-widest">Q: 如何清洗我的 SilkDream 護理帽？</h4>
-                <p class="text-sm text-gray-500">由於蠶絲布料散熱極快且不吸附異味，建議每半年使用中性洗衣液手洗一次，並在陰涼處晾乾。切勿暴曬或使用洗衣機。</p>
+                <h4 class="font-bold mb-3 uppercase text-xs tracking-widest text-[#BC8F8F]">為什麼 SilkDream 比市面上的品牌便宜這麼多？</h4>
+                <p class="text-sm text-gray-500 leading-relaxed">我們採用了「工廠直達」模式，剔除了傳統奢侈品牌高達 3-5 倍的行銷溢價與專櫃租金，將省下的成本直接回饋給用戶。</p>
             </div>
             <div>
-                <h4 class="font-bold mb-2 uppercase text-xs tracking-widest">Q: 下單後何時可以收到貨？</h4>
-                <p class="text-sm text-gray-500">所有產品均由順豐速遞寄出，香港地區通常在 2-3 個工作天內送達。首批限量 50 件售完即止。</p>
+                <h4 class="font-bold mb-3 uppercase text-xs tracking-widest text-[#BC8F8F]">真的是 100% 桑蠶絲嗎？</h4>
+                <p class="text-sm text-gray-500 leading-relaxed">是的。每一件 Cloud-Wrap 都經過 OEKO-TEX® 認證，採用 6A 級 22 姆米頂級雙面桑蠶絲。您可以通過燃燒實驗測試：真絲燃燒會產生焦髮味，且灰燼一壓即碎。</p>
             </div>
             <div>
-                <h4 class="font-bold mb-2 uppercase text-xs tracking-widest">Q: 戴著睡覺會容易脫落或有壓痕嗎？</h4>
-                <p class="text-sm text-gray-500">不會。我們採用了 3.5cm 寬幅緩衝帶設計，能有效分散額頭壓力，既確保整夜不脫落，又能徹底杜絕早晨壓痕。</p>
+                <h4 class="font-bold mb-3 uppercase text-xs tracking-widest text-[#BC8F8F]">睡覺時會容易滑落嗎？</h4>
+                <p class="text-sm text-gray-500 leading-relaxed">我們設計了 3.5cm 的寬幅真絲緩衝帶，經多次真人測試，不僅能整夜穩定不掉，且醒後額頭絕無紅印或壓痕。</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-3 uppercase text-xs tracking-widest text-[#BC8F8F]">需要經常清洗嗎？</h4>
+                <p class="text-sm text-gray-500 leading-relaxed">蠶絲具備天然的散熱與抗異味特性。若保持頭髮乾爽戴入，一年僅需溫水手洗 2 次即可，維護非常簡單。</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-3 uppercase text-xs tracking-widest text-[#BC8F8F]">關於順豐快遞與運費？</h4>
+                <p class="text-sm text-gray-500 leading-relaxed">我們全線產品（無論單件或套裝）均已包含順豐運費。下單後 48 小時內發貨，香港地區約 2-3 天送達。</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-3 uppercase text-xs tracking-widest text-[#BC8F8F]">如果我有染髮或捲髮？</h4>
+                <p class="text-sm text-gray-500 leading-relaxed">SilkDream 的立體剪裁能維持髮根蓬鬆。天然絲蛋白能有效鎖住染髮後的色素與燙髮後的捲度，讓造型更持久。</p>
             </div>
         </div>
     </section>
 
     <footer class="py-20 border-t border-[#E8DCCA] text-center px-6">
-        <p class="text-[10px] text-gray-400 tracking-[0.4em] uppercase">SilkDream | 讓頂級蠶絲 走進每個人的生活</p>
+        <p class="text-[10px] text-gray-400 tracking-[0.4em] uppercase font-bold">SilkDream | Transparency In Beauty</p>
     </footer>
 
     <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/60 z-[60] hidden"></div>
@@ -160,8 +192,8 @@
         </div>
         <div id="cart-items" class="flex-1 overflow-y-auto space-y-6"></div>
         <div class="pt-8 border-t border-gray-100 mt-6 text-center">
-            <div class="flex justify-between mb-8 text-lg font-bold"><span>Total</span><span id="cart-total">HK$0</span></div>
-            <button onclick="checkout()" class="w-full bg-black text-white py-6 tracking-[0.3em] text-xs hover:bg-[#BC8F8F] transition-all uppercase font-bold">Check Out</button>
+            <div class="flex justify-between mb-8 text-lg font-bold"><span>Total Amount</span><span id="cart-total">HK$0</span></div>
+            <button onclick="checkout()" class="w-full bg-black text-white py-6 tracking-[0.3em] text-xs hover:bg-[#BC8F8F] transition-all uppercase font-bold">Secure Checkout</button>
         </div>
     </div>
 

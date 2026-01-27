@@ -3,284 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SILK & DREAMS | 讓頂級蠶絲回歸基本權利</title>
+    <title>Silk Dream | 雲感護理結算</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #F9F8F6; color: #333; scroll-behavior: smooth; }
-        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
-        .discount-badge { background: #BC8F8F; color: white; padding: 4px 10px; font-size: 11px; font-weight: bold; position: absolute; top: 15px; left: 15px; z-index: 10; letter-spacing: 1px; }
-        .cart-sidebar { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .black-marketing-section { background-color: #000; color: #fff; }
-        .timer-unit { background: #1a1a1a; color: #BC8F8F; padding: 10px; min-width: 65px; border-radius: 4px; border: 1px solid #333; display: inline-block; margin: 0 5px; }
-        .founder-avatar { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 1px solid #BC8F8F; background: #eee; }
-        .advantage-card { border-bottom: 1px solid #E8DCCA; padding-bottom: 2rem; }
+        body { font-family: 'Inter', sans-serif; background-color: #F9F8F6; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .checkout-modal { transition: opacity 0.3s ease; }
+        .product-checkbox:checked + label { border-color: #BC8F8F; background-color: #FFF9F9; }
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body>
 
-    <nav class="fixed w-full z-50 bg-[#F9F8F6]/90 backdrop-blur-md border-b border-[#E8DCCA] px-6 py-4 flex justify-between items-center">
-        <div class="text-xl tracking-[0.4em] font-bold serif uppercase">Silk & Dreams</div>
-        <button onclick="toggleCart()" class="relative p-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
-            <span id="cart-count" class="absolute top-0 right-0 bg-[#BC8F8F] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+    <div class="flex justify-center items-center min-h-screen">
+        <button onclick="openCheckout()" class="bg-black text-white px-10 py-4 uppercase text-xs font-bold tracking-widest">
+            Confirm & Reserve / 確認下單
         </button>
-    </nav>
+    </div>
 
-    <section class="min-h-[85vh] flex flex-col justify-center items-center px-6 text-center">
-        <span class="text-[10px] tracking-[0.6em] text-[#BC8F8F] font-bold uppercase mb-6 block">Premium 22 Momme Mulberry Silk</span>
-        <h1 class="text-6xl md:text-8xl mb-8 leading-tight tracking-tight font-bold">
-            愛自己 <span class="italic serif text-[#BC8F8F]">從「頭」開始</span>
-        </h1>
-        <p class="max-w-xl mx-auto text-gray-400 font-light text-lg mb-12 italic">
-            "Healthy hair is a right, not a luxury."
-        </p>
-        <a href="#shop" class="bg-black text-white px-14 py-5 tracking-[0.3em] text-xs hover:bg-[#BC8F8F] transition-all duration-500 uppercase font-bold">立即進入雲感護理</a>
-    </section>
-
-    <section class="py-24 bg-white px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                <div class="advantage-card">
-                    <span class="text-[#BC8F8F] font-bold serif text-2xl italic">01.</span>
-                    <h4 class="font-bold my-4 tracking-widest uppercase text-sm">雙面 22 姆米護理</h4>
-                    <p class="text-gray-500 text-xs leading-relaxed">內外皆絲。富含 18 種天然氨基酸，有效減少髮絲水分蒸發達 25% 以上，解決摩擦導致的折損。</p>
-                </div>
-                <div class="advantage-card">
-                    <span class="text-[#BC8F8F] font-bold serif text-2xl italic">02.</span>
-                    <h4 class="font-bold my-4 tracking-widest uppercase text-sm">3.5cm 無痕緩衝帶</h4>
-                    <p class="text-gray-500 text-xs leading-relaxed">捨棄細窄橡皮筋，降低額頭局部壓力 60%。透氣真絲包邊，護髮不傷膚，醒後絕無壓痕。</p>
-                </div>
-                <div class="advantage-card">
-                    <span class="text-[#BC8F8F] font-bold serif text-2xl italic">03.</span>
-                    <h4 class="font-bold my-4 tracking-widest uppercase text-sm">護髮不動手</h4>
-                    <p class="text-gray-500 text-xs leading-relaxed">散熱速度快棉布 1.5 倍，保持頭皮乾爽不悶熱。大幅減少清洗時間，一年僅需清洗兩次。</p>
-                </div>
-                <div class="advantage-card">
-                    <span class="text-[#BC8F8F] font-bold serif text-2xl italic">04.</span>
-                    <h4 class="font-bold my-4 tracking-widest uppercase text-sm">立體剪裁空間</h4>
-                    <p class="text-gray-500 text-xs leading-relaxed">Volumetric Crown 專利剪裁，增加頂部空間，確保長髮或捲髮不被壓扁，維持醒後蓬鬆感。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 black-marketing-section text-center px-6">
-        <div class="max-w-4xl mx-auto">
-            <span class="text-[#BC8F8F] text-xs tracking-[0.5em] uppercase mb-4 block">Flash Sale Limited</span>
-            <h2 class="text-3xl md:text-5xl mb-6 serif italic font-bold">Buy THREE Get ONE FREE</h2>
-            <p class="text-gray-400 mb-4 tracking-widest text-sm uppercase">平均單價僅 HK$147 | 現省 HK$200 | 全店包郵</p>
+    <div id="checkout-modal" class="fixed inset-0 bg-black/60 z-[100] hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white w-full max-w-2xl p-8 md:p-12 relative shadow-2xl rounded-sm">
+            <button onclick="closeCheckout()" class="absolute top-6 right-6 text-gray-400 hover:text-black text-2xl">✕</button>
             
-            <div id="timer" class="mb-12 font-bold serif text-3xl">
-                <div class="timer-unit"><span id="hours">00</span><p class="text-[9px] font-sans mt-1">HRS</p></div>
-                <div class="timer-unit"><span id="mins">00</span><p class="text-[9px] font-sans mt-1">MINS</p></div>
-                <div class="timer-unit"><span id="secs">00</span><p class="text-[9px] font-sans mt-1">SECS</p></div>
-            </div>
-            <p class="text-[#BC8F8F] text-xs font-bold italic">首批限量 50 件抵港，售完即止</p>
-        </div>
-    </section>
-
-    <main id="shop" class="max-w-7xl mx-auto px-6 py-24">
-        
-        <div class="mb-32">
-            <div class="text-center mb-16">
-                <h2 class="text-2xl serif tracking-[0.2em] uppercase">The Solo Ritual</h2>
-                <p class="text-gray-400 text-sm mt-2 font-light">單件裝 | 剔除溢價的純粹體驗</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
-                <div class="group relative">
-                    <div class="aspect-[3/4] overflow-hidden bg-white mb-6 relative">
-                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                        <button onclick="addToCart('Solo - Rose Quartz', 198, this)" class="absolute bottom-0 left-0 w-full bg-black text-white py-5 opacity-0 group-hover:opacity-100 transition-all text-xs tracking-[0.2em] uppercase">Add To Bag</button>
-                    </div>
-                    <h3 class="text-xs tracking-widest uppercase font-bold">Cloud-Wrap (Rose Quartz)</h3>
-                    <div class="flex flex-col mt-2">
-                        <div class="flex gap-2 items-center">
-                            <span class="text-gray-300 line-through text-xs font-sans">市場價 HK$268</span>
-                            <span class="text-[#BC8F8F] font-bold text-lg font-sans">HK$198</span>
+            <h2 class="text-3xl serif mb-2 text-center uppercase tracking-tighter">Order Details</h2>
+            <p class="text-center text-gray-400 text-[10px] uppercase tracking-[0.2em] mb-10">請確認您的訂單詳情</p>
+            
+            <form id="orderForm" action="https://formspree.io/f/你的ID" method="POST" class="space-y-8">
+                
+                <div class="space-y-4">
+                    <label class="text-[11px] font-bold uppercase text-gray-500 block border-b pb-2">Colour Selection / 款式選擇 (可多選)</label>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        
+                        <div class="relative">
+                            <input type="checkbox" id="color-champagne" name="選購產品" value="香檳金(Champagne Gold)" class="product-checkbox hidden" onchange="calculateTotal()">
+                            <label for="color-champagne" class="block border border-gray-100 p-2 cursor-pointer hover:bg-gray-50 transition-all">
+                                <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400" class="w-full aspect-square object-cover mb-2 grayscale-[0.5]">
+                                <span class="text-[10px] font-bold block text-center uppercase">Champagne Gold</span>
+                                <span class="text-[9px] text-gray-400 block text-center">HK$198</span>
+                            </label>
                         </div>
-                        <span class="text-[10px] text-gray-400 mt-1 uppercase font-bold tracking-tighter text-blue-400">HK$0 運費 / 全港包郵</span>
-                    </div>
-                </div>
-                <div class="group relative">
-                    <div class="aspect-[3/4] overflow-hidden bg-white mb-6 relative">
-                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000">
-                        <button onclick="addToCart('Solo - Champagne Gold', 198, this)" class="absolute bottom-0 left-0 w-full bg-black text-white py-5 opacity-0 group-hover:opacity-100 transition-all text-xs tracking-[0.2em] uppercase">Add To Bag</button>
-                    </div>
-                    <h3 class="text-xs tracking-widest uppercase font-bold">Cloud-Wrap (Champagne Gold)</h3>
-                    <div class="flex flex-col mt-2">
-                        <div class="flex gap-2 items-center">
-                            <span class="text-gray-300 line-through text-xs font-sans">市場價 HK$268</span>
-                            <span class="text-[#BC8F8F] font-bold text-lg font-sans">HK$198</span>
+
+                        <div class="relative">
+                            <input type="checkbox" id="color-rose" name="選購產品" value="玫瑰粉(Rose Quartz)" class="product-checkbox hidden" onchange="calculateTotal()">
+                            <label for="color-rose" class="block border border-gray-100 p-2 cursor-pointer hover:bg-gray-50 transition-all">
+                                <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400" class="w-full aspect-square object-cover mb-2 grayscale-[0.5]">
+                                <span class="text-[10px] font-bold block text-center uppercase">Rose Quartz</span>
+                                <span class="text-[9px] text-gray-400 block text-center">HK$198</span>
+                            </label>
                         </div>
-                        <span class="text-[10px] text-gray-400 mt-1 uppercase font-bold tracking-tighter text-blue-400">HK$0 運費 / 全港包郵</span>
-                    </div>
-                </div>
-                <div class="group relative">
-                    <div class="aspect-[3/4] overflow-hidden bg-white mb-6 relative">
-                        <img src="https://images.unsplash.com/photo-1582562124811-c8026933ca8b?w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000">
-                        <button onclick="addToCart('Solo - Midnight Black', 198, this)" class="absolute bottom-0 left-0 w-full bg-black text-white py-5 opacity-0 group-hover:opacity-100 transition-all text-xs tracking-[0.2em] uppercase">Add To Bag</button>
-                    </div>
-                    <h3 class="text-xs tracking-widest uppercase font-bold">Cloud-Wrap (Midnight Black)</h3>
-                    <div class="flex flex-col mt-2">
-                        <div class="flex gap-2 items-center">
-                            <span class="text-gray-300 line-through text-xs font-sans">市場價 HK$268</span>
-                            <span class="text-[#BC8F8F] font-bold text-lg font-sans">HK$198</span>
+
+                        <div class="relative">
+                            <input type="checkbox" id="color-black" name="選購產品" value="午夜黑(Midnight Black)" class="product-checkbox hidden" onchange="calculateTotal()">
+                            <label for="color-black" class="block border border-gray-100 p-2 cursor-pointer hover:bg-gray-50 transition-all">
+                                <img src="https://images.unsplash.com/photo-1582562124811-c8026933ca8b?w=400" class="w-full aspect-square object-cover mb-2 grayscale-[0.5]">
+                                <span class="text-[10px] font-bold block text-center uppercase">Midnight Black</span>
+                                <span class="text-[9px] text-gray-400 block text-center">HK$198</span>
+                            </label>
                         </div>
-                        <span class="text-[10px] text-gray-400 mt-1 uppercase font-bold tracking-tighter text-blue-400">HK$0 運費 / 全港包郵</span>
+
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="py-24 border-t border-[#E8DCCA]">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl serif tracking-widest uppercase italic font-bold">The Glow-Up Collection</h2>
-                <p class="text-[#BC8F8F] text-sm mt-4 tracking-[0.2em] font-bold uppercase">閨蜜分享或送禮首選 | 買三送一</p>
-            </div>
-            <div class="max-w-5xl mx-auto group relative flex flex-col md:flex-row gap-16 items-center">
-                <div class="flex-1 relative overflow-hidden">
-                    <div class="discount-badge">買三送一 (最省預算)</div>
-                    <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=1200" class="w-full grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
-                </div>
-                <div class="flex-1 text-left">
-                    <h3 class="text-2xl serif mb-4">雲感雙面絲綢護理帽套裝 (4件)</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-8">
-                        一份分享，雙倍修復。適合與最親密的閨蜜共享，或作為最有溫度的健康禮物。讓愛的人一起享受頂級蠶絲的呵護。
-                    </p>
-                    <div class="space-y-4 mb-10 border-t border-b py-6 border-gray-100">
-                        <div class="flex justify-between">
-                            <span class="text-xs text-gray-400 uppercase tracking-widest">市場標準定價</span>
-                            <span class="text-gray-300 line-through font-sans italic">HK$792</span>
-                        </div>
-                        <div class="flex justify-between font-bold text-lg">
-                            <span class="text-xs text-gray-900 font-bold uppercase tracking-widest">SilkDream 限時價</span>
-                            <span class="text-black text-3xl font-sans">HK$588</span>
-                        </div>
-                        <p class="text-[#BC8F8F] text-right font-bold text-xs">現省 HK$200 | 平均單價僅 HK$147</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-[11px] font-bold uppercase text-gray-500">Full Name / 姓名</label>
+                        <input type="text" name="客戶姓名" placeholder="請輸入收貨人全名" required class="w-full border-b border-gray-200 py-3 text-sm focus:border-black outline-none transition-all">
                     </div>
-                    <button onclick="addToCart('Glow-Up Bundle (4 Pack)', 588, this)" class="w-full bg-black text-white py-6 tracking-[0.3em] text-xs hover:bg-[#BC8F8F] transition-all uppercase font-bold">立即搶購閨蜜分享組</button>
-                    <p class="text-[10px] text-gray-400 mt-4 text-center font-bold text-blue-400">HK$0 運費 / 全港順豐包郵</p>
+                    <div class="space-y-2">
+                        <label class="text-[11px] font-bold uppercase text-gray-500">WhatsApp / 聯絡電話</label>
+                        <input type="tel" name="聯絡電話" placeholder="例如：+852 6123 4567" required class="w-full border-b border-gray-200 py-3 text-sm focus:border-black outline-none transition-all">
+                    </div>
                 </div>
-            </div>
-        </div>
-    </main>
 
-    <section class="py-32 black-marketing-section px-6">
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-16">
-            <div class="flex-shrink-0 flex gap-4">
-                <div class="text-center">
-                    <div class="founder-avatar mb-4 flex items-center justify-center text-gray-500 italic text-[10px]">Portrait 1</div>
-                    <p class="text-[9px] tracking-widest uppercase text-[#BC8F8F]">Co-Founder</p>
+                <div class="space-y-2">
+                    <label class="text-[11px] font-bold uppercase text-gray-500">Shipping Address / 收貨地址</label>
+                    <textarea name="收貨地址" rows="2" placeholder="填寫收貨地址或順豐智能櫃編號" class="w-full border-b border-gray-200 py-3 text-sm focus:border-black outline-none transition-all bg-transparent"></textarea>
                 </div>
-                <div class="text-center">
-                    <div class="founder-avatar mb-4 flex items-center justify-center text-gray-500 italic text-[10px]">Portrait 2</div>
-                    <p class="text-[9px] tracking-widest uppercase text-[#BC8F8F]">Co-Founder</p>
+
+                <div class="bg-[#FFF9F1] p-6 text-center space-y-2">
+                    <p class="text-[11px] text-[#D4A373] font-bold">✨ 下單提醒：</p>
+                    <p class="text-[10px] text-gray-500 leading-relaxed">成功提交訂單後，我們的專員將會在 2 個工作天內<br>透過 WhatsApp 與您聯絡確認細節及安排付款。</p>
                 </div>
-            </div>
-            <div class="text-left">
-                <h2 class="text-4xl serif mb-8 italic">剔除溢價，回歸品質</h2>
-                <p class="text-gray-400 leading-relaxed font-light mb-6 text-lg">
-                    「我們創辦 SilkDream，是因為厭倦了那些動輒上千元的奢侈標籤。蠶絲的護髮效果源於其天然氨基酸，而不是包裝袋上的 Logo。」
-                </p>
-                <p class="text-gray-500 leading-relaxed font-light text-sm">
-                    我們優化了從工廠到床頭的每一個環節，剔除層層經銷商的抽成。這不是一場價格戰，而是一場關於高品質護髮權利的回歸。
-                </p>
-            </div>
-        </div>
-    </section>
 
-    <section class="py-32 px-6 max-w-4xl mx-auto">
-        <h2 class="text-3xl serif mb-16 text-center tracking-[0.2em] uppercase">Frequency Asked Questions</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-sm">
-            <div>
-                <h4 class="font-bold mb-3 uppercase text-xs tracking-widest text-[#BC8F8F]">為什麼你們能比市面品牌便宜這麼多？</h4>
-                <p class="text-gray-500 leading-relaxed">我們採用「工廠直達」模式，剔除傳統奢侈品牌高達 3-5 倍的行銷溢價與專櫃租金，將每一分成本都投入在 22 姆米 6A 級真絲的選料上。</p>
-            </div>
-            <div>
-                <h4 class="font-bold mb-3 uppercase text-xs tracking-widest text-[#BC8F8F]">如何清洗與保養？</h4>
-                <p class="text-gray-500 leading-relaxed">由於蠶絲具備天然散熱與抗異味特性，只要戴入時頭髮乾爽，一年僅需溫水手洗 2 次。洗滌時請使用中性洗衣精，並在陰涼處自然晾乾。</p>
-            </div>
-            <div>
-                <h4 class="font-bold mb-3 uppercase text-xs tracking-widest text-[#BC8F8F]">睡覺時會容易滑落嗎？</h4>
-                <p class="text-gray-500 leading-relaxed">我們採用了「無阻力滑動」設計，帽子外層同樣為頂級真絲，能與枕頭表面流暢摩擦而不位移，配合 3.5cm 緩衝帶，整夜穩定不掉。</p>
-            </div>
-            <div>
-                <h4 class="font-bold mb-3 uppercase text-xs tracking-widest text-[#BC8F8F]">短髮或捲髮適合嗎？</h4>
-                <p class="text-gray-500 leading-relaxed">非常適合。絲蛋白能減少 25% 的水分蒸發，對捲髮而言能鎖住造型，對短髮則能減少早晨起床時的亂翹與毛躁，保持髮根蓬鬆。</p>
-            </div>
-            <div>
-                <h4 class="font-bold mb-3 uppercase text-xs tracking-widest text-[#BC8F8F]">運費與快遞安排？</h4>
-                <p class="text-gray-500 leading-relaxed">SilkDream 承諾全線產品香港地區免運費。我們統一使用順豐快遞（SF Express），下單後 48 小時內寄出，2-3 天送達。</p>
-            </div>
-            <div>
-                <h4 class="font-bold mb-3 uppercase text-xs tracking-widest text-[#BC8F8F]">真的能修復髮質嗎？</h4>
-                <p class="text-gray-500 leading-relaxed">可以。睡覺時頭髮與棉質枕頭的摩擦是髮絲分岔與折損的主因。22 姆米真絲提供的滑順表面能阻斷這種物理傷害，讓髮絲在氨基酸環境中閉合毛鱗片。</p>
-            </div>
-        </div>
-    </section>
+                <input type="hidden" name="總金額" id="form-total-price">
+                <input type="hidden" name="聯絡沒有" value="未處理">
+                <input type="hidden" name="發貨沒有" value="未處理">
+                <input type="hidden" name="支付沒有" value="未處理">
 
-    <footer class="py-20 border-t border-[#E8DCCA] text-center px-6">
-        <p class="text-[10px] text-gray-400 tracking-[0.4em] uppercase font-bold">SilkDream | Transparency In Beauty</p>
-    </footer>
-
-    <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/60 z-[60] hidden"></div>
-    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[70] translate-x-full cart-sidebar flex flex-col p-12">
-        <div class="flex justify-between items-center mb-10 border-b pb-8">
-            <h2 class="text-xl tracking-widest serif uppercase">Your Bag</h2>
-            <button onclick="toggleCart()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-        </div>
-        <div id="cart-items" class="flex-1 overflow-y-auto space-y-6"></div>
-        <div class="pt-8 border-t border-gray-100 mt-6 text-center">
-            <div class="flex justify-between mb-8 text-lg font-bold"><span>Total</span><span id="cart-total">HK$0</span></div>
-            <button onclick="checkout()" class="w-full bg-black text-white py-6 tracking-[0.3em] text-[10px] hover:bg-[#BC8F8F] transition-all uppercase font-bold">Proceed To SF Express</button>
+                <button type="submit" class="w-full bg-black text-white py-6 text-xs font-bold uppercase tracking-[0.3em] hover:bg-[#BC8F8F] transition-all">
+                    Confirm & Reserve / 確認下單 <span id="display-total"></span>
+                </button>
+            </form>
         </div>
     </div>
 
     <script>
-        let cart = [];
-        function toggleCart() {
-            document.getElementById('cart-sidebar').classList.toggle('translate-x-full');
-            document.getElementById('cart-overlay').classList.toggle('hidden');
+        function openCheckout() {
+            document.getElementById('checkout-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         }
-        function addToCart(name, price, btn) {
-            cart.push({ name, price });
-            updateCart();
-            toggleCart();
-            btn.innerText = "ADDED ✓";
-            setTimeout(() => btn.innerText = "ADD TO BAG", 2000);
-        }
-        function updateCart() {
-            const container = document.getElementById('cart-items');
-            const total = document.getElementById('cart-total');
-            const count = document.getElementById('cart-count');
-            container.innerHTML = cart.length === 0 ? '<p class="text-center text-gray-300 py-10 serif italic text-xs uppercase tracking-widest">Your bag is empty.</p>' : '';
-            let sum = 0;
-            cart.forEach((item, index) => {
-                sum += item.price;
-                container.innerHTML += `<div class="flex justify-between items-center text-[10px] uppercase tracking-widest"><span>${item.name}</span><div class="flex gap-4"><span>HK$${item.price}</span><button onclick="removeFromCart(${index})" class="text-gray-300">×</button></div></div>`;
-            });
-            count.innerText = cart.length;
-            count.classList.toggle('hidden', cart.length === 0);
-            total.innerText = `HK$${sum}`;
-        }
-        function removeFromCart(index) { cart.splice(index, 1); updateCart(); }
-        function checkout() { window.location.href = "https://silkdream888.github.io/Silk-Dream/"; }
 
-        function updateTimer() {
-            const now = new Date();
-            const tomorrow = new Date(now);
-            tomorrow.setHours(24, 0, 0, 0); 
-            const diff = tomorrow - now;
-            const h = Math.floor(diff / 1000 / 60 / 60);
-            const m = Math.floor(diff / 1000 / 60) % 60;
-            const s = Math.floor(diff / 1000) % 60;
-            document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
-            document.getElementById('mins').innerText = m < 10 ? '0' + m : m;
-            document.getElementById('secs').innerText = s < 10 ? '0' + s : s;
+        function closeCheckout() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
         }
-        setInterval(updateTimer, 1000);
-        updateTimer();
+
+        function calculateTotal() {
+            const checkboxes = document.querySelectorAll('.product-checkbox:checked');
+            const total = checkboxes.length * 198; // 假設單價為 198 
+            const display = document.getElementById('display-total');
+            const hiddenInput = document.getElementById('form-total-price');
+            
+            if (total > 0) {
+                display.innerText = `(HK$${total})`;
+                hiddenInput.value = `HK$${total}`;
+            } else {
+                display.innerText = '';
+                hiddenInput.value = '';
+            }
+        }
     </script>
 </body>
 </html>

@@ -9,14 +9,9 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #F9F8F6; color: #333; scroll-behavior: smooth; }
         h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
-        .discount-badge { background: #BC8F8F; color: white; padding: 4px 10px; font-size: 11px; font-weight: bold; position: absolute; top: 15px; left: 15px; z-index: 10; letter-spacing: 1px; }
-        .cart-sidebar { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .black-marketing-section { background-color: #000; color: #fff; }
-        .timer-unit { background: #1a1a1a; color: #BC8F8F; padding: 10px; min-width: 65px; border-radius: 4px; border: 1px solid #333; display: inline-block; margin: 0 5px; }
-        .founder-avatar { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 1px solid #BC8F8F; background: #eee; }
-        .advantage-card { border-bottom: 1px solid #E8DCCA; padding-bottom: 2rem; }
-        /* 數量輸入框美化 */
-        input[type=number]::-webkit-inner-spin-button { opacity: 1; }
+        .discount-badge { background: #BC8F8F; color: white; padding: 4px 10px; font-size: 11px; font-weight: bold; letter-spacing: 1px; }
+        .cart-sidebar, .checkout-modal { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .line-through-red { text-decoration: line-through; text-decoration-color: #ff4d4d; text-decoration-thickness: 1.5px; }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -29,169 +24,157 @@
         </button>
     </nav>
 
-    <section class="min-h-[85vh] flex flex-col justify-center items-center px-6 text-center">
-        <span class="text-[10px] tracking-[0.6em] text-[#BC8F8F] font-bold uppercase mb-6 block">Premium 22 Momme Mulberry Silk</span>
-        <h1 class="text-6xl md:text-8xl mb-8 leading-tight tracking-tight font-bold">愛自己 <span class="italic serif text-[#BC8F8F]">從「頭」開始</span></h1>
-        <p class="max-w-xl mx-auto text-gray-400 font-light text-lg mb-12 italic">"Healthy hair is a right, not a luxury."</p>
-        <a href="#shop" class="bg-black text-white px-14 py-5 tracking-[0.3em] text-xs hover:bg-[#BC8F8F] transition-all duration-500 uppercase font-bold">立即進入雲感護理</a>
+    <section class="min-h-[85vh] flex flex-col justify-center items-center px-6 text-center pt-20">
+        <span class="text-[10px] tracking-[0.6em] text-[#BC8F8F] font-bold uppercase mb-6 block">Unisex Design | For Him & Her</span>
+        <h1 class="text-5xl md:text-8xl mb-8 leading-tight tracking-tight font-bold">愛自己 <span class="italic serif text-[#BC8F8F]">從「頭」開始</span></h1>
+        <p class="max-w-2xl text-gray-500 mb-10 text-sm md:text-base font-light leading-relaxed">用科學、高效且極具性價比的方式，買回你的護理時間。<br>SilkDreams 專為所有性別設計，讓頂級蠶絲成為每個人的日常必備。</p>
+        <a href="#shop" class="bg-black text-white px-14 py-5 tracking-[0.3em] text-xs hover:bg-[#BC8F8F] transition-all duration-500 uppercase font-bold">開啟奢華睡眠</a>
+    </section>
+
+    <section class="py-24 bg-white px-6 border-y border-[#E8DCCA]">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="flex justify-center gap-8 mb-10">
+                <div class="w-28 h-28 md:w-36 md:h-36 rounded-full border border-[#BC8F8F] p-1 shadow-sm overflow-hidden">
+                    <div class="w-full h-full rounded-full bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="Founder 1" class="object-cover w-full h-full grayscale hover:grayscale-0 transition-all">
+                    </div>
+                </div>
+                <div class="w-28 h-28 md:w-36 md:h-36 rounded-full border border-[#BC8F8F] p-1 shadow-sm overflow-hidden">
+                    <div class="w-full h-full rounded-full bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400" alt="Founder 2" class="object-cover w-full h-full grayscale hover:grayscale-0 transition-all">
+                    </div>
+                </div>
+            </div>
+            <h2 class="text-3xl serif italic mb-6 italic">「讓護髮不分性別」</h2>
+            <p class="text-gray-600 leading-relaxed font-light mb-8 italic">
+                「我們認為健康的髮絲是基本權利，而非奢侈。SilkDreams 的簡約設計男女通用，我們優化工廠到床頭的每一個細節，只為將最好的品質，還給每一位懂得愛自己的你。」
+            </p>
+            <span class="text-[10px] tracking-[0.3em] font-bold text-[#BC8F8F] uppercase">— SilkDreams Founders</span>
+        </div>
+    </section>
+
+    <section id="shop" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-[10px] tracking-[0.5em] text-[#BC8F8F] font-bold uppercase mb-4">Pricing Strategy</h2>
+            <h3 class="text-4xl serif italic">全港免運費 | 限量 50 套現貨抵港</h3>
+            <p class="text-gray-400 mt-4 text-sm font-light italic">贈予愛人或閨蜜，分享極致的睡眠護理</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            
+            <div class="group border border-[#E8DCCA] p-10 flex flex-col items-center bg-white hover:shadow-xl transition-all">
+                <span class="discount-badge mb-6 italic font-light">Self-Care Ritual</span>
+                <h4 class="text-xl serif font-bold mb-2">單件裝 | 雲感修復</h4>
+                <p class="text-gray-400 text-[10px] uppercase tracking-widest mb-6">Unisex Design (For Him & Her)</p>
+                
+                <div class="mb-8 text-center">
+                    <span class="block text-gray-300 line-through-red text-sm mb-1 italic">市場價 HK$398</span>
+                    <span class="text-4xl font-bold">HK$198</span>
+                    <span class="block text-blue-500 text-[11px] font-bold mt-2 tracking-widest">HK$0 全港免運費</span>
+                </div>
+
+                <ul class="text-xs text-gray-500 space-y-3 mb-10 text-center font-light leading-relaxed">
+                    <li>22 Momme 6A 級桑蠶絲</li>
+                    <li>基礎品牌保護包裝</li>
+                    <li>改善毛躁，保護髮質健康</li>
+                </ul>
+
+                <button onclick="addToCart('單件裝', 198, this)" class="w-full bg-black text-white py-5 text-[10px] font-bold tracking-[0.3em] uppercase hover:bg-[#BC8F8F] transition-all">立即擁有</button>
+            </div>
+
+            <div class="group border-2 border-[#BC8F8F] p-10 flex flex-col items-center bg-white relative hover:shadow-xl transition-all scale-105 z-10">
+                <div class="absolute top-0 right-0 bg-[#BC8F8F] text-white text-[9px] px-4 py-1 uppercase tracking-widest font-bold">Best For Gifting</div>
+                <span class="discount-badge mb-6">買三送一</span>
+                <h4 class="text-xl serif font-bold mb-2 text-[#BC8F8F]">奢華禮盒套裝</h4>
+                <p class="text-gray-400 text-[10px] uppercase tracking-widest mb-6 font-bold">閨蜜 & 送禮首選 (4件入)</p>
+                
+                <div class="mb-8 text-center">
+                    <span class="block text-gray-300 line-through-red text-sm mb-1 italic">市場價值 HK$1,592</span>
+                    <span class="text-4xl font-bold">HK$588</span>
+                    <p class="text-[#BC8F8F] text-xs font-bold mt-1 uppercase">現省 HK$200 + 奢華禮盒包裝</p>
+                    <span class="block text-blue-500 text-[11px] font-bold mt-2 tracking-widest uppercase italic">HK$0 順豐包郵</span>
+                </div>
+
+                <ul class="text-xs text-gray-700 space-y-3 mb-10 text-center font-light leading-relaxed">
+                    <li><strong class="text-[#BC8F8F]">Premium Gift Set 升級禮盒</strong></li>
+                    <li>送給閨蜜、愛人或家人的最佳禮物</li>
+                    <li>四色可選或混搭分享</li>
+                    <li>平均單價只需 <span class="font-bold underline">HK$147</span></li>
+                </ul>
+
+                <button onclick="addToCart('奢華套裝 (買三送一)', 588, this)" class="w-full bg-[#BC8F8F] text-white py-5 text-[10px] font-bold tracking-[0.3em] uppercase hover:bg-black transition-all shadow-lg">Secure This Gift</button>
+            </div>
+        </div>
     </section>
 
     <section class="py-24 bg-white px-6">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-left">
-            <div class="advantage-card">
-                <span class="text-[#BC8F8F] font-bold serif text-2xl italic">01.</span>
-                <h4 class="font-bold my-4 tracking-widest uppercase text-sm">雙面 22 姆米護理</h4>
-                <p class="text-gray-500 text-xs leading-relaxed">內外皆絲。富含 18 種天然氨基酸，有效減少髮絲水分蒸發達 25% 以上。</p>
-            </div>
-            <div class="advantage-card">
-                <span class="text-[#BC8F8F] font-bold serif text-2xl italic">02.</span>
-                <h4 class="font-bold my-4 tracking-widest uppercase text-sm">3.5cm 無痕緩衝帶</h4>
-                <p class="text-gray-500 text-xs leading-relaxed">降低額頭局部壓力 60%。透氣真絲包邊，醒後絕無壓痕。</p>
-            </div>
-            <div class="advantage-card">
-                <span class="text-[#BC8F8F] font-bold serif text-2xl italic">03.</span>
-                <h4 class="font-bold my-4 tracking-widest uppercase text-sm">護髮不動手</h4>
-                <p class="text-gray-500 text-xs leading-relaxed">散熱速度快棉布 1.5 倍。大幅減少清洗時間，一年僅需清洗兩次。</p>
-            </div>
-            <div class="advantage-card">
-                <span class="text-[#BC8F8F] font-bold serif text-2xl italic">04.</span>
-                <h4 class="font-bold my-4 tracking-widest uppercase text-sm">立體剪裁空間</h4>
-                <p class="text-gray-500 text-xs leading-relaxed">專利剪裁，增加頂部空間，確保長髮或捲髮不被壓扁。</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 black-marketing-section text-center px-6">
-        <div class="max-w-4xl mx-auto">
-            <span class="text-[#BC8F8F] text-xs tracking-[0.5em] uppercase mb-4 block">Flash Sale Limited</span>
-            <h2 class="text-3xl md:text-5xl mb-6 serif italic font-bold">Buy THREE Get ONE FREE</h2>
-            <div id="timer" class="mb-12 font-bold serif text-3xl">
-                <div class="timer-unit"><span id="hours">00</span><p class="text-[9px] font-sans mt-1">HRS</p></div>
-                <div class="timer-unit"><span id="mins">00</span><p class="text-[9px] font-sans mt-1">MINS</p></div>
-                <div class="timer-unit"><span id="secs">00</span><p class="text-[9px] font-sans mt-1">SECS</p></div>
-            </div>
-        </div>
-    </section>
-
-    <main id="shop" class="max-w-7xl mx-auto px-6 py-24">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-32">
-            <div class="group relative">
-                <div class="aspect-[3/4] overflow-hidden bg-white mb-6 relative">
-                    <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                    <button onclick="addToCart('Rose Quartz', 198, this)" class="absolute bottom-0 left-0 w-full bg-black text-white py-5 opacity-0 group-hover:opacity-100 transition-all text-xs tracking-[0.2em] uppercase">Add To Bag</button>
-                </div>
-                <h3 class="text-xs tracking-widest uppercase font-bold">Cloud-Wrap (Rose Quartz)</h3>
-                <span class="text-[#BC8F8F] font-bold text-lg">HK$198</span>
-            </div>
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl serif italic text-center mb-16">Frequently Asked Questions</h2>
             
-            <div class="group relative">
-                <div class="aspect-[3/4] overflow-hidden bg-white mb-6 relative">
-                    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                    <button onclick="addToCart('Champagne Gold', 198, this)" class="absolute bottom-0 left-0 w-full bg-black text-white py-5 opacity-0 group-hover:opacity-100 transition-all text-xs tracking-[0.2em] uppercase">Add To Bag</button>
+            <div class="space-y-10">
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-widest mb-3 text-[#BC8F8F]">Q: 男生也需要佩戴嗎？</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">當然。護髮不分性別，真絲的絲蛋白成份對預防男性晨起亂髮、減少髮際線摩擦同樣有效。我們的極簡設計男女皆宜。</p>
                 </div>
-                <h3 class="text-xs tracking-widest uppercase font-bold">Cloud-Wrap (Champagne Gold)</h3>
-                <span class="text-[#BC8F8F] font-bold text-lg">HK$198</span>
-            </div>
-
-            <div class="group relative">
-                <div class="aspect-[3/4] overflow-hidden bg-white mb-6 relative">
-                    <img src="https://images.unsplash.com/photo-1582562124811-c8026933ca8b?w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                    <button onclick="addToCart('Midnight Black', 198, this)" class="absolute bottom-0 left-0 w-full bg-black text-white py-5 opacity-0 group-hover:opacity-100 transition-all text-xs tracking-[0.2em] uppercase">Add To Bag</button>
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-widest mb-3 text-[#BC8F8F]">Q: 為什麼這是一個理想的禮物？</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">「買三送一」套裝附贈奢華禮盒包裝。送禮物給閨蜜或另一半，代表你關心對方的睡眠品質與美麗細節，這是一份極具溫度與實用性的驚喜。</p>
                 </div>
-                <h3 class="text-xs tracking-widest uppercase font-bold">Cloud-Wrap (Midnight Black)</h3>
-                <span class="text-[#BC8F8F] font-bold text-lg">HK$198</span>
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-widest mb-3 text-[#BC8F8F]">Q: 真絲睡帽真的能「免洗」？</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">由於高級真絲具備天然抗菌性且散熱極快，不吸附油脂。除非有明顯污垢，否則一年只需清洗 2-4 次，極大方便了追求效率的用戶。</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-widest mb-3 text-[#BC8F8F]">Q: 我的順豐地址怎麼填寫？</h4>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">在結帳頁面直接填寫順豐站碼、智能櫃編號或工商地址即可。我們全線產品均享 HK$0 運費（全港包郵）。</p>
+                </div>
             </div>
-        </div>
-
-        <div class="max-w-5xl mx-auto group relative flex flex-col md:flex-row gap-16 items-center py-24 border-t border-[#E8DCCA]">
-            <div class="flex-1 relative overflow-hidden">
-                <div class="discount-badge">買三送一 (最省預算)</div>
-                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=1200" class="w-full grayscale hover:grayscale-0 transition-all">
-            </div>
-            <div class="flex-1">
-                <h3 class="text-2xl serif mb-4">Glow-Up Collection (4件裝)</h3>
-                <p class="text-[#BC8F8F] text-3xl font-sans font-bold mb-6">HK$588</p>
-                <button onclick="addToCart('Glow-Up Bundle', 588, this)" class="w-full bg-black text-white py-6 text-xs uppercase font-bold tracking-widest">立即搶購閨蜜組</button>
-            </div>
-        </div>
-    </main>
-
-    <section class="py-32 black-marketing-section px-6">
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-16 text-left">
-            <h2 class="text-4xl serif italic">剔除溢價，回歸品質</h2>
-            <p class="text-gray-400 font-light">SilkDream 創辦理念：蠶絲護髮效果源於氨基酸，而不是 Logo。我們工廠直達，回歸高品質護髮權利。</p>
         </div>
     </section>
 
     <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/60 z-[60] hidden"></div>
-    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[70] translate-x-full cart-sidebar flex flex-col p-12">
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[70] translate-x-full cart-sidebar flex flex-col p-12 shadow-2xl">
         <div class="flex justify-between items-center mb-10 border-b pb-8">
-            <h2 class="text-xl tracking-widest serif uppercase font-bold">Your Bag</h2>
-            <button onclick="toggleCart()">✕</button>
+            <h2 class="text-xl tracking-widest serif uppercase italic">Your Bag</h2>
+            <button onclick="toggleCart()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
         </div>
         <div id="cart-items" class="flex-1 overflow-y-auto space-y-6"></div>
         <div class="pt-8 border-t border-gray-100 mt-6 text-center">
-            <div class="flex justify-between mb-8 text-lg font-bold"><span>Total</span><span id="cart-total">HK$0</span></div>
-            <button onclick="openCheckout()" class="w-full bg-black text-white py-6 tracking-[0.3em] text-[10px] hover:bg-[#BC8F8F] transition-all uppercase font-bold">Proceed To SF Express</button>
+            <div class="flex justify-between mb-8 text-xl font-bold italic serif"><span>Total</span><span id="cart-total">HK$0</span></div>
+            <button onclick="openCheckout()" class="w-full bg-black text-white py-6 tracking-[0.3em] text-[10px] hover:bg-[#BC8F8F] transition-all uppercase font-bold">Secure Checkout</button>
+            <p class="text-blue-500 text-[10px] mt-4 font-bold tracking-widest uppercase">✓ 全港免運費已自動套用</p>
         </div>
     </div>
 
-    <div id="checkout-modal" class="fixed inset-0 bg-black/70 z-[100] hidden flex items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-white w-full max-w-lg p-8 relative rounded-sm shadow-2xl">
-            <button onclick="closeCheckout()" class="absolute top-4 right-4 text-gray-400">✕</button>
-            <h2 class="text-2xl serif mb-8 text-center uppercase tracking-widest font-bold">Order Details</h2>
-            
-            <form id="orderForm" action="https://formspree.io/f/你的ID" method="POST" class="space-y-5">
-                <div class="space-y-1 text-left">
-                    <label class="text-[11px] font-bold uppercase text-gray-400">Full Name / 姓名</label>
-                    <input type="text" name="FullName" required class="w-full border border-gray-100 p-3 text-sm focus:border-black outline-none transition-all">
+    <div id="checkout-modal" class="fixed inset-0 bg-white z-[100] translate-y-full checkout-modal overflow-y-auto">
+        <div class="max-w-2xl mx-auto px-6 py-20">
+            <div id="modal-inner">
+                <div class="flex justify-between items-center mb-16">
+                    <h2 class="text-3xl serif italic">Shipping Info</h2>
+                    <button onclick="closeCheckout()" class="text-gray-400 uppercase text-[10px] tracking-widest underline">Cancel</button>
                 </div>
-
-                <div class="space-y-1 text-left">
-                    <label class="text-[11px] font-bold uppercase text-gray-400">WhatsApp / 聯絡電話</label>
-                    <input type="tel" name="WhatsApp" placeholder="例如：+852 6000 0000" required class="w-full border border-gray-100 p-3 text-sm focus:border-black outline-none transition-all">
-                </div>
-
-                <div class="space-y-3 text-left">
-                    <label class="text-[11px] font-bold uppercase text-gray-400 block border-b pb-2">Product Selection / 產品與數量</label>
-                    <div class="space-y-3 max-h-48 overflow-y-auto pr-2">
-                        <div class="flex items-center gap-3">
-                            <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=100" class="w-10 h-10 object-cover">
-                            <span class="flex-1 text-[11px] uppercase">Rose Quartz</span>
-                            <input type="number" name="Qty_Rose" min="0" value="0" class="w-12 border p-1 text-center text-xs" onchange="calcGrandTotal()">
+                <form id="orderForm" class="space-y-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="border-b border-gray-200 pb-2">
+                            <label class="block text-[10px] uppercase tracking-widest text-gray-400 mb-2 font-bold">Name</label>
+                            <input type="text" name="name" required class="w-full bg-transparent outline-none text-sm" placeholder="全名">
                         </div>
-                        <div class="flex items-center gap-3">
-                            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=100" class="w-10 h-10 object-cover">
-                            <span class="flex-1 text-[11px] uppercase">Champagne Gold</span>
-                            <input type="number" name="Qty_Gold" min="0" value="0" class="w-12 border p-1 text-center text-xs" onchange="calcGrandTotal()">
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <img src="https://images.unsplash.com/photo-1582562124811-c8026933ca8b?w=100" class="w-10 h-10 object-cover">
-                            <span class="flex-1 text-[11px] uppercase">Midnight Black</span>
-                            <input type="number" name="Qty_Black" min="0" value="0" class="w-12 border p-1 text-center text-xs" onchange="calcGrandTotal()">
-                        </div>
-                        <div class="flex items-center gap-3 bg-gray-50 p-1">
-                            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=100" class="w-10 h-10 object-cover">
-                            <span class="flex-1 text-[11px] font-bold text-[#BC8F8F] uppercase">Glow-Up (買三送一)</span>
-                            <input type="number" name="Qty_Bundle" min="0" value="0" class="w-12 border border-[#BC8F8F] p-1 text-center text-xs" onchange="calcGrandTotal()">
+                        <div class="border-b border-gray-200 pb-2">
+                            <label class="block text-[10px] uppercase tracking-widest text-gray-400 mb-2 font-bold">Phone (WhatsApp)</label>
+                            <input type="tel" name="phone" required class="w-full bg-transparent outline-none text-sm" placeholder="+852">
                         </div>
                     </div>
-                </div>
-
-                <div class="space-y-1 text-left">
-                    <label class="text-[11px] font-bold uppercase text-gray-400">Shipping Address / 收貨地址</label>
-                    <textarea name="Address" rows="2" placeholder="填寫地址或順豐站/智能櫃編號" required class="w-full border border-gray-100 p-3 text-sm focus:border-black outline-none transition-all"></textarea>
-                </div>
-
-                <div class="bg-[#FFF9F1] p-4 text-center">
-                    <p class="text-[9px] text-gray-500 leading-relaxed italic">成功提交訂單後，專員將在 2 個工作天內透過 WhatsApp 聯絡您確認細節及安排付款。</p>
-                </div>
-
-                <input type="hidden" name="Order_Total" id="hidden-total-val">
-                <button type="submit" class="w-full bg-black text-white py-5 text-[11px] font-bold uppercase tracking-widest hover:bg-[#BC8F8F] transition-all">
-                    Confirm & Reserve / 確認下單 <span id="checkout-btn-amt"></span>
-                </button>
-            </form>
+                    <div class="border-b border-gray-200 pb-2">
+                        <label class="block text-[10px] uppercase tracking-widest text-gray-400 mb-2 font-bold">SF Address / Code (Free Shipping)</label>
+                        <input type="text" name="address" required class="w-full bg-transparent outline-none text-sm" placeholder="順豐地址 / 智能櫃編號">
+                    </div>
+                    <div class="bg-[#F9F8F6] p-8 border border-[#E8DCCA]">
+                        <div id="order-summary" class="text-xs space-y-2 mb-4 italic text-gray-500"></div>
+                        <div class="border-t pt-4 flex justify-between font-bold text-lg italic serif text-[#BC8F8F]"><span>Final Total</span><span id="summary-total">HK$0</span></div>
+                    </div>
+                    <button type="submit" id="submitBtn" class="w-full bg-black text-white py-6 tracking-[0.4em] text-[10px] font-bold uppercase hover:bg-[#BC8F8F] transition-all">確認訂單並獲取付款指引</button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -204,81 +187,112 @@
         }
 
         function addToCart(name, price, btn) {
-            cart.push({ name, price });
+            const existing = cart.find(i => i.name === name);
+            existing ? existing.quantity++ : cart.push({name, price, quantity: 1});
             updateCart();
-            toggleCart();
+            if(document.getElementById('cart-sidebar').classList.contains('translate-x-full')) toggleCart();
             btn.innerText = "ADDED ✓";
-            setTimeout(() => btn.innerText = "ADD TO BAG", 2000);
+            setTimeout(() => btn.innerText = name.includes('套裝') ? "Secure This Gift" : "立即擁有", 2000);
+        }
+
+        function updateQuantity(index, delta) {
+            cart[index].quantity += delta;
+            if (cart[index].quantity < 1) cart.splice(index, 1);
+            updateCart();
         }
 
         function updateCart() {
             const container = document.getElementById('cart-items');
-            const totalDisplay = document.getElementById('cart-total');
-            const countDisplay = document.getElementById('cart-count');
+            let total = 0, count = 0;
+            container.innerHTML = cart.length === 0 ? '<p class="text-center text-gray-300 py-10 italic serif text-sm">Bag is empty.</p>' : '';
             
-            container.innerHTML = cart.length === 0 ? '<p class="text-center text-gray-300 py-10 serif italic text-xs uppercase tracking-widest">Your bag is empty.</p>' : '';
-            
-            let sum = 0;
-            cart.forEach((item, index) => {
-                sum += item.price;
+            cart.forEach((item, i) => {
+                total += item.price * item.quantity;
+                count += item.quantity;
                 container.innerHTML += `
-                    <div class="flex justify-between items-center text-[10px] uppercase tracking-widest">
-                        <span>${item.name}</span>
-                        <div class="flex gap-4">
-                            <span>HK$${item.price}</span>
-                            <button onclick="removeFromCart(${index})" class="text-gray-300">×</button>
+                    <div class="flex justify-between items-center border-b border-gray-50 pb-4">
+                        <div class="text-[11px] font-bold uppercase tracking-widest">${item.name}</div>
+                        <div class="flex items-center gap-4 font-sans">
+                            <div class="flex border border-gray-100 text-xs">
+                                <button onclick="updateQuantity(${i},-1)" class="px-2 border-r">-</button>
+                                <span class="px-3 py-1">${item.quantity}</span>
+                                <button onclick="updateQuantity(${i},1)" class="px-2 border-l">+</button>
+                            </div>
+                            <span class="text-xs font-bold">HK$${item.price * item.quantity}</span>
                         </div>
                     </div>`;
             });
-            
-            totalDisplay.innerText = `HK$${sum}`;
-            countDisplay.innerText = cart.length;
-            countDisplay.classList.toggle('hidden', cart.length === 0);
+            document.getElementById('cart-total').innerText = `HK$${total}`;
+            document.getElementById('cart-count').innerText = count;
+            document.getElementById('cart-count').classList.toggle('hidden', count === 0);
         }
 
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCart();
-        }
-
-        // 結算彈窗邏輯
         function openCheckout() {
-            document.getElementById('checkout-modal').classList.remove('hidden');
-            document.getElementById('cart-sidebar').classList.add('translate-x-full');
-            document.getElementById('cart-overlay').classList.add('hidden');
-            calcGrandTotal();
+            if (!cart.length) return;
+            const summary = document.getElementById('order-summary');
+            let total = 0;
+            summary.innerHTML = cart.map(i => {
+                total += i.price * i.quantity;
+                return `<div class="flex justify-between"><span>${i.name} x ${i.quantity}</span><span>HK$${i.price * i.quantity}</span></div>`;
+            }).join('');
+            document.getElementById('summary-total').innerText = `HK$${total}`;
+            document.getElementById('checkout-modal').classList.remove('translate-y-full');
         }
 
         function closeCheckout() {
-            document.getElementById('checkout-modal').classList.add('hidden');
+            document.getElementById('checkout-modal').classList.add('translate-y-full');
         }
 
-        function calcGrandTotal() {
-            const r = parseInt(document.getElementsByName('Qty_Rose')[0].value) || 0;
-            const g = parseInt(document.getElementsByName('Qty_Gold')[0].value) || 0;
-            const b = parseInt(document.getElementsByName('Qty_Black')[0].value) || 0;
-            const bundle = parseInt(document.getElementsByName('Qty_Bundle')[0].value) || 0;
+        document.getElementById('orderForm').onsubmit = function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = "PROCESSING...";
+            btn.disabled = true;
 
-            const total = (r + g + b) * 198 + (bundle * 588);
-            document.getElementById('checkout-btn-amt').innerText = total > 0 ? `(HK$${total})` : '';
-            document.getElementById('hidden-total-val').value = `HK$${total}`;
-        }
+            const orderId = 'SD' + Math.floor(Math.random() * 90000 + 10000);
+            const total = document.getElementById('summary-total').innerText;
+            const formData = new FormData(this);
+            formData.append('Order_ID', orderId);
+            formData.append('Total', total);
+            formData.append('Items', cart.map(i => `${i.name}(${i.quantity})`).join(', '));
 
-        // 倒計時邏輯
-        function updateTimer() {
-            const now = new Date();
-            const tomorrow = new Date(now);
-            tomorrow.setHours(24, 0, 0, 0); 
-            const diff = tomorrow - now;
-            const h = Math.floor(diff / 1000 / 60 / 60);
-            const m = Math.floor(diff / 1000 / 60) % 60;
-            const s = Math.floor(diff / 1000) % 60;
-            document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
-            document.getElementById('mins').innerText = m < 10 ? '0' + m : m;
-            document.getElementById('secs').innerText = s < 10 ? '0' + s : s;
+            fetch('https://formspree.io/f/YOUR_ID', {
+                method: 'POST',
+                body: formData,
+                headers: {'Accept': 'application/json'}
+            }).then(res => {
+                if (res.ok) showPayment(orderId, total);
+                else alert('Error. Please WhatsApp us.');
+            });
+        };
+
+        function showPayment(id, total) {
+            document.getElementById('modal-inner').innerHTML = `
+                <div class="text-center py-10">
+                    <div class="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">✓</div>
+                    <h2 class="text-3xl serif italic mb-2 text-black">Order Placed</h2>
+                    <p class="text-gray-400 text-[10px] tracking-[0.3em] uppercase mb-10 italic">Order Ref: ${id}</p>
+                    
+                    <div class="bg-[#F9F8F6] p-8 text-left border border-[#E8DCCA] mb-10">
+                        <p class="text-[10px] font-bold text-[#BC8F8F] uppercase mb-6 tracking-widest">Payment Instruction</p>
+                        <div class="space-y-6 text-sm">
+                            <div class="flex justify-between border-b border-white pb-3 font-bold text-black"><span>Final Amount</span><span>${total}</span></div>
+                            <div>
+                                <p class="text-[10px] text-gray-400 uppercase font-bold">FPS 轉數快識別碼</p>
+                                <p class="font-mono text-lg tracking-widest text-black">YOUR_FPS_ID (SilkDreams)</p>
+                            </div>
+                            <p class="text-[11px] text-gray-400 italic">請於付款備註填寫訂單編號 ${id}。</p>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/YOUR_PHONE?text=你好，我已完成付款。訂單編號：${id}" 
+                       class="w-full bg-[#25D366] text-white py-5 tracking-[0.2em] text-[10px] font-bold uppercase block text-center mb-6 shadow-md">
+                       WhatsApp Payment Screenshot
+                    </a>
+                    <button onclick="location.reload()" class="text-gray-400 text-[9px] uppercase tracking-widest underline">Return home</button>
+                </div>`;
+            cart = []; updateCart();
         }
-        setInterval(updateTimer, 1000);
-        updateTimer();
     </script>
 </body>
 </html>

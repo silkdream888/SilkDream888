@@ -17,6 +17,9 @@
         .marketing-grid { border-top: 1px solid #E8DCCA; border-bottom: 1px solid #E8DCCA; }
         .stat-card { padding: 2rem; border-right: 1px solid #E8DCCA; }
         .stat-card:last-child { border-right: none; }
+        /* 確保圖片在不同設備上的流暢感 */
+        .product-img { width: 100%; height: auto; transition: transform 0.7s ease; }
+        .product-card:hover .product-img { transform: scale(1.05); }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -65,29 +68,38 @@
                 <h2 class="text-3xl serif font-bold">The Solo Ritual</h2>
                 <p class="text-gray-500 text-xs uppercase tracking-widest mt-2 font-semibold">單件系列 | 剔除溢價的純粹體驗</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="space-y-4">
-                    <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600" class="aspect-[3/4] object-cover w-full grayscale hover:grayscale-0 transition-all duration-700">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <div class="product-card space-y-4 overflow-hidden">
+                    <div class="overflow-hidden aspect-square bg-gray-100">
+                        <img src="https://i.ibb.co/fVNszx82/pink.jpg" class="product-img object-cover w-full h-full" alt="珍珠腮紅粉">
+                    </div>
                     <div class="flex justify-between items-center">
-                        <span class="text-sm font-bold uppercase tracking-widest">Champagne Gold</span>
+                        <span class="text-sm font-bold uppercase tracking-widest">珍珠腮紅粉</span>
+                        <button onclick="addToCart('單件裝 - 珍珠腮紅粉', 198, this)" class="text-xs border-b-2 border-black font-bold uppercase hover:text-[#BC8F8F] hover:border-[#BC8F8F] pb-1">立即下單</button>
+                    </div>
+                </div>
+                <div class="product-card space-y-4 overflow-hidden">
+                    <div class="overflow-hidden aspect-square bg-gray-100">
+                        <img src="https://i.ibb.co/GYw3fxc/blue.jpg" class="product-img object-cover w-full h-full" alt="午夜藍寶石">
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-bold uppercase tracking-widest">午夜藍寶石</span>
+                        <button onclick="addToCart('單件裝 - 午夜藍寶石', 198, this)" class="text-xs border-b-2 border-black font-bold uppercase hover:text-[#BC8F8F] hover:border-[#BC8F8F] pb-1">立即下單</button>
+                    </div>
+                </div>
+                <div class="product-card space-y-4 overflow-hidden">
+                    <div class="overflow-hidden aspect-square bg-gray-100">
+                        <img src="https://i.ibb.co/393K1F4d/gold.jpg" class="product-img object-cover w-full h-full" alt="香檳金">
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-bold uppercase tracking-widest">香檳金</span>
                         <button onclick="addToCart('單件裝 - 香檳金', 198, this)" class="text-xs border-b-2 border-black font-bold uppercase hover:text-[#BC8F8F] hover:border-[#BC8F8F] pb-1">立即下單</button>
                     </div>
                 </div>
-                <div class="space-y-4">
-                    <img src="https://images.unsplash.com/photo-1582562124811-c8026933ca8b?w=600" class="aspect-[3/4] object-cover w-full grayscale hover:grayscale-0 transition-all duration-700">
-                    <div class="flex justify-between items-center">
-                        <span class="text-sm font-bold uppercase tracking-widest">Midnight Black</span>
-                        <button onclick="addToCart('單件裝 - 午夜黑', 198, this)" class="text-xs border-b-2 border-black font-bold uppercase hover:text-[#BC8F8F] hover:border-[#BC8F8F] pb-1">立即下單</button>
-                    </div>
-                </div>
-                <div class="space-y-4">
-                    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600" class="aspect-[3/4] object-cover w-full grayscale hover:grayscale-0 transition-all duration-700">
-                    <div class="flex justify-between items-center">
-                        <span class="text-sm font-bold uppercase tracking-widest">Rose Quartz</span>
-                        <button onclick="addToCart('單件裝 - 玫瑰粉', 198, this)" class="text-xs border-b-2 border-black font-bold uppercase hover:text-[#BC8F8F] hover:border-[#BC8F8F] pb-1">立即下單</button>
-                    </div>
-                </div>
             </div>
+            <p class="text-right text-[10px] text-gray-400 mt-4 tracking-widest">* 圖片只供參考，顏色以實物為準</p>
+
             <div class="mt-10 text-center bg-white p-10 border border-[#E8DCCA]">
                 <span class="text-gray-400 line-through-red text-base mr-4">市場建議價 HK$398</span>
                 <span class="text-4xl font-bold serif">HK$198</span>
@@ -100,11 +112,11 @@
                 <h2 class="text-3xl serif font-bold text-[#BC8F8F]">The Glow-Up Bundle</h2>
                 <p class="text-gray-500 text-xs uppercase tracking-widest mt-2 font-semibold">套裝系列 | 閨蜜分享首選 (買三送一)</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center bg-white border border-[#E8DCCA]">
-                <div class="md:col-span-7">
-                    <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=1200" class="w-full grayscale hover:grayscale-0 transition-all duration-1000">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-12 items-center bg-white border border-[#E8DCCA] overflow-hidden">
+                <div class="lg:col-span-7 overflow-hidden">
+                    <img src="https://i.ibb.co/xyxxTDg/bundle.jpg" class="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" alt="奢華套裝">
                 </div>
-                <div class="md:col-span-5 p-12 text-center md:text-left">
+                <div class="lg:col-span-5 p-8 md:p-12 text-center lg:text-left">
                     <span class="discount-badge mb-6 inline-block uppercase">Buy 3 Get 1 Free</span>
                     <h3 class="text-4xl font-bold serif mb-4">奢華套裝 (4件入)</h3>
                     <p class="text-gray-600 text-base font-light mb-8 leading-relaxed">
@@ -113,9 +125,10 @@
                     <div class="mb-10">
                         <span class="block text-gray-400 line-through-red text-base mb-1">市場總值 HK$1,592</span>
                         <span class="text-5xl font-bold">HK$588</span>
-                        <p class="text-blue-600 text-sm font-bold mt-4 tracking-widest uppercase font-bold">✓ 免費物流直送 | 現省 HK$200</p>
+                        <p class="text-blue-600 text-sm font-bold mt-4 tracking-widest uppercase">✓ 免費物流直送 | 現省 HK$200</p>
                     </div>
                     <button onclick="addToCart('奢華套裝 (買三送一)', 588, this)" class="w-full bg-[#BC8F8F] text-white py-6 text-sm font-bold tracking-[0.2em] uppercase hover:bg-black transition-all shadow-xl">SECURE THIS GIFT</button>
+                    <p class="text-center lg:text-left text-[10px] text-gray-400 mt-4 tracking-widest">* 套裝圖片只供參考</p>
                 </div>
             </div>
         </div>
@@ -140,15 +153,11 @@
         <div class="space-y-10">
             <div class="faq-item">
                 <h4 class="font-bold text-sm uppercase tracking-widest mb-4 text-[#BC8F8F]">為什麼 SilkDreams 值得入手？</h4>
-                <p class="text-base text-gray-600 font-light leading-relaxed">我們採用 22 Momme 頂級雙面桑蠶絲。市面多數平價品外層是普通布料，這會抵消護髮效果。我們確保頭髮始終處於 6A 級絲蛋白保護中。</p>
+                <p class="text-base text-gray-600 font-light leading-relaxed">我們採用 22 Momme 頂級雙面桑蠶絲。我們確保頭髮始終處於 6A 級絲蛋白保護中。</p>
             </div>
             <div class="faq-item">
                 <h4 class="font-bold text-sm uppercase tracking-widest mb-4 text-[#BC8F8F]">物流配送如何計算？</h4>
-                <p class="text-base text-gray-600 font-light leading-relaxed">全線產品均享 **HK$0 運費（全港包郵）**。您只需在下單時填寫順豐站碼、智能櫃編號或地址即可。</p>
-            </div>
-            <div class="faq-item">
-                <h4 class="font-bold text-sm uppercase tracking-widest mb-4 text-[#BC8F8F]">真絲需要頻繁清洗嗎？</h4>
-                <p class="text-base text-gray-600 font-light leading-relaxed">真絲具天然抗菌性，且散熱快、不吸油。只要佩戴時頭髮乾爽，極低頻率的清洗（建議每季 1 次）即可維持衛生。</p>
+                <p class="text-base text-gray-600 font-light leading-relaxed">全線產品均享 **HK$0 運費（全港包郵）**。您只需在下單時填寫順豐站碼或地址即可。</p>
             </div>
         </div>
     </section>
@@ -163,7 +172,6 @@
         <div class="pt-8 border-t border-gray-100 mt-6">
             <div class="flex justify-between mb-8 text-2xl font-bold serif"><span>Total</span><span id="cart-total">HK$0</span></div>
             <button onclick="openCheckout()" class="w-full bg-black text-white py-6 tracking-[0.2em] text-sm hover:bg-[#BC8F8F] transition-all uppercase font-bold shadow-xl">Secure Checkout</button>
-            <p class="text-blue-600 text-xs mt-4 font-bold uppercase tracking-widest text-center">✓ Free SF-Express Shipping Applied</p>
         </div>
     </div>
 
@@ -183,20 +191,6 @@
                         <div class="border-b-2 border-gray-100 pb-3">
                             <label class="block text-xs uppercase tracking-widest text-[#BC8F8F] mb-3 font-bold">聯絡電話 (WhatsApp)</label>
                             <input type="tel" name="phone" required class="w-full bg-transparent outline-none text-base" placeholder="+852">
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                        <div class="border-b-2 border-gray-100 pb-3">
-                            <label class="block text-xs uppercase tracking-widest text-[#BC8F8F] mb-3 font-bold">電子郵件 (接收收據)</label>
-                            <input type="email" name="email" required class="w-full bg-transparent outline-none text-base" placeholder="email@example.com">
-                        </div>
-                        <div class="border-b-2 border-gray-100 pb-3">
-                            <label class="block text-xs uppercase tracking-widest text-[#BC8F8F] mb-3 font-bold">選擇支付方式</label>
-                            <select name="payment_method" id="payment_method" class="w-full bg-transparent outline-none text-base font-medium">
-                                <option value="FPS">FPS 轉數快</option>
-                                <option value="AlipayHK">AlipayHK 支付寶</option>
-                                <option value="WeChatPay">WeChat Pay 微信支付</option>
-                            </select>
                         </div>
                     </div>
                     <div class="border-b-2 border-gray-100 pb-3">
@@ -279,7 +273,6 @@
             
             const orderId = 'SD' + Math.floor(Math.random() * 90000 + 10000);
             const total = document.getElementById('summary-total').innerText;
-            const paymentMethod = document.getElementById('payment_method').value;
             const now = new Date();
             const dateString = now.toLocaleDateString('zh-HK') + ' ' + now.toLocaleTimeString('zh-HK');
             
@@ -292,37 +285,19 @@
             fetch('https://formspree.io/f/mykkodwd', {
                 method: 'POST', body: formData, headers: {'Accept': 'application/json'}
             }).then(res => {
-                if (res.ok) showPayment(orderId, total, paymentMethod);
+                if (res.ok) showPayment(orderId, total, "FPS");
                 else alert('Network error. Please WhatsApp us directly.');
             });
         };
 
         function showPayment(id, total, method) {
-            let payDetail = "";
-            if(method === "FPS") payDetail = "FPS 轉數快帳戶碼: <br><span class='font-mono text-2xl tracking-widest text-black font-bold'>012 598 2 007497 5</span>";
-            else if(method === "AlipayHK") payDetail = "AlipayHK 支付寶電話: <br><span class='font-mono text-2xl tracking-widest text-black font-bold'>852 9856 0191</span>";
-            else payDetail = "WeChat Pay 微信支付電話: <br><span class='font-mono text-2xl tracking-widest text-black font-bold'>852 9856 0191</span>";
-
             document.getElementById('modal-inner').innerHTML = `
                 <div class="text-center py-10">
                     <div class="w-20 h-20 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-8 text-3xl font-bold">✓</div>
                     <h2 class="text-4xl serif font-bold mb-3">Order Received</h2>
                     <p class="text-gray-500 text-sm tracking-widest uppercase mb-10 font-bold">Order Ref: ${id}</p>
-                    <div class="bg-[#F9F8F6] p-10 text-left border border-[#E8DCCA] mb-10">
-                        <p class="text-xs font-bold text-[#BC8F8F] uppercase mb-6 tracking-widest">Payment Instruction 付款指引</p>
-                        <div class="space-y-6">
-                            <div class="flex justify-between border-b border-white pb-4 font-bold text-black text-xl">
-                                <span>應付總額 Total</span><span>${total}</span>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-400 uppercase font-bold mb-2">支付方式: ${method}</p>
-                                <p class="text-gray-600 leading-relaxed font-medium">${payDetail}</p>
-                            </div>
-                            <p class="text-sm text-gray-500 leading-relaxed font-medium">電子收據已自動發送至您的 Email。完成付款後，請將「交易截圖」連同「編號 ${id}」傳送至 WhatsApp 以便確認發貨。</p>
-                        </div>
-                    </div>
-                    <a href="https://wa.me/85298560191?text=你好，我已完成支付。%0A訂單編號：${id}%0A支付方式：${method}%0A總額：${total}" 
-                       class="w-full bg-[#25D366] text-white py-6 tracking-[0.1em] text-sm font-bold uppercase block text-center mb-6 shadow-lg hover:scale-[1.01] transition-transform">
+                    <a href="https://wa.me/85298560191?text=你好，我已完成支付。%0A訂單編號：${id}%0A總額：${total}" 
+                       class="w-full bg-[#25D366] text-white py-6 tracking-[0.1em] text-sm font-bold uppercase block text-center mb-6 shadow-lg">
                         WhatsApp 傳送付款截圖
                     </a>
                     <button onclick="location.reload()" class="text-gray-400 text-xs uppercase tracking-widest underline font-bold">返回主頁</button>

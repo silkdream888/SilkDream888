@@ -185,6 +185,20 @@
                             <input type="tel" name="phone" required class="w-full bg-transparent outline-none text-base" placeholder="+852">
                         </div>
                     </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="border-b-2 border-gray-100 pb-3">
+                            <label class="block text-xs uppercase tracking-widest text-[#BC8F8F] mb-3 font-bold">電子郵件 (接收收據)</label>
+                            <input type="email" name="email" required class="w-full bg-transparent outline-none text-base" placeholder="email@example.com">
+                        </div>
+                        <div class="border-b-2 border-gray-100 pb-3">
+                            <label class="block text-xs uppercase tracking-widest text-[#BC8F8F] mb-3 font-bold">選擇支付方式</label>
+                            <select name="payment_method" id="payment_method" class="w-full bg-transparent outline-none text-base font-medium">
+                                <option value="FPS">FPS 轉數快</option>
+                                <option value="AlipayHK">AlipayHK 支付寶</option>
+                                <option value="WeChatPay">WeChat Pay 微信支付</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="border-b-2 border-gray-100 pb-3">
                         <label class="block text-xs uppercase tracking-widest text-[#BC8F8F] mb-3 font-bold">順豐站 / 智能櫃編號 / 住宅地址</label>
                         <input type="text" name="address" required class="w-full bg-transparent outline-none text-base" placeholder="SF Express Code or Address">
@@ -257,23 +271,38 @@
             document.getElementById('checkout-modal').classList.remove('translate-y-full');
         }
         function closeCheckout() { document.getElementById('checkout-modal').classList.add('translate-y-full'); }
+        
         document.getElementById('orderForm').onsubmit = function(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
             btn.innerText = "PROCESSING..."; btn.disabled = true;
+            
             const orderId = 'SD' + Math.floor(Math.random() * 90000 + 10000);
             const total = document.getElementById('summary-total').innerText;
+            const paymentMethod = document.getElementById('payment_method').value;
+            const now = new Date();
+            const dateString = now.toLocaleDateString('zh-HK') + ' ' + now.toLocaleTimeString('zh-HK');
+            
             const formData = new FormData(this);
             formData.append('Order_ID', orderId);
-            formData.append('Items', cart.map(i => `${i.name}(${i.quantity})`).join(', '));
+            formData.append('Order_Date', dateString);
+            formData.append('Items_List', cart.map(i => `${i.name} x ${i.quantity}`).join(', '));
+            formData.append('Total_Amount', total);
+
             fetch('https://formspree.io/f/mykkodwd', {
                 method: 'POST', body: formData, headers: {'Accept': 'application/json'}
             }).then(res => {
-                if (res.ok) showPayment(orderId, total);
+                if (res.ok) showPayment(orderId, total, paymentMethod);
                 else alert('Network error. Please WhatsApp us directly.');
             });
         };
-        function showPayment(id, total) {
+
+        function showPayment(id, total, method) {
+            let payDetail = "";
+            if(method === "FPS") payDetail = "FPS 轉數快帳戶碼: <br><span class='font-mono text-2xl tracking-widest text-black font-bold'>012 598 2 007497 5</span>";
+            else if(method === "AlipayHK") payDetail = "AlipayHK 支付寶: <br><span class='font-mono text-2xl tracking-widest text-black font-bold'>按此掃描或轉帳至 9856 0191</span>";
+            else payDetail = "WeChat Pay 微信支付: <br><span class='font-mono text-2xl tracking-widest text-black font-bold'>請掃描下方微信收款碼</span>";
+
             document.getElementById('modal-inner').innerHTML = `
                 <div class="text-center py-10">
                     <div class="w-20 h-20 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-8 text-3xl font-bold">✓</div>
@@ -286,15 +315,15 @@
                                 <span>應付總額 Total</span><span>${total}</span>
                             </div>
                             <div>
-                                <p class="text-xs text-gray-400 uppercase font-bold mb-2">FPS 轉數快帳戶碼</p>
-                                <p class="font-mono text-2xl tracking-widest text-black font-bold">012 598 2 007497 5</p>
+                                <p class="text-xs text-gray-400 uppercase font-bold mb-2">支付方式: ${method}</p>
+                                <p class="text-gray-600 leading-relaxed font-medium">${payDetail}</p>
                             </div>
-                            <p class="text-sm text-gray-500 leading-relaxed font-medium">完成付款後，請將「交易截圖」連同「訂單編號 ${id}」傳送至 WhatsApp 即可完成訂購。</p>
+                            <p class="text-sm text-gray-500 leading-relaxed font-medium">電子收據已自動發送至您的 Email。完成付款後，請將「交易截圖」連同「編號 ${id}」傳送至 WhatsApp 以便確認發貨。</p>
                         </div>
                     </div>
-                    <a href="https://wa.me/85298560191?text=你好，我已下單。訂單編號：${id}" 
+                    <a href="https://wa.me/85298560191?text=你好，我已完成支付。%0A訂單編號：${id}%0A支付方式：${method}%0A總額：${total}" 
                        class="w-full bg-[#25D366] text-white py-6 tracking-[0.1em] text-sm font-bold uppercase block text-center mb-6 shadow-lg hover:scale-[1.01] transition-transform">
-                       WhatsApp 傳送付款截圖
+                        WhatsApp 傳送付款截圖
                     </a>
                     <button onclick="location.reload()" class="text-gray-400 text-xs uppercase tracking-widest underline font-bold">返回主頁</button>
                 </div>`;

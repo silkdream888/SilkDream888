@@ -19,7 +19,6 @@
         .stat-card:last-child { border-right: none; }
         .product-img { width: 100%; height: auto; transition: transform 0.7s ease; }
         .product-card:hover .product-img { transform: scale(1.05); }
-        /* 新增標籤樣式 */
         .status-badge { position: absolute; top: 10px; left: 10px; padding: 4px 8px; font-size: 10px; font-weight: bold; text-transform: uppercase; z-index: 10; }
         .sold-out-overlay { position: absolute; inset: 0; background: rgba(255,255,255,0.7); display: flex; align-items: center; justify-content: center; z-index: 20; }
     </style>
@@ -200,10 +199,11 @@
                     <button onclick="closeCheckout()" class="text-gray-400 uppercase text-xs tracking-widest underline font-bold">Back</button>
                 </div>
                 <form id="orderForm" class="space-y-10">
-                    <input type="hidden" name="items" id="hidden_items">
-                    <input type="hidden" name="order_id" id="hidden_order_id">
-                    <input type="hidden" name="total_amount" id="hidden_total">
-                    <input type="hidden" name="order_date" id="hidden_date">
+                    <input type="hidden" name="P_OrderID" id="hidden_order_id">
+                    <input type="hidden" name="Q_Items" id="hidden_items">
+                    <input type="hidden" name="T_OrderDate" id="hidden_date">
+                    <input type="hidden" name="U_ItemsList" id="hidden_items_list">
+                    <input type="hidden" name="V_TotalAmount" id="hidden_total">
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                         <div class="border-b-2 border-gray-100 pb-3">
@@ -253,16 +253,13 @@
     </div>
 
     <script>
-        // 1. 每日倒計時邏輯 (每日重新計算)
         function updateCountdown() {
             const now = new Date();
             const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
             const diff = tomorrow - now;
-
             const h = Math.floor(diff / (1000 * 60 * 60));
             const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const s = Math.floor((diff % (1000 * 60)) / 1000);
-
             document.getElementById('countdown').innerText = 
                 `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
         }
@@ -334,11 +331,12 @@
             const now = new Date();
             const dateString = now.toLocaleDateString('zh-HK') + ' ' + now.toLocaleTimeString('zh-HK');
             
-            // 填寫隱藏欄位供 Make.com 讀取
-            document.getElementById('hidden_items').value = cart.map(i => `${i.name} x ${i.quantity}`).join(', ');
-            document.getElementById('hidden_order_id').value = orderId;
-            document.getElementById('hidden_total').value = total;
-            document.getElementById('hidden_date').value = dateString;
+            // 重要：精確匹配 Google Sheet 欄位標籤
+            document.getElementById('hidden_order_id').value = orderId; // 對應 P 欄
+            document.getElementById('hidden_items').value = cart.map(i => i.name).join(', '); // 對應 Q 欄
+            document.getElementById('hidden_date').value = dateString; // 對應 T 欄
+            document.getElementById('hidden_items_list').value = cart.map(i => `${i.name} x ${i.quantity}`).join(', '); // 對應 U 欄
+            document.getElementById('hidden_total').value = total; // 對應 V 欄
 
             const formData = new FormData(this);
             const selectedMethod = formData.get('payment_method');
@@ -358,13 +356,11 @@
                     <div class="w-20 h-20 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-8 text-3xl font-bold">✓</div>
                     <h2 class="text-4xl serif font-bold mb-3">Order Received</h2>
                     <p class="text-gray-500 text-sm tracking-widest uppercase mb-6 font-bold">Order Ref: ${id}</p>
-                    
                     <div class="bg-gray-50 p-6 mb-8 border border-dashed border-gray-300">
                         <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">付款資料</p>
                         <p class="text-xl font-bold text-black mb-1">${method} 指引</p>
                         <p class="text-lg font-mono text-[#BC8F8F] underline">${paymentText}</p>
                     </div>
-
                     <a href="https://wa.me/85298560191?text=你好，我已完成支付。%0A訂單編號：${id}%0A總額：${total}%0A付款方式：${method}" 
                        class="w-full bg-[#25D366] text-white py-6 tracking-[0.1em] text-sm font-bold uppercase block text-center mb-6 shadow-lg">
                         WhatsApp 傳送付款截圖

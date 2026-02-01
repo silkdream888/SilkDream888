@@ -80,7 +80,7 @@
                 <div class="product-card space-y-4 overflow-hidden relative">
                     <span class="status-badge bg-orange-500 text-white">HOT 熱賣中</span>
                     <div class="overflow-hidden aspect-square bg-gray-100">
-                        <img src="https://i.ibb.co/fVNszx82/pink.jpg" class="product-img object-cover w-full h-full" alt="珍珠腮紅粉">
+                        <img src="https://res.cloudinary.com/doik7chkw/image/upload/f_auto,q_auto:best/ar_8:5,b_gen_fill,c_pad/Silk_Dream_Finalized_Pink_kfwull.jpg" class="product-img object-cover w-full h-full" alt="珍珠腮紅粉">
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-sm font-bold uppercase tracking-widest">珍珠腮紅粉</span>
@@ -91,7 +91,7 @@
                 <div class="product-card space-y-4 overflow-hidden relative">
                     <div class="sold-out-overlay"><span class="bg-black text-white px-4 py-2 text-xs font-bold tracking-widest">SOLD OUT</span></div>
                     <div class="overflow-hidden aspect-square bg-gray-100">
-                        <img src="https://i.ibb.co/GYw3fxc/blue.jpg" class="product-img object-cover w-full h-full" alt="午夜藍寶石">
+                        <img src="https://res.cloudinary.com/doik7chkw/image/upload/f_auto,q_auto:best/ar_8:5,b_gen_fill,c_pad/SilKDream_Finalized_blue_shiewx.jpg" class="product-img object-cover w-full h-full" alt="午夜藍寶石">
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-sm font-bold uppercase tracking-widest text-gray-400">午夜藍寶石</span>
@@ -102,7 +102,7 @@
                 <div class="product-card space-y-4 overflow-hidden relative">
                     <div class="sold-out-overlay"><span class="bg-black text-white px-4 py-2 text-xs font-bold tracking-widest">SOLD OUT</span></div>
                     <div class="overflow-hidden aspect-square bg-gray-100">
-                        <img src="https://i.ibb.co/393K1F4d/gold.jpg" class="product-img object-cover w-full h-full" alt="香檳金">
+                        <img src="https://res.cloudinary.com/doik7chkw/image/upload/f_auto,q_auto:best/ar_8:5,b_gen_fill,c_pad/a52dbd6e-c0ef-47f0-9d5b-d2b45ee949a8_vzccqe.jpg" class="product-img object-cover w-full h-full" alt="香檳金">
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-sm font-bold uppercase tracking-widest text-gray-400">香檳金</span>
@@ -126,7 +126,7 @@
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-12 items-center bg-white border border-[#E8DCCA] overflow-hidden">
                 <div class="lg:col-span-7 overflow-hidden">
-                    <img src="https://i.ibb.co/xyxxTDg/bundle.jpg" class="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" alt="奢華套裝">
+                    <img src="https://res.cloudinary.com/doik7chkw/image/upload/f_auto,q_auto:best/ar_8:5,b_gen_fill,c_pad/Silk_Dream_Finalized_combo_p2ur2h.jpg" class="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" alt="奢華套裝">
                 </div>
                 <div class="lg:col-span-5 p-8 md:p-12 text-center lg:text-left">
                     <span class="discount-badge mb-6 inline-block uppercase">Buy 3 Get 1 Free</span>
@@ -331,12 +331,11 @@
             const now = new Date();
             const dateString = now.toLocaleDateString('zh-HK') + ' ' + now.toLocaleTimeString('zh-HK');
             
-            // 重要：精確匹配 Google Sheet 欄位標籤
-            document.getElementById('hidden_order_id').value = orderId; // 對應 P 欄
-            document.getElementById('hidden_items').value = cart.map(i => i.name).join(', '); // 對應 Q 欄
-            document.getElementById('hidden_date').value = dateString; // 對應 T 欄
-            document.getElementById('hidden_items_list').value = cart.map(i => `${i.name} x ${i.quantity}`).join(', '); // 對應 U 欄
-            document.getElementById('hidden_total').value = total; // 對應 V 欄
+            document.getElementById('hidden_order_id').value = orderId;
+            document.getElementById('hidden_items').value = cart.map(i => i.name).join(', ');
+            document.getElementById('hidden_date').value = dateString;
+            document.getElementById('hidden_items_list').value = cart.map(i => `${i.name} x ${i.quantity}`).join(', ');
+            document.getElementById('hidden_total').value = total;
 
             const formData = new FormData(this);
             const selectedMethod = formData.get('payment_method');

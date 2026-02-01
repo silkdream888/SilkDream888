@@ -226,6 +226,7 @@
                             <select name="payment_method" class="w-full bg-transparent outline-none text-base">
                                 <option value="FPS">轉數快 FPS</option>
                                 <option value="Alipay">支付寶 AlipayHK</option>
+                                <option value="WeChatPay">微信支付 WeChat Pay</option>
                             </select>
                         </div>
                     </div>
@@ -327,47 +328,4 @@
             btn.innerText = "PROCESSING..."; btn.disabled = true;
             
             const orderId = 'SD' + Math.floor(Math.random() * 90000 + 10000);
-            const total = document.getElementById('summary-total').innerText;
-            const now = new Date();
-            const dateString = now.toLocaleDateString('zh-HK') + ' ' + now.toLocaleTimeString('zh-HK');
-            
-            document.getElementById('hidden_order_id').value = orderId;
-            document.getElementById('hidden_items').value = cart.map(i => i.name).join(', ');
-            document.getElementById('hidden_date').value = dateString;
-            document.getElementById('hidden_items_list').value = cart.map(i => `${i.name} x ${i.quantity}`).join(', ');
-            document.getElementById('hidden_total').value = total;
-
-            const formData = new FormData(this);
-            const selectedMethod = formData.get('payment_method');
-
-            fetch('https://formspree.io/f/mykkodwd', {
-                method: 'POST', body: formData, headers: {'Accept': 'application/json'}
-            }).then(res => {
-                if (res.ok) showPayment(orderId, total, selectedMethod);
-                else alert('Network error. Please WhatsApp us directly.');
-            });
-        };
-
-        function showPayment(id, total, method) {
-            let paymentText = method === "FPS" ? "FPS: 852 98560191" : "Alipay: 852 98560191";
-            document.getElementById('modal-inner').innerHTML = `
-                <div class="text-center py-10">
-                    <div class="w-20 h-20 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-8 text-3xl font-bold">✓</div>
-                    <h2 class="text-4xl serif font-bold mb-3">Order Received</h2>
-                    <p class="text-gray-500 text-sm tracking-widest uppercase mb-6 font-bold">Order Ref: ${id}</p>
-                    <div class="bg-gray-50 p-6 mb-8 border border-dashed border-gray-300">
-                        <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">付款資料</p>
-                        <p class="text-xl font-bold text-black mb-1">${method} 指引</p>
-                        <p class="text-lg font-mono text-[#BC8F8F] underline">${paymentText}</p>
-                    </div>
-                    <a href="https://wa.me/85298560191?text=你好，我已完成支付。%0A訂單編號：${id}%0A總額：${total}%0A付款方式：${method}" 
-                       class="w-full bg-[#25D366] text-white py-6 tracking-[0.1em] text-sm font-bold uppercase block text-center mb-6 shadow-lg">
-                        WhatsApp 傳送付款截圖
-                    </a>
-                    <button onclick="location.reload()" class="text-gray-400 text-xs uppercase tracking-widest underline font-bold">返回主頁</button>
-                </div>`;
-            cart = []; updateCart();
-        }
-    </script>
-</body>
-</html>
+            const

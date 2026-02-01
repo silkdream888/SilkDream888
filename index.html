@@ -19,6 +19,9 @@
         .stat-card:last-child { border-right: none; }
         .product-img { width: 100%; height: auto; transition: transform 0.7s ease; }
         .product-card:hover .product-img { transform: scale(1.05); }
+        /* 新增標籤樣式 */
+        .status-badge { position: absolute; top: 10px; left: 10px; padding: 4px 8px; font-size: 10px; font-weight: bold; text-transform: uppercase; z-index: 10; }
+        .sold-out-overlay { position: absolute; inset: 0; background: rgba(255,255,255,0.7); display: flex; align-items: center; justify-content: center; z-index: 20; }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -34,6 +37,12 @@
     <section class="min-h-[70vh] flex flex-col justify-center items-center px-6 text-center pt-32">
         <span class="text-xs tracking-[0.4em] text-[#BC8F8F] font-bold uppercase mb-6 block">Unisex Design | For Him & Her</span>
         <h1 class="text-5xl md:text-7xl mb-8 leading-tight tracking-tight font-bold">愛自己 <span class="text-[#BC8F8F]">從「頭」開始</span></h1>
+        
+        <div class="mb-8 bg-black text-white px-6 py-3 inline-block">
+            <p class="text-[10px] tracking-[0.2em] uppercase mb-1">限時 8 折優惠結束倒計時</p>
+            <div id="countdown" class="text-2xl font-mono font-bold tracking-widest">00:00:00</div>
+        </div>
+
         <p class="max-w-2xl text-gray-500 mb-10 text-base md:text-lg font-light leading-relaxed">"Healthy hair is a right, not a luxury."</p>
         <a href="#shop" class="bg-black text-white px-14 py-5 tracking-[0.2em] text-sm hover:bg-[#BC8F8F] transition-all duration-500 uppercase font-bold mb-16">開啟奢華睡眠</a>
     </section>
@@ -69,7 +78,8 @@
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                <div class="product-card space-y-4 overflow-hidden">
+                <div class="product-card space-y-4 overflow-hidden relative">
+                    <span class="status-badge bg-orange-500 text-white">HOT 熱賣中</span>
                     <div class="overflow-hidden aspect-square bg-gray-100">
                         <img src="https://i.ibb.co/fVNszx82/pink.jpg" class="product-img object-cover w-full h-full" alt="珍珠腮紅粉">
                     </div>
@@ -78,22 +88,26 @@
                         <button onclick="addToCart('單件裝 - 珍珠腮紅粉', 198, this)" class="text-xs border-b-2 border-black font-bold uppercase hover:text-[#BC8F8F] hover:border-[#BC8F8F] pb-1">立即下單</button>
                     </div>
                 </div>
-                <div class="product-card space-y-4 overflow-hidden">
+
+                <div class="product-card space-y-4 overflow-hidden relative">
+                    <div class="sold-out-overlay"><span class="bg-black text-white px-4 py-2 text-xs font-bold tracking-widest">SOLD OUT</span></div>
                     <div class="overflow-hidden aspect-square bg-gray-100">
                         <img src="https://i.ibb.co/GYw3fxc/blue.jpg" class="product-img object-cover w-full h-full" alt="午夜藍寶石">
                     </div>
                     <div class="flex justify-between items-center">
-                        <span class="text-sm font-bold uppercase tracking-widest">午夜藍寶石</span>
-                        <button onclick="addToCart('單件裝 - 午夜藍寶石', 198, this)" class="text-xs border-b-2 border-black font-bold uppercase hover:text-[#BC8F8F] hover:border-[#BC8F8F] pb-1">立即下單</button>
+                        <span class="text-sm font-bold uppercase tracking-widest text-gray-400">午夜藍寶石</span>
+                        <span class="text-xs text-gray-400 font-bold uppercase">補貨中</span>
                     </div>
                 </div>
-                <div class="product-card space-y-4 overflow-hidden">
+
+                <div class="product-card space-y-4 overflow-hidden relative">
+                    <div class="sold-out-overlay"><span class="bg-black text-white px-4 py-2 text-xs font-bold tracking-widest">SOLD OUT</span></div>
                     <div class="overflow-hidden aspect-square bg-gray-100">
                         <img src="https://i.ibb.co/393K1F4d/gold.jpg" class="product-img object-cover w-full h-full" alt="香檳金">
                     </div>
                     <div class="flex justify-between items-center">
-                        <span class="text-sm font-bold uppercase tracking-widest">香檳金</span>
-                        <button onclick="addToCart('單件裝 - 香檳金', 198, this)" class="text-xs border-b-2 border-black font-bold uppercase hover:text-[#BC8F8F] hover:border-[#BC8F8F] pb-1">立即下單</button>
+                        <span class="text-sm font-bold uppercase tracking-widest text-gray-400">香檳金</span>
+                        <span class="text-xs text-gray-400 font-bold uppercase">補貨中</span>
                     </div>
                 </div>
             </div>
@@ -158,6 +172,10 @@
                 <h4 class="font-bold text-sm uppercase tracking-widest mb-4 text-[#BC8F8F]">物流配送如何計算？</h4>
                 <p class="text-base text-gray-600 font-light leading-relaxed">全線產品均享 **HK$0 運費（全港包郵）**。您只需在下單時填寫順豐站碼或地址即可。</p>
             </div>
+            <div class="faq-item">
+                <h4 class="font-bold text-sm uppercase tracking-widest mb-4 text-[#BC8F8F]">退換貨政策</h4>
+                <p class="text-base text-red-600 font-bold leading-relaxed">【重要聲明】基於個人衛生安全考量，所有蠶絲產品一經售出，恕不接受任何理由之退換貨申請，下單前請確認顏色與款式。</p>
+            </div>
         </div>
     </section>
 
@@ -182,26 +200,51 @@
                     <button onclick="closeCheckout()" class="text-gray-400 uppercase text-xs tracking-widest underline font-bold">Back</button>
                 </div>
                 <form id="orderForm" class="space-y-10">
+                    <input type="hidden" name="items" id="hidden_items">
+                    <input type="hidden" name="order_id" id="hidden_order_id">
+                    <input type="hidden" name="total_amount" id="hidden_total">
+                    <input type="hidden" name="order_date" id="hidden_date">
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                         <div class="border-b-2 border-gray-100 pb-3">
                             <label class="block text-xs uppercase tracking-widest text-[#BC8F8F] mb-3 font-bold">收件人全名</label>
                             <input type="text" name="name" required class="w-full bg-transparent outline-none text-base" placeholder="Full Name">
                         </div>
                         <div class="border-b-2 border-gray-100 pb-3">
+                            <label class="block text-xs uppercase tracking-widest text-[#BC8F8F] mb-3 font-bold">電郵地址 (Email)</label>
+                            <input type="email" name="email" required class="w-full bg-transparent outline-none text-base" placeholder="email@example.com">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="border-b-2 border-gray-100 pb-3">
                             <label class="block text-xs uppercase tracking-widest text-[#BC8F8F] mb-3 font-bold">聯絡電話 (WhatsApp)</label>
                             <input type="tel" name="phone" required class="w-full bg-transparent outline-none text-base" placeholder="+852">
                         </div>
+                        <div class="border-b-2 border-gray-100 pb-3">
+                            <label class="block text-xs uppercase tracking-widest text-[#BC8F8F] mb-3 font-bold">付款方式 (Payment)</label>
+                            <select name="payment_method" class="w-full bg-transparent outline-none text-base">
+                                <option value="FPS">轉數快 FPS</option>
+                                <option value="Alipay">支付寶 AlipayHK</option>
+                            </select>
+                        </div>
                     </div>
+
                     <div class="border-b-2 border-gray-100 pb-3">
-                        <label class="block text-xs uppercase tracking-widest text-[#BC8F8F] mb-3 font-bold">順豐站 / 智能櫃編號 / 住宅地址</label>
+                        <label class="block text-xs uppercase tracking-widest text-[#BC8F8F] mb-3 font-bold">
+                            順豐站 / 智能櫃編號 / 住宅地址 
+                            <a href="https://htm.sf-express.com/hk/tc/dynamic_function/S.F.Network/SF_store_address/" target="_blank" class="text-blue-500 underline lowercase font-normal ml-2 tracking-normal">(按此查詢順豐點代碼)</a>
+                        </label>
                         <input type="text" name="address" required class="w-full bg-transparent outline-none text-base" placeholder="SF Express Code or Address">
                     </div>
+
                     <div class="bg-[#F9F8F6] p-8 border border-[#E8DCCA]">
                         <div id="order-summary" class="text-sm space-y-3 mb-6 text-gray-600"></div>
                         <div class="border-t pt-6 flex justify-between font-bold text-2xl serif text-[#BC8F8F]">
                             <span>Final Total</span>
                             <span id="summary-total">HK$0</span>
                         </div>
+                        <p class="text-[10px] text-gray-400 mt-4 leading-relaxed italic">* 確認訂單即代表同意本司不支持退換貨之條款。</p>
                     </div>
                     <button type="submit" id="submitBtn" class="w-full bg-black text-white py-6 tracking-[0.2em] text-sm font-bold uppercase hover:bg-[#BC8F8F] transition-all shadow-xl">確認訂單並獲取付款指引</button>
                 </form>
@@ -210,6 +253,22 @@
     </div>
 
     <script>
+        // 1. 每日倒計時邏輯 (每日重新計算)
+        function updateCountdown() {
+            const now = new Date();
+            const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+            const diff = tomorrow - now;
+
+            const h = Math.floor(diff / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerText = 
+                `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
         let cart = [];
         function toggleCart() {
             document.getElementById('cart-sidebar').classList.toggle('translate-x-full');
@@ -275,27 +334,38 @@
             const now = new Date();
             const dateString = now.toLocaleDateString('zh-HK') + ' ' + now.toLocaleTimeString('zh-HK');
             
+            // 填寫隱藏欄位供 Make.com 讀取
+            document.getElementById('hidden_items').value = cart.map(i => `${i.name} x ${i.quantity}`).join(', ');
+            document.getElementById('hidden_order_id').value = orderId;
+            document.getElementById('hidden_total').value = total;
+            document.getElementById('hidden_date').value = dateString;
+
             const formData = new FormData(this);
-            formData.append('Order_ID', orderId);
-            formData.append('Order_Date', dateString);
-            formData.append('Items_List', cart.map(i => `${i.name} x ${i.quantity}`).join(', '));
-            formData.append('Total_Amount', total);
+            const selectedMethod = formData.get('payment_method');
 
             fetch('https://formspree.io/f/mykkodwd', {
                 method: 'POST', body: formData, headers: {'Accept': 'application/json'}
             }).then(res => {
-                if (res.ok) showPayment(orderId, total, "FPS");
+                if (res.ok) showPayment(orderId, total, selectedMethod);
                 else alert('Network error. Please WhatsApp us directly.');
             });
         };
 
         function showPayment(id, total, method) {
+            let paymentText = method === "FPS" ? "FPS: 852 98560191" : "Alipay: 852 98560191";
             document.getElementById('modal-inner').innerHTML = `
                 <div class="text-center py-10">
                     <div class="w-20 h-20 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-8 text-3xl font-bold">✓</div>
                     <h2 class="text-4xl serif font-bold mb-3">Order Received</h2>
-                    <p class="text-gray-500 text-sm tracking-widest uppercase mb-10 font-bold">Order Ref: ${id}</p>
-                    <a href="https://wa.me/85298560191?text=你好，我已完成支付。%0A訂單編號：${id}%0A總額：${total}" 
+                    <p class="text-gray-500 text-sm tracking-widest uppercase mb-6 font-bold">Order Ref: ${id}</p>
+                    
+                    <div class="bg-gray-50 p-6 mb-8 border border-dashed border-gray-300">
+                        <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">付款資料</p>
+                        <p class="text-xl font-bold text-black mb-1">${method} 指引</p>
+                        <p class="text-lg font-mono text-[#BC8F8F] underline">${paymentText}</p>
+                    </div>
+
+                    <a href="https://wa.me/85298560191?text=你好，我已完成支付。%0A訂單編號：${id}%0A總額：${total}%0A付款方式：${method}" 
                        class="w-full bg-[#25D366] text-white py-6 tracking-[0.1em] text-sm font-bold uppercase block text-center mb-6 shadow-lg">
                         WhatsApp 傳送付款截圖
                     </a>

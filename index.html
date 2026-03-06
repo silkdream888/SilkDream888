@@ -4,1007 +4,867 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SilkDream | 全港首個專業蠶絲睡帽品牌</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Serif+TC:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
-            background: #FAFAF8; color: #1a1a1a; overflow-x: hidden;
-            font-feature-settings: 'tnum', 'lnum';
-            -webkit-font-smoothing: antialiased;
+        :root {
+            --bg: #F2F0EB; --bg-warm: #EAE7E0; --text-primary: #2C2C2C;
+            --text-secondary: #8A8578; --text-light: #B5AFA5;
+            --accent-rose: #D4A5A5; --accent-rose-light: #E8D5D5;
+            --accent-gold: #C9A96E; --white: #FEFDFB;
+            --border: #DDD8D0; --border-light: #E8E4DD;
         }
-        .serif { font-family: 'Playfair Display', Georgia, serif; }
-        nav { backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        nav a { position: relative; transition: all 0.3s; }
-        nav a::after { content: ''; position: absolute; bottom: -2px; left: 50%; width: 0; height: 1px; background: #1a1a1a; transition: all 0.3s; transform: translateX(-50%); }
-        nav a:hover::after { width: 100%; }
-        section { min-height: 100vh; opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease forwards; }
-        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-        .product-card { transition: all 0.5s; background: white; border: 1px solid rgba(0,0,0,0.05); }
-        .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-        .product-img { transition: transform 0.8s; }
-        .product-card:hover .product-img { transform: scale(1.08); }
-        .stars { color: #D4AF37; }
-        .notification-toast { position: fixed; top: 100px; right: -400px; background: white; padding: 16px 24px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 1000; transition: right 0.5s; border-left: 4px solid #D4AF37; min-width: 320px; }
-        .notification-toast.show { right: 24px; }
-        .promo-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
-        .promo-modal.show { opacity: 1; pointer-events: auto; }
-        .promo-content { background: white; max-width: 500px; width: 90%; border-radius: 12px; overflow: hidden; transform: scale(0.9); transition: transform 0.3s; }
-        .promo-modal.show .promo-content { transform: scale(1); }
-        .cart-sidebar { transition: transform 0.4s; box-shadow: -10px 0 40px rgba(0,0,0,0.1); }
-        .countdown-box { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-radius: 8px; padding: 20px 32px; color: white; }
-        .testimonial-card { background: white; border-radius: 12px; padding: 24px; border: 1px solid rgba(0,0,0,0.05); transition: all 0.3s; }
-        .testimonial-card:hover { box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
-        .btn-primary { background: #1a1a1a; color: white; padding: 18px 48px; font-size: 13px; letter-spacing: 2px; font-weight: 600; text-transform: uppercase; transition: all 0.4s; border: 2px solid #1a1a1a; cursor: pointer; }
-        .btn-primary:hover { background: transparent; color: #1a1a1a; }
-        .btn-secondary { background: transparent; color: #1a1a1a; padding: 18px 48px; font-size: 13px; letter-spacing: 2px; font-weight: 600; text-transform: uppercase; transition: all 0.4s; border: 2px solid #1a1a1a; cursor: pointer; }
-        .btn-secondary:hover { background: #1a1a1a; color: white; }
-        .hero-section { background: linear-gradient(135deg, #FAFAF8 0%, #F5F5F0 100%); }
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 1000; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); transition: all 0.3s; }
-        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6); }
-        html { scroll-behavior: smooth; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 4px; }
-        .price-strike { position: relative; display: inline-block; }
-        .price-strike::after { content: ''; position: absolute; left: 0; top: 50%; width: 100%; height: 2px; background: #ff4444; transform: rotate(-5deg); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text-primary); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+        .serif { font-family:'Cormorant Garamond',serif; }
+        .serif-cn { font-family:'Noto Serif TC',serif; }
+        html { scroll-behavior:smooth; }
+        ::-webkit-scrollbar { width:6px; }
+        ::-webkit-scrollbar-track { background:var(--bg); }
+        ::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+
+        /* BG DECORATIONS */
+        .has-bg { position:relative; overflow:hidden; }
+        .has-bg>*:not(.bg-glow):not(.silk-pat):not(.petal) { position:relative; z-index:1; }
+        .bg-glow { position:absolute; border-radius:50%; pointer-events:none; z-index:0; filter:blur(80px); opacity:0.4; animation:floatG 16s ease-in-out infinite; }
+        .bg-glow:nth-child(2) { animation-delay:4s; }
+        .bg-glow:nth-child(3) { animation-delay:8s; }
+        @keyframes floatG { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+        .bg-rose { background:radial-gradient(circle,#E8C4C4 0%,#F2DDD8 40%,transparent 70%); }
+        .bg-white { background:radial-gradient(circle,#FFF 0%,#FAF8F5 40%,transparent 70%); }
+        .bg-blush { background:radial-gradient(circle,#F0D4D4 0%,#F5E6E2 30%,transparent 65%); }
+        .silk-pat { position:absolute; inset:0; pointer-events:none; z-index:0; opacity:0.025;
+            background-image:url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50Q50 0 100 50T200 50' fill='none' stroke='%23D4A5A5' stroke-width='1'/%3E%3Cpath d='M0 100Q50 50 100 100T200 100' fill='none' stroke='%23D4A5A5' stroke-width='1'/%3E%3Cpath d='M0 150Q50 100 100 150T200 150' fill='none' stroke='%23D4A5A5' stroke-width='1'/%3E%3C/svg%3E");
+            background-size:200px; }
+        .petal { position:absolute; width:18px; height:26px; background:var(--accent-rose-light);
+            border-radius:50% 50% 50% 0; opacity:0.07; pointer-events:none; z-index:0;
+            animation:floatP 10s ease-in-out infinite; }
+        .petal:nth-child(even) { animation-duration:12s; animation-delay:2s; }
+        @keyframes floatP { 0%,100%{transform:translateY(0) rotate(0)} 50%{transform:translateY(-10px) rotate(4deg)} }
+
+        /* MARQUEE */
+        .marquee { background:var(--text-primary); color:var(--bg); padding:9px 0; overflow:hidden; white-space:nowrap; }
+        .marquee-track { display:inline-block; animation:mq 28s linear infinite; }
+        .marquee-track span { font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:0 36px; font-weight:400; }
+        .marquee-track span::before { content:'◆'; margin-right:36px; font-size:6px; color:var(--accent-rose); vertical-align:middle; }
+        @keyframes mq { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+        /* NAV */
+        nav { position:sticky; top:0; z-index:100; background:rgba(242,240,235,0.92); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border-bottom:1px solid var(--border-light); }
+        .nav-in { max-width:1200px; margin:0 auto; padding:16px 28px; display:flex; justify-content:space-between; align-items:center; }
+        .nav-logo { font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:400; letter-spacing:0.25em; }
+        .nav-links { display:flex; gap:28px; }
+        .nav-links a { font-size:9.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-secondary); text-decoration:none; cursor:pointer; padding:4px 0; transition:color 0.3s; position:relative; }
+        .nav-links a:hover,.nav-links a.active { color:var(--text-primary); }
+        .nav-links a.active::after { content:''; position:absolute; bottom:-2px; left:0; width:100%; height:1px; background:var(--accent-rose); }
+        .nav-right { display:flex; align-items:center; gap:16px; }
+        .nav-right button { background:none; border:none; cursor:pointer; color:var(--text-primary); position:relative; }
+        .cart-badge { position:absolute; top:-6px; right:-8px; background:var(--accent-rose); color:white; font-size:9px; width:16px; height:16px; border-radius:50%; display:none; align-items:center; justify-content:center; font-weight:600; }
+        .mob-menu-btn { display:none; }
+        #mob-menu { display:none; background:var(--white); border-top:1px solid var(--border-light); padding:16px 28px; }
+        #mob-menu a { display:block; padding:10px 0; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-secondary); text-decoration:none; }
+
+        /* SECTIONS */
+        .sec { display:none; animation:fadeS 0.45s ease; }
+        .sec.active { display:block; }
+        @keyframes fadeS { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+        /* HERO */
+        .hero-carousel { width:100%; overflow:hidden; }
+        .hero-track { display:flex; animation:hSlide 24s linear infinite; }
+        .hero-track img { width:50vw; height:60vh; object-fit:cover; flex-shrink:0; }
+        @keyframes hSlide { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+        .hero-body { text-align:center; padding:56px 28px 72px; position:relative; }
+        .hero-body::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:min(640px,88%); height:100%; background:radial-gradient(ellipse,rgba(254,253,251,0.65) 0%,rgba(242,240,235,0.25) 55%,transparent 78%); pointer-events:none; z-index:0; }
+        .hero-body>* { position:relative; z-index:1; }
+        .hero-tag { font-family:'Noto Serif TC',serif; font-size:10px; letter-spacing:0.5em; color:var(--text-secondary); margin-bottom:28px; }
+        .gold-line { width:44px; height:1px; background:var(--accent-gold); margin:0 auto 28px; }
+        .hero-title { font-family:'Noto Serif TC',serif; font-size:clamp(32px,5.5vw,56px); font-weight:400; line-height:1.35; margin-bottom:18px; }
+        .hero-title span { color:var(--text-secondary); }
+        .hero-sub { font-family:'Noto Serif TC',serif; font-size:15px; color:var(--text-secondary); font-weight:300; line-height:1.9; margin-bottom:36px; letter-spacing:0.04em; }
+        .cd-strip { display:inline-flex; align-items:center; gap:14px; padding:12px 32px; border:1px solid var(--border); margin-bottom:32px; background:linear-gradient(135deg,rgba(254,253,251,0.8),rgba(232,213,213,0.12)); }
+        .cd-strip .lb { font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-secondary); }
+        .cd-strip .tm { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; letter-spacing:0.08em; }
+        .cert-strip { text-align:center; padding:40px 28px; border-top:1px solid var(--border-light); border-bottom:1px solid var(--border-light); background:linear-gradient(135deg,rgba(232,196,196,0.05),rgba(254,253,251,0.35),rgba(232,213,213,0.06)); }
+        .cert-ico { width:52px; height:52px; border:1px solid var(--accent-gold); border-radius:50%; margin:0 auto 12px; display:flex; align-items:center; justify-content:center; }
+        .cert-ico svg { width:20px; height:20px; stroke:var(--accent-gold); fill:none; stroke-width:1.5; }
+        .cert-txt { font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-secondary); }
+        .stats-row { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--border-light); max-width:860px; margin:0 auto; }
+        .stat-i { text-align:center; padding:36px 16px; border-right:1px solid var(--border-light); }
+        .stat-i:last-child { border-right:none; }
+        .stat-n { font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:300; margin-bottom:6px; }
+        .stat-l { font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-secondary); }
+
+        /* BUTTONS */
+        .btn-p { display:inline-block; padding:15px 48px; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; background:var(--text-primary); color:var(--bg); border:1px solid var(--text-primary); cursor:pointer; transition:all 0.4s; font-family:'Inter',sans-serif; font-weight:400; text-decoration:none; }
+        .btn-p:hover { background:var(--accent-rose); border-color:var(--accent-rose); color:var(--white); }
+        .btn-s { display:inline-block; width:100%; padding:13px; font-size:9.5px; letter-spacing:0.18em; text-transform:uppercase; background:transparent; color:var(--text-primary); border:1px solid var(--border); cursor:pointer; transition:all 0.3s; font-family:'Inter',sans-serif; text-align:center; }
+        .btn-s:hover { background:var(--text-primary); color:var(--bg); border-color:var(--text-primary); }
+
+        /* SECTION HEADER */
+        .sh { text-align:center; padding:56px 28px 40px; position:relative; }
+        .sh::before { content:''; position:absolute; top:36px; left:50%; transform:translateX(-50%); width:120px; height:120px; border:1px solid var(--accent-rose-light); border-radius:50%; opacity:0.2; pointer-events:none; }
+        .sh h2 { font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:400; letter-spacing:0.08em; margin-bottom:6px; }
+        .sh .sub { font-size:9.5px; letter-spacing:0.25em; text-transform:uppercase; color:var(--text-secondary); }
+
+        /* PRODUCTS */
+        .pgrid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; max-width:1060px; margin:0 auto; padding:0 28px; }
+        .pcard { background:var(--white); overflow:hidden; transition:all 0.4s; cursor:pointer; }
+        .pcard:hover { box-shadow:0 12px 40px rgba(212,165,165,0.12),0 4px 16px rgba(0,0,0,0.03); }
+        .pcard .iw { position:relative; overflow:hidden; aspect-ratio:4/5; background:#E8E4DD; }
+        .pcard .iw img { width:100%; height:100%; object-fit:cover; transition:transform 0.8s; }
+        .pcard:hover .iw img { transform:scale(1.06); }
+        .pcard .tag { position:absolute; top:14px; left:14px; font-size:8px; letter-spacing:0.14em; text-transform:uppercase; background:var(--accent-rose); color:var(--white); padding:4px 10px; }
+        .pinfo { padding:22px; }
+        .pinfo h4 { font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:400; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:5px; }
+        .pinfo .desc { font-family:'Noto Serif TC',serif; font-size:11.5px; color:var(--text-secondary); margin-bottom:14px; line-height:1.6; }
+        .pb { margin-bottom:14px; }
+        .pb .old { display:flex; align-items:center; gap:10px; margin-bottom:4px; }
+        .pb .sk { font-size:12px; color:var(--text-light); text-decoration:line-through; text-decoration-color:var(--accent-rose); }
+        .pb .skl { font-size:8px; color:var(--text-light); letter-spacing:0.08em; text-transform:uppercase; }
+        .pb .fp { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:400; color:var(--accent-rose); }
+        .pb .bd { display:inline-block; font-size:8px; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-secondary); border:1px solid var(--border); padding:2px 8px; margin-left:8px; }
+        .pb .ship { font-size:9px; color:var(--text-secondary); margin-top:5px; letter-spacing:0.04em; }
+        .stars { color:var(--accent-gold); font-size:13px; }
+        .stars-g { color:var(--border); }
+
+        /* BUNDLE */
+        .bundle { background:var(--white); max-width:1060px; margin:40px auto 0; overflow:hidden; border:1px solid var(--border-light); }
+        .bundle-grid { display:grid; grid-template-columns:1fr 1fr; }
+        .bundle-img { overflow:hidden; }
+        .bundle-img img { width:100%; height:100%; object-fit:cover; transition:transform 1s; }
+        .bundle:hover .bundle-img img { transform:scale(1.04); }
+        .bundle-info { padding:48px 40px; display:flex; flex-direction:column; justify-content:center; }
+        .bundle-tag { display:inline-block; font-size:9px; letter-spacing:0.14em; text-transform:uppercase; background:var(--accent-gold); color:var(--white); padding:5px 14px; margin-bottom:20px; width:fit-content; }
+
+        /* BRAND */
+        .brand-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; max-width:1000px; margin:0 auto; padding:0 28px 48px; align-items:center; }
+        .brand-txt h3 { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:400; margin-bottom:20px; }
+        .brand-txt p { font-size:13.5px; color:var(--text-secondary); line-height:1.9; margin-bottom:14px; }
+        .brand-img { aspect-ratio:1; border-radius:4px; overflow:hidden; }
+        .brand-img img { width:100%; height:100%; object-fit:cover; }
+        .founder-box { background:var(--white); padding:48px; max-width:900px; margin:0 auto 48px; text-align:center; border:1px solid var(--border-light); }
+        .founder-pics { display:flex; justify-content:center; gap:20px; margin-bottom:28px; }
+        .founder-pics img { width:100px; height:100px; border-radius:50%; object-fit:cover; border:2px solid var(--border-light); }
+        .founder-box blockquote { font-family:'Noto Serif TC',serif; font-size:15px; line-height:1.9; color:var(--text-secondary); font-weight:300; font-style:italic; max-width:600px; margin:0 auto 16px; }
+        .founder-box cite { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-light); font-style:normal; }
+        .compare-box { max-width:900px; margin:0 auto; padding:0 28px 60px; }
+        .compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+        .compare-card { padding:32px; }
+        .compare-card h5 { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:400; margin-bottom:16px; }
+        .compare-card ul { list-style:none; }
+        .compare-card li { font-size:12.5px; color:var(--text-secondary); padding:6px 0; line-height:1.6; }
+        .compare-card li::before { margin-right:8px; }
+        .cc-bad { background:var(--bg-warm); }
+        .cc-bad li::before { content:'—'; color:var(--accent-rose); }
+        .cc-good { background:var(--white); border:1px solid var(--accent-gold); }
+        .cc-good li::before { content:'✓'; color:var(--accent-gold); }
+
+        /* SCIENCE */
+        .sci-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:900px; margin:0 auto 48px; padding:0 28px; }
+        .sci-card { padding:32px; border:1px solid var(--border-light); }
+        .sci-card h4 { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:400; margin-bottom:16px; }
+        .sci-card ul { list-style:none; }
+        .sci-card li { font-size:12.5px; color:var(--text-secondary); padding:5px 0; line-height:1.6; }
+        .sci-card li strong { color:var(--text-primary); }
+        .sci-good { background:linear-gradient(135deg,rgba(232,213,213,0.1),var(--white)); }
+        .sci-bad { background:var(--bg); }
+        .momme-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; max-width:900px; margin:0 auto 48px; padding:0 28px; }
+        .momme-card { background:var(--white); padding:24px 16px; text-align:center; border:1px solid var(--border-light); }
+        .momme-card.highlight { background:linear-gradient(135deg,rgba(232,213,213,0.15),var(--white)); border:1px solid var(--accent-gold); }
+        .momme-card .val { font-family:'Cormorant Garamond',serif; font-size:22px; margin-bottom:4px; }
+        .momme-card .lab { font-size:10px; color:var(--text-secondary); }
+        .momme-card .sub2 { font-size:9px; color:var(--text-light); margin-top:4px; }
+        .principle-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:960px; margin:0 auto 48px; padding:0 28px; }
+        .principle-card { background:var(--white); padding:28px; border:1px solid var(--border-light); }
+        .principle-card .ico { width:44px; height:44px; border-radius:50%; background:var(--bg); display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
+        .principle-card .ico svg { width:20px; height:20px; stroke:var(--text-secondary); fill:none; stroke-width:1.5; }
+        .principle-card h4 { font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:400; margin-bottom:10px; }
+        .principle-card p { font-size:12.5px; color:var(--text-secondary); line-height:1.7; }
+        .dual-box { max-width:900px; margin:0 auto 60px; padding:0 28px; }
+        .dual-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+        .dual-card { padding:28px; }
+        .dual-card h4 { font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:400; margin-bottom:14px; }
+        .dual-card li { font-size:12px; color:var(--text-secondary); padding:4px 0; line-height:1.6; list-style:none; }
+        .dual-bad { background:var(--bg-warm); }
+        .dual-bad h4 { color:var(--accent-rose); }
+        .dual-good { background:var(--white); border:1px solid var(--accent-gold); }
+        .dual-good h4 { color:var(--accent-gold); }
+
+        /* REVIEWS */
+        .rev-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:960px; margin:0 auto 48px; padding:0 28px; }
+        .rev-card { background:var(--white); padding:28px; border:1px solid var(--border-light); }
+        .rev-top { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+        .rev-top img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:1px solid var(--border-light); }
+        .rev-top .nm { font-size:12px; font-weight:500; }
+        .rev-card p { font-family:'Noto Serif TC',serif; font-size:12.5px; color:var(--text-secondary); line-height:1.8; font-weight:300; }
+        .rev-ph { display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:700px; margin:0 auto; padding:0 28px 60px; }
+        .rev-placeholder { background:var(--bg); border:1px solid var(--border-light); min-height:320px; display:flex; align-items:center; justify-content:center; }
+        .rev-placeholder svg { width:40px; height:40px; stroke:var(--border); fill:none; stroke-width:1; opacity:0.4; }
+
+        /* FAQ */
+        .faq-list { max-width:700px; margin:0 auto; padding:0 28px 60px; }
+        .faq-item { background:var(--white); padding:28px; margin-bottom:8px; border:1px solid var(--border-light); }
+        .faq-item h4 { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:400; margin-bottom:10px; }
+        .faq-item p { font-size:13px; color:var(--text-secondary); line-height:1.8; }
+        .faq-item ol { font-size:12px; color:var(--text-secondary); line-height:1.8; padding-left:20px; margin-top:8px; }
+        .faq-warn { background:linear-gradient(135deg,rgba(212,165,165,0.08),var(--white)); border:1px solid var(--accent-rose-light); }
+        .faq-warn h4 { color:var(--accent-rose); }
+        .faq-warn p { color:var(--accent-rose); font-weight:500; }
+
+        /* ORDER GUIDE */
+        .og-list { max-width:660px; margin:0 auto; padding:0 28px 60px; }
+        .og-step { display:flex; gap:20px; align-items:flex-start; margin-bottom:28px; }
+        .og-num { width:40px; height:40px; border-radius:50%; background:var(--text-primary); color:var(--bg); display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:18px; flex-shrink:0; }
+        .og-step h4 { font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:400; margin-bottom:4px; }
+        .og-step p { font-size:13px; color:var(--text-secondary); line-height:1.7; }
+
+        /* PROMO */
+        .promo-sec { text-align:center; padding:80px 28px; background:var(--text-primary); color:var(--bg); }
+        .promo-sec h2 { font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:400; letter-spacing:0.08em; margin-bottom:6px; }
+        .promo-inner { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); padding:40px; max-width:600px; margin:32px auto; }
+        .promo-inner .ico2 { width:64px; height:64px; border-radius:50%; border:1px solid var(--accent-gold); margin:0 auto 16px; display:flex; align-items:center; justify-content:center; }
+        .promo-inner .ico2 svg { width:28px; height:28px; stroke:var(--accent-gold); fill:none; stroke-width:1.5; }
+        .promo-inner h3 { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; margin-bottom:12px; }
+        .promo-inner p { font-size:13px; color:var(--text-light); line-height:1.8; margin-bottom:8px; }
+        .promo-inner .hl { color:var(--accent-gold); font-weight:500; font-size:12px; }
+
+        /* FOOTER */
+        footer { background:var(--text-primary); color:var(--bg); text-align:center; padding:56px 28px; }
+        footer .flogo { font-family:'Cormorant Garamond',serif; font-size:22px; letter-spacing:0.3em; margin-bottom:16px; font-weight:400; }
+        footer p { font-family:'Noto Serif TC',serif; font-size:13px; color:var(--text-light); line-height:1.8; max-width:440px; margin:0 auto 20px; }
+        footer .copy { font-size:9px; color:var(--text-light); letter-spacing:0.1em; }
+
+        /* CART SIDEBAR */
+        .cart-ov { position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:200; display:none; }
+        .cart-sb { position:fixed; top:0; right:0; height:100%; width:100%; max-width:420px; background:var(--white); z-index:210; transform:translateX(100%); transition:transform 0.4s; display:flex; flex-direction:column; box-shadow:-8px 0 32px rgba(0,0,0,0.08); }
+        .cart-sb.open { transform:translateX(0); }
+        .cart-head { padding:24px 28px; border-bottom:1px solid var(--border-light); display:flex; justify-content:space-between; align-items:center; }
+        .cart-head h2 { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; letter-spacing:0.08em; }
+        .cart-head button { background:none; border:none; cursor:pointer; font-size:18px; color:var(--text-secondary); }
+        #cart-items { flex:1; overflow-y:auto; padding:24px 28px; }
+        .cart-foot { padding:24px 28px; border-top:1px solid var(--border-light); background:var(--bg); }
+        .cart-foot .row { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; font-size:16px; font-weight:500; }
+        .cart-foot .row span:last-child { font-family:'Cormorant Garamond',serif; font-size:22px; }
+
+        /* CHECKOUT MODAL */
+        .ck-modal { position:fixed; inset:0; background:var(--white); z-index:300; transform:translateY(100%); transition:transform 0.4s; overflow-y:auto; }
+        .ck-modal.open { transform:translateY(0); }
+        .ck-inner { max-width:640px; margin:0 auto; padding:48px 28px; }
+        .ck-inner h2 { font-family:'Cormorant Garamond',serif; font-size:30px; font-weight:400; letter-spacing:0.06em; margin-bottom:32px; }
+        .ck-inner label { display:block; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-secondary); margin-bottom:6px; font-weight:500; }
+        .ck-inner input { width:100%; border:none; border-bottom:1.5px solid var(--border); padding:10px 0; outline:none; font-size:14px; font-family:'Inter',sans-serif; background:transparent; color:var(--text-primary); transition:border-color 0.3s; }
+        .ck-inner input:focus { border-bottom-color:var(--accent-rose); }
+        .ck-inner .field { margin-bottom:24px; }
+        .ck-inner .row2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+        .ck-summary { background:var(--bg); padding:28px; margin:24px 0; border:1px solid var(--border-light); }
+        .ck-summary h3 { font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:400; margin-bottom:12px; letter-spacing:0.06em; }
+        .ck-summary .line { display:flex; justify-content:space-between; font-size:13px; color:var(--text-secondary); padding:4px 0; }
+        .ck-summary .total-line { border-top:1px solid var(--border); margin-top:12px; padding-top:12px; display:flex; justify-content:space-between; font-size:20px; font-family:'Cormorant Garamond',serif; font-weight:500; }
+        .ck-back { background:none; border:none; cursor:pointer; font-size:12px; color:var(--text-secondary); letter-spacing:0.1em; text-transform:uppercase; }
+        .ck-back:hover { color:var(--text-primary); }
+        .gift-box { margin-top:12px; padding:14px; background:linear-gradient(135deg,rgba(201,169,110,0.06),rgba(232,213,213,0.1)); border:1px solid var(--accent-gold); }
+        .gift-box .g-title { font-size:12px; font-weight:600; color:var(--accent-gold); margin-bottom:2px; }
+        .gift-box .g-sub { font-size:10px; color:var(--text-secondary); }
+
+        /* PROMO MODAL */
+        .pm-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:400; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity 0.3s; }
+        .pm-overlay.show { opacity:1; pointer-events:auto; }
+        .pm-box { background:var(--white); max-width:440px; width:90%; overflow:hidden; transform:scale(0.92); transition:transform 0.3s; }
+        .pm-overlay.show .pm-box { transform:scale(1); }
+        .pm-top { background:var(--text-primary); color:var(--bg); padding:40px 32px; text-align:center; position:relative; }
+        .pm-close { position:absolute; top:12px; right:12px; width:28px; height:28px; background:rgba(255,255,255,0.15); border:none; border-radius:50%; color:white; cursor:pointer; font-size:14px; transition:background 0.3s; }
+        .pm-close:hover { background:rgba(255,255,255,0.3); }
+        .pm-top .pm-ico { width:56px; height:56px; border-radius:50%; border:1px solid var(--accent-gold); margin:0 auto 14px; display:flex; align-items:center; justify-content:center; }
+        .pm-top .pm-ico svg { width:24px; height:24px; stroke:var(--accent-gold); fill:none; stroke-width:1.5; }
+        .pm-top h3 { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; margin-bottom:10px; letter-spacing:0.06em; }
+        .pm-top .pm-hl { color:var(--accent-gold); font-size:16px; font-weight:500; margin-bottom:6px; }
+        .pm-top .pm-sub { font-size:11px; color:var(--text-light); }
+        .pm-bottom { padding:28px 32px; text-align:center; }
+        .pm-bottom p { font-size:13px; color:var(--text-secondary); line-height:1.7; margin-bottom:20px; }
+
+        /* NOTIFICATION TOAST */
+        .notif { position:fixed; top:90px; right:-380px; background:var(--white); padding:14px 20px; box-shadow:0 6px 24px rgba(0,0,0,0.08); z-index:150; transition:right 0.5s; border-left:3px solid var(--accent-gold); min-width:300px; display:flex; align-items:center; gap:10px; }
+        .notif.show { right:20px; }
+        .notif svg { width:16px; height:16px; stroke:var(--accent-gold); fill:none; stroke-width:2; flex-shrink:0; }
+        .notif .n-name { font-size:12px; font-weight:500; }
+        .notif .n-det { font-size:10px; color:var(--text-secondary); }
+
+        /* WHATSAPP */
+        .wa { position:fixed; bottom:24px; right:24px; z-index:150; width:50px; height:50px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 3px 14px rgba(37,211,102,0.3); transition:transform 0.3s; text-decoration:none; }
+        .wa:hover { transform:scale(1.08); }
+        .wa svg { width:24px; height:24px; fill:white; }
+
+        /* MOBILE */
+        @media(max-width:768px) {
+            .nav-links { display:none; }
+            .mob-menu-btn { display:block!important; }
+            .pgrid { grid-template-columns:1fr; gap:12px; padding:0 16px; }
+            .stats-row { grid-template-columns:repeat(2,1fr); }
+            .stat-i:nth-child(2) { border-right:none; }
+            .hero-track img { width:85vw; height:45vh; }
+            .hero-body { padding:36px 16px 56px; }
+            .brand-grid { grid-template-columns:1fr; gap:24px; }
+            .sci-grid { grid-template-columns:1fr; }
+            .momme-grid { grid-template-columns:repeat(2,1fr); }
+            .principle-grid { grid-template-columns:1fr; }
+            .dual-grid { grid-template-columns:1fr; }
+            .rev-grid { grid-template-columns:1fr; }
+            .rev-ph { grid-template-columns:1fr; }
+            .bundle-grid { grid-template-columns:1fr; }
+            .compare-grid { grid-template-columns:1fr; }
+            .ck-inner .row2 { grid-template-columns:1fr; }
+        }
     </style>
 </head>
 <body>
+<!-- PROMO MODAL -->
+<div id="pm" class="pm-overlay">
+    <div class="pm-box">
+        <div class="pm-top">
+            <button class="pm-close" onclick="closePM()">✕</button>
+            <div class="pm-ico"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg></div>
+            <h3>限時優惠</h3>
+            <p class="pm-hl">消費滿 HK$1,500<br/>送限量版蠶絲眼罩</p>
+            <p class="pm-sub">價值 HK$198 · 數量有限，送完即止</p>
+        </div>
+        <div class="pm-bottom">
+            <p class="serif-cn">立即選購任意組合，訂單滿 $1,500 即可獲贈高級蠶絲眼罩。</p>
+            <button class="btn-p" onclick="closePM();switchTo('products');">立即選購</button>
+        </div>
+    </div>
+</div>
 
-    <!-- Promo Modal -->
-    <div id="promo-modal" class="promo-modal">
-        <div class="promo-content">
-            <div class="relative">
-                <button onclick="closePromoModal()" class="absolute top-4 right-4 z-10 w-8 h-8 bg-black/50 hover:bg-black rounded-full flex items-center justify-center text-white transition-colors">
-                    ✕
-                </button>
-                <div class="bg-gradient-to-br from-gray-900 to-gray-800 text-white p-12 text-center">
-                    <div class="w-20 h-20 mx-auto mb-6 bg-white/10 rounded-full flex items-center justify-center">
-                        <svg class="w-10 h-10 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-3xl serif font-bold mb-4">限時優惠</h3>
-                    <p class="text-yellow-300 text-xl font-bold mb-6">消費滿 HK$1,500<br/>送限量版蠶絲眼罩</p>
-                    <p class="text-sm text-gray-300 mb-2">價值 HK$198</p>
-                    <p class="text-xs text-gray-400">數量有限，送完即止</p>
+<!-- NOTIFICATION -->
+<div id="notif" class="notif">
+    <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <div><p class="n-name" id="n-name"></p><p class="n-det" id="n-det"></p></div>
+</div>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/85298560191?text=你好！我對 SilkDream 蠶絲睡帽感興趣，想了解更多產品資訊。" target="_blank" class="wa">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<!-- MARQUEE -->
+<div class="marquee"><div class="marquee-track"><span>單件裝限時 8 折</span><span>全港免運費</span><span>OEKO-TEX® Standard 100 認證</span><span>22 Momme 雙面桑蠶絲</span><span>單件裝限時 8 折</span><span>全港免運費</span><span>OEKO-TEX® Standard 100 認證</span><span>22 Momme 雙面桑蠶絲</span></div></div>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-in">
+        <div class="nav-logo">SILKDREAM</div>
+        <div class="nav-links" id="navlinks">
+            <a class="active" onclick="switchTo('home')">主頁</a>
+            <a onclick="switchTo('brand')">品牌</a>
+            <a onclick="switchTo('products')">產品</a>
+            <a onclick="switchTo('science')">科普知識</a>
+            <a onclick="switchTo('reviews')">好評</a>
+            <a onclick="switchTo('faq')">FAQ</a>
+            <a onclick="switchTo('guide')">下單指南</a>
+            <a onclick="switchTo('promo')">優惠</a>
+        </div>
+        <div class="nav-right">
+            <button onclick="toggleCart()" style="position:relative;">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4Z"/><path d="M3 6h18M16 10a4 4 0 01-8 0"/></svg>
+                <span id="cart-count" class="cart-badge">0</span>
+            </button>
+            <button class="mob-menu-btn" onclick="document.getElementById('mob-menu').style.display=document.getElementById('mob-menu').style.display==='block'?'none':'block'">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </button>
+        </div>
+    </div>
+    <div id="mob-menu">
+        <a onclick="switchTo('home');closeMob()">主頁</a><a onclick="switchTo('brand');closeMob()">品牌</a><a onclick="switchTo('products');closeMob()">產品</a><a onclick="switchTo('science');closeMob()">科普知識</a><a onclick="switchTo('reviews');closeMob()">好評</a><a onclick="switchTo('faq');closeMob()">FAQ</a><a onclick="switchTo('guide');closeMob()">下單指南</a><a onclick="switchTo('promo');closeMob()">優惠</a>
+    </div>
+</nav>
+
+<!-- ===== HOME ===== -->
+<div id="home" class="sec active has-bg">
+    <div class="bg-glow bg-rose" style="width:500px;height:500px;top:-100px;right:-150px;"></div>
+    <div class="bg-glow bg-white" style="width:600px;height:600px;top:200px;left:-200px;"></div>
+    <div class="bg-glow bg-blush" style="width:400px;height:400px;bottom:100px;right:10%;"></div>
+    <div class="silk-pat"></div>
+    <div class="petal" style="top:18%;left:8%;"></div><div class="petal" style="top:28%;right:12%;"></div><div class="petal" style="bottom:22%;left:14%;"></div>
+    <div class="hero-carousel"><div class="hero-track">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/Silk_Dream_Finalized_Pink_kfwull.jpg" alt="Product">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/SilKDream_Finalized_blue_shiewx.jpg" alt="Product">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/a52dbd6e-c0ef-47f0-9d5b-d2b45ee949a8_vzccqe.jpg" alt="Product">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1200/Silk_Dream_Finalized_combo_p2ur2h.jpg" alt="Bundle">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/Silk_Dream_Finalized_Pink_kfwull.jpg" alt="Product">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/SilKDream_Finalized_blue_shiewx.jpg" alt="Product">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/a52dbd6e-c0ef-47f0-9d5b-d2b45ee949a8_vzccqe.jpg" alt="Product">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1200/Silk_Dream_Finalized_combo_p2ur2h.jpg" alt="Bundle">
+    </div></div>
+    <div class="hero-body">
+        <p class="hero-tag">全 港 首 個 專 業 蠶 絲 睡 帽 品 牌</p>
+        <div class="gold-line"></div>
+        <h1 class="hero-title serif-cn">愛自己<br/><span>從「頭」開始</span></h1>
+        <p class="hero-sub serif-cn">真正有效的護髮是不需手動操作，<br/>便能重新定義你的髮質</p>
+        <div class="cd-strip"><span class="lb">限時 8 折倒數</span><span class="tm" id="countdown">08:12:20</span></div><br/>
+        <a class="btn-p" onclick="switchTo('products')">立即選購</a>
+    </div>
+    <div class="cert-strip">
+        <div class="cert-ico"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+        <p class="cert-txt">OEKO-TEX® Standard 100 Certified · Safe for skin & planet</p>
+    </div>
+    <div class="stats-row">
+        <div class="stat-i"><div class="stat-n">25%+</div><div class="stat-l">水分流失減少</div></div>
+        <div class="stat-i"><div class="stat-n">60%−</div><div class="stat-l">局部壓力降低</div></div>
+        <div class="stat-i"><div class="stat-n">1.5×</div><div class="stat-l">散熱效率提升</div></div>
+        <div class="stat-i"><div class="stat-n">0%</div><div class="stat-l">醒後壓痕</div></div>
+    </div>
+</div>
+
+<!-- ===== PRODUCTS ===== -->
+<div id="products" class="sec has-bg">
+    <div class="bg-glow bg-white" style="width:600px;height:600px;top:-180px;left:50%;transform:translateX(-50%);"></div>
+    <div class="bg-glow bg-rose" style="width:350px;height:350px;bottom:10%;left:-100px;"></div>
+    <div class="silk-pat"></div><div class="petal" style="top:8%;right:10%;"></div><div class="petal" style="bottom:12%;left:7%;"></div>
+    <div class="sh"><h2>The Cloud-Wrap Collection</h2><p class="sub serif-cn">22 Momme 系列</p></div>
+    <div style="text-align:center;margin-bottom:36px;">
+        <p class="serif" style="font-size:22px;font-weight:300;letter-spacing:0.08em;margin-bottom:3px;">The Solo Ritual</p>
+        <p class="serif-cn" style="font-size:11px;color:var(--text-secondary);letter-spacing:0.1em;">單件裝 ｜ 剔除溢價的純粹體驗</p>
+    </div>
+    <div class="pgrid">
+        <div class="pcard"><div class="iw"><span class="tag">Hot</span><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/Silk_Dream_Finalized_Pink_kfwull.jpg" alt="Rose Quartz"></div>
+            <div class="pinfo"><h4>Cloud-Wrap (Rose Quartz)</h4><p class="desc">珍珠腮紅粉 · 溫柔粉調，展現優雅氣質</p>
+                <div class="stars">★★★★<span class="stars-g">★</span> <span style="font-size:10px;color:var(--text-light);font-family:Inter">(38)</span></div>
+                <div class="pb"><div class="old"><span class="sk">HK$398</span><span class="skl">市場價</span><span class="sk">HK$248</span><span class="skl">原價</span></div><span class="fp">HK$198</span><span class="bd">限時 8 折</span><p class="ship">全港免運費</p></div>
+                <button class="btn-s" onclick="addToCart('珍珠腮紅粉',198,this)">加入購物車</button></div></div>
+        <div class="pcard"><div class="iw"><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/SilKDream_Finalized_blue_shiewx.jpg" alt="Midnight Sapphire"></div>
+            <div class="pinfo"><h4>Cloud-Wrap (Midnight Sapphire)</h4><p class="desc">午夜藍寶石 · 深邃藍調，低調奢華</p>
+                <div class="stars">★★★★<span class="stars-g">★</span> <span style="font-size:10px;color:var(--text-light);font-family:Inter">(24)</span></div>
+                <div class="pb"><div class="old"><span class="sk">HK$398</span><span class="skl">市場價</span><span class="sk">HK$248</span><span class="skl">原價</span></div><span class="fp">HK$198</span><span class="bd">限時 8 折</span><p class="ship">全港免運費</p></div>
+                <button class="btn-s" onclick="addToCart('午夜藍寶石',198,this)">加入購物車</button></div></div>
+        <div class="pcard"><div class="iw"><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/a52dbd6e-c0ef-47f0-9d5b-d2b45ee949a8_vzccqe.jpg" alt="Champagne Gold"></div>
+            <div class="pinfo"><h4>Cloud-Wrap (Champagne Gold)</h4><p class="desc">香檳金 · 奢華金色，送禮首選</p>
+                <div class="stars">★★★★<span class="stars-g">★</span> <span style="font-size:10px;color:var(--text-light);font-family:Inter">(19)</span></div>
+                <div class="pb"><div class="old"><span class="sk">HK$398</span><span class="skl">市場價</span><span class="sk">HK$248</span><span class="skl">原價</span></div><span class="fp">HK$198</span><span class="bd">限時 8 折</span><p class="ship">全港免運費</p></div>
+                <button class="btn-s" onclick="addToCart('香檳金',198,this)">加入購物車</button></div></div>
+    </div>
+    <p style="text-align:center;font-size:10px;color:var(--text-light);margin-top:20px;font-style:italic;">* 圖片僅供參考，顏色以實物為準</p>
+    <div class="bundle">
+        <div class="bundle-grid">
+            <div class="bundle-img" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;">
+                <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1200/Silk_Dream_Finalized_combo_p2ur2h.jpg" alt="Bundle" style="grid-row:1/3;width:100%;height:100%;object-fit:cover;">
+                <div style="background:var(--bg);display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" fill="none" stroke="var(--border)" stroke-width="1" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+                <div style="background:var(--bg);display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" fill="none" stroke="var(--border)" stroke-width="1" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+            </div>
+            <div class="bundle-info">
+                <span class="bundle-tag">Buy 3 Get 1 Free</span>
+                <h3 class="serif" style="font-size:30px;font-weight:400;margin-bottom:10px;">The Glow-Up Bundle</h3>
+                <p class="serif-cn" style="font-size:11px;color:var(--text-secondary);letter-spacing:0.08em;margin-bottom:16px;">套裝系列 ｜ 4 件裝（買三送一）</p>
+                <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;">與最親的人分享這份「睡眠護髮禮」。平均單價只需 <strong style="color:var(--text-primary)">HK$147</strong>。</p>
+                <p style="font-size:12px;color:var(--text-light);margin-bottom:20px;">比單買立省 HK$204</p>
+                <div class="stars" style="margin-bottom:16px;">★★★★★ <span style="font-size:10px;color:var(--text-light);font-family:Inter">(52)</span></div>
+                <div style="margin-bottom:20px;">
+                    <p style="font-size:12px;color:var(--text-light);text-decoration:line-through;margin-bottom:3px;">單買價值 HK$792</p>
+                    <p class="serif" style="font-size:36px;font-weight:400;color:var(--accent-rose);">HK$588</p>
+                    <p style="font-size:10px;color:var(--text-secondary);margin-top:4px;">全港免運 | 現省 HK$204</p>
                 </div>
-                <div class="p-8 text-center bg-white">
-                    <p class="text-gray-700 mb-6 leading-relaxed">立即選購任意組合，訂單滿 $1,500 即可獲贈高級蠶絲眼罩，助你享受完美睡眠體驗。</p>
-                    <button onclick="closePromoModal(); document.getElementById('products').scrollIntoView({ behavior: 'smooth' });" class="btn-primary inline-block">立即選購</button>
-                </div>
+                <button class="btn-p" style="width:100%" onclick="addToCart('奢華套裝 (4件裝-買三送一)',588,this)">立即選購</button>
+                <p style="text-align:center;font-size:9px;color:var(--text-light);margin-top:10px;font-style:italic;">* 套裝隨機配色</p>
+            </div>
+        </div>
+    </div>
+    <div style="height:60px;"></div>
+</div>
+<!-- ===== BRAND ===== -->
+<div id="brand" class="sec has-bg">
+    <div class="bg-glow bg-rose" style="width:400px;height:400px;top:5%;right:-80px;"></div>
+    <div class="bg-glow bg-white" style="width:500px;height:500px;bottom:-80px;left:-120px;"></div>
+    <div class="silk-pat"></div>
+    <div class="sh"><h2>Brand Philosophy</h2><p class="sub serif-cn">品牌理念</p></div>
+    <div class="brand-grid">
+        <div class="brand-txt">
+            <h3>為什麼選擇 SilkDream？</h3>
+            <p class="serif-cn">市場上充斥著昂貴的護髮產品，但消費者往往忽略了睡眠中長達 8 小時的物理損傷。焗油、護髮素效果不明顯，更浪費大量時間。</p>
+            <p class="serif-cn" style="font-weight:500;color:var(--text-primary);">SilkDream 主張：真正有效的護髮，不需手動操作便能重新定義你的髮質。</p>
+            <p class="serif-cn">我們採用 <strong>22 Momme 雙面桑蠶絲</strong>，剔除品牌溢價，將錢花在材料上而非廣告。</p>
+        </div>
+        <div class="brand-img"><img src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&q=80" alt="Brand"></div>
+    </div>
+    <div class="founder-box">
+        <div class="founder-pics">
+            <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,g_face,w_300,h_300/v1770968465/CHAN_CHUN_SilkDream_Selfies_wwtzc8.jpg" alt="Founder 1">
+            <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,g_face,w_300,h_300/v1771496110/CL_ra5sce.jpg" alt="Founder 2">
+        </div>
+        <blockquote>「健康的髮絲是基本權利，而非奢侈。我們剔除品牌溢價，拒絕虛假標籤。SilkDream 的簡約設計男女通用，只為將大自然的修復力，交還給追求健康的你。」</blockquote>
+        <cite>— SilkDream Founders</cite>
+    </div>
+
+    <!-- 5 Product Advantages -->
+    <div style="max-width:900px;margin:0 auto 48px;padding:0 28px;">
+        <h3 class="serif" style="font-size:26px;font-weight:400;text-align:center;margin-bottom:8px;">The Cloud-Wrap 五大優勢</h3>
+        <p style="text-align:center;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:32px;">Five Core Advantages</p>
+        <div style="display:grid;grid-template-columns:1fr;gap:12px;">
+            <div style="background:var(--white);padding:28px;border:1px solid var(--border-light);display:flex;gap:20px;align-items:flex-start;">
+                <div style="width:40px;height:40px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" fill="none" stroke="var(--accent-gold)" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+                <div><h4 class="serif" style="font-size:17px;font-weight:400;margin-bottom:6px;">雙面真絲構造 + 天然絲蛋白</h4><p class="serif-cn" style="font-size:12.5px;color:var(--text-secondary);line-height:1.7;">正反兩面均採用高級桑蠶絲，富含 18 種天然氨基酸，形成微型保濕層。雙面真絲不僅保護頭髮，還能讓帽子在枕頭上無阻力滑動，徹底解決睡覺掉帽子的問題。</p></div>
+            </div>
+            <div style="background:var(--white);padding:28px;border:1px solid var(--border-light);display:flex;gap:20px;align-items:flex-start;">
+                <div style="width:40px;height:40px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" fill="none" stroke="var(--accent-gold)" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg></div>
+                <div><h4 class="serif" style="font-size:17px;font-weight:400;margin-bottom:6px;">無感護髮 · 護髮不動手</h4><p class="serif-cn" style="font-size:12.5px;color:var(--text-secondary);line-height:1.7;">在睡眠中完成修復，將沙龍效果鎖定在髮絲中。桑蠶絲散熱速度是棉布的 1.5 倍，確保頭皮乾爽不悶熱，大幅減少清洗頻率。</p></div>
+            </div>
+            <div style="background:var(--white);padding:28px;border:1px solid var(--border-light);display:flex;gap:20px;align-items:flex-start;">
+                <div style="width:40px;height:40px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" fill="none" stroke="var(--accent-gold)" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
+                <div><h4 class="serif" style="font-size:17px;font-weight:400;margin-bottom:6px;">寬幅真絲緩衝帶 · 零壓痕設計</h4><p class="serif-cn" style="font-size:12.5px;color:var(--text-secondary);line-height:1.7;">捨棄細窄橡皮筋，採用 3.5cm 寬幅真絲包邊，經測壓儀證實能降低額頭局部壓力約 60%，接觸皮膚部分 100% 桑蠶絲，護髮同時不傷膚。</p></div>
+            </div>
+            <div style="background:var(--white);padding:28px;border:1px solid var(--border-light);display:flex;gap:20px;align-items:flex-start;">
+                <div style="width:40px;height:40px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" fill="none" stroke="var(--accent-gold)" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg></div>
+                <div><h4 class="serif" style="font-size:17px;font-weight:400;margin-bottom:6px;">立體剪裁空間 · Volumetric Crown</h4><p class="serif-cn" style="font-size:12.5px;color:var(--text-secondary);line-height:1.7;">增加頂部空間，確保長髮或捲髮不會被壓扁，保持髮根蓬鬆，起床後無需重新造型。</p></div>
+            </div>
+            <div style="background:var(--white);padding:28px;border:1px solid var(--border-light);display:flex;gap:20px;align-items:flex-start;">
+                <div style="width:40px;height:40px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" fill="none" stroke="var(--accent-gold)" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div>
+                <div><h4 class="serif" style="font-size:17px;font-weight:400;margin-bottom:6px;">OEKO-TEX® 認證 · 拒絕化學添加</h4><p class="serif-cn" style="font-size:12.5px;color:var(--text-secondary);line-height:1.7;">每批產品均通過 OEKO-TEX® Standard 100 嚴格檢測，不含任何有害化學物質，對皮膚及環境完全安全。</p></div>
             </div>
         </div>
     </div>
 
-    <!-- Notification Toast -->
-    <div id="notification-toast" class="notification-toast">
-        <div class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-            </svg>
-            <div>
-                <p class="font-semibold text-sm" id="notification-name"></p>
-                <p class="text-xs text-gray-500" id="notification-details"></p>
-            </div>
+    <div class="compare-box">
+        <h3 class="serif" style="font-size:26px;font-weight:400;text-align:center;margin-bottom:24px;">其他品牌的真相</h3>
+        <div class="compare-grid">
+            <div class="compare-card cc-bad"><h5 style="color:var(--accent-rose);">其他品牌</h5><ul><li>單面真絲，外層粗糙布料</li><li>16-19 Momme 低密度蠶絲</li><li>甚至使用柞蠶絲，質底差劣</li><li>品牌溢價高達 300%-500%</li><li>明星代言、廣告成本轉嫁消費者</li><li>CP 值極低</li></ul></div>
+            <div class="compare-card cc-good"><h5 style="color:var(--accent-gold);">SilkDream</h5><ul><li>雙面真絲，360° 全方位保護</li><li>22 Momme 奢華級標準</li><li>100% 桑蠶絲，6A 最高等級</li><li>工廠直送，零中間商</li><li>無廣告成本，純材料價值</li><li>真正的材料價格，CP 值最高</li></ul></div>
+        </div>
+        <p style="text-align:center;color:var(--accent-rose);font-size:13px;margin-top:20px;font-weight:500;" class="serif-cn">同樣 22 Momme 桑蠶絲，其他品牌賣 HK$800-1,200<br/>SilkDream 限時 8 折後只需 HK$198</p>
+    </div>
+</div>
+
+<!-- ===== SCIENCE ===== -->
+<div id="science" class="sec has-bg">
+    <div class="bg-glow bg-white" style="width:500px;height:500px;top:-80px;right:-100px;"></div>
+    <div class="bg-glow bg-blush" style="width:350px;height:350px;bottom:10%;left:5%;"></div>
+    <div class="silk-pat"></div>
+    <div class="sh"><h2>Science Behind Silk</h2><p class="sub serif-cn">科普知識</p></div>
+    <h3 class="serif" style="font-size:24px;font-weight:400;text-align:center;margin-bottom:24px;">桑蠶絲 vs 柞蠶絲</h3>
+    <div class="sci-grid">
+        <div class="sci-card sci-good"><h4 style="color:var(--accent-gold);">桑蠶絲（Mulberry Silk）</h4><ul><li><strong>來源：</strong>家養桑蠶，以桑葉為食</li><li><strong>顏色：</strong>天然乳白色，色澤均勻</li><li><strong>質地：</strong>纖維細膩，觸感極致柔滑</li><li><strong>絲蛋白含量：</strong>18 種天然氨基酸，含量高達 97%</li><li><strong>護髮效果：</strong>極佳</li><li><strong>價格：</strong>較高，屬奢華級材料</li></ul><p style="margin-top:12px;font-size:11px;font-weight:500;color:var(--accent-gold);">SilkDream 採用 100% 桑蠶絲</p></div>
+        <div class="sci-card sci-bad"><h4 style="color:var(--accent-rose);">柞蠶絲（Tussah Silk）</h4><ul><li><strong>來源：</strong>野生柞蠶，以柞樹葉為食</li><li><strong>顏色：</strong>天然灰黃色，需化學漂白</li><li><strong>質地：</strong>纖維較粗糙，觸感欠佳</li><li><strong>絲蛋白含量：</strong>較低，約 85-90%</li><li><strong>護髮效果：</strong>一般</li><li><strong>價格：</strong>較低，常用於平價產品</li></ul><p style="margin-top:12px;font-size:11px;color:var(--accent-rose);">市面廉價睡帽多用柞蠶絲</p></div>
+    </div>
+    <h3 class="serif" style="font-size:24px;font-weight:400;text-align:center;margin-bottom:24px;">什麼是 Momme（姆米）？</h3>
+    <p style="text-align:center;font-size:13px;color:var(--text-secondary);max-width:640px;margin:0 auto 24px;line-height:1.8;padding:0 28px;" class="serif-cn"><strong>Momme (mm)</strong> 是衡量真絲品質的國際標準單位，代表每 100 碼蠶絲布料的重量。數值越高，代表絲線越密實、越耐用。</p>
+    <div class="momme-grid">
+        <div class="momme-card"><div class="val">12-16</div><div class="lab">輕薄級</div><div class="sub2">適合內衣、襯裡</div></div>
+        <div class="momme-card"><div class="val">16-19</div><div class="lab">標準級</div><div class="sub2">一般市售睡帽</div></div>
+        <div class="momme-card highlight"><div class="val" style="color:var(--accent-gold);">22</div><div class="lab" style="color:var(--accent-gold);font-weight:600;">奢華級 ★</div><div class="sub2" style="color:var(--accent-gold);">SilkDream 標準</div></div>
+        <div class="momme-card"><div class="val">25+</div><div class="lab">超厚重級</div><div class="sub2">過厚，不適合睡眠</div></div>
+    </div>
+    <h3 class="serif" style="font-size:24px;font-weight:400;text-align:center;margin-bottom:24px;">睡帽防毛躁的科學原理</h3>
+    <div class="principle-grid">
+        <div class="principle-card"><div class="ico"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div><h4>減少摩擦力</h4><p class="serif-cn">棉質枕頭摩擦係數是真絲的 <strong>3-4 倍</strong>。睡眠時頭部平均轉動 20-30 次，棉質枕頭會對髮絲造成嚴重拉扯和斷裂。</p></div>
+        <div class="principle-card"><div class="ico"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div><h4>鎖住水分</h4><p class="serif-cn">真絲含有天然 <strong>絲蛋白</strong> 和 <strong>18 種氨基酸</strong>，能在髮絲表面形成微型保濕層，水分蒸發率減少 <strong>25%</strong>。</p></div>
+        <div class="principle-card"><div class="ico"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><h4>溫度調節</h4><p class="serif-cn">真絲的散熱速度是棉布的 <strong>1.5 倍</strong>，能有效調節頭皮溫度，減少出汗和油脂分泌。</p></div>
+    </div>
+    <div class="dual-box">
+        <h3 class="serif" style="font-size:24px;font-weight:400;text-align:center;margin-bottom:24px;">SilkDream 雙面真絲優勢</h3>
+        <div class="dual-grid">
+            <div class="dual-card dual-bad"><h4>市面單面睡帽的問題</h4><ul><li>只有內層使用真絲，外層是棉布或滌綸</li><li>外層粗糙材質與枕頭摩擦，容易滑落</li><li>睡眠中頭髮翻轉，接觸外層粗糙面</li><li>透氣性差，頭皮容易悶熱出汗</li></ul></div>
+            <div class="dual-card dual-good"><h4>SilkDream 雙面真絲</h4><ul><li>內外皆為 22 Momme 桑蠶絲</li><li>外層絲綢與枕頭無阻力滑動，不易脫落</li><li>360° 全方位保護，無論如何翻身都安心</li><li>雙層透氣，散熱效果更佳</li></ul></div>
         </div>
     </div>
 
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/85298560191?text=你好！我對 SilkDream 蠶絲睡帽感興趣，想了解更多產品資訊。" target="_blank" class="whatsapp-float">
-        <svg width="32" height="32" fill="white" viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-        </svg>
-    </a>
-
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/80">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <div class="text-2xl tracking-[0.3em] font-bold serif">SILKDREAM</div>
-            <div class="hidden md:flex gap-10 text-xs font-medium tracking-widest uppercase">
-                <a href="#home">主頁</a>
-                <a href="#brand">品牌</a>
-                <a href="#products">產品</a>
-                <a href="#science">科普知識</a>
-                <a href="#reviews">好評</a>
-                <a href="#faq">FAQ</a>
-                <a href="#order-guide">下單指南</a>
-                <a href="#promotion">優惠</a>
+    <!-- Silk Identification Guide -->
+    <div style="max-width:900px;margin:0 auto 48px;padding:0 28px;">
+        <h3 class="serif" style="font-size:24px;font-weight:400;text-align:center;margin-bottom:8px;">如何辨別真桑蠶絲與仿真絲？</h3>
+        <p style="text-align:center;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:28px;">Silk Identification Guide</p>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
+            <div style="background:var(--white);padding:24px;border:1px solid var(--border-light);">
+                <h4 class="serif" style="font-size:16px;font-weight:400;margin-bottom:12px;color:var(--accent-gold);">燃燒測試</h4>
+                <p class="serif-cn" style="font-size:12px;color:var(--text-secondary);line-height:1.7;">取少量絲線燃燒：真桑蠶絲會發出燒頭髮的氣味（蛋白質燃燒），灰燼呈黑色粉末可捏碎；仿真絲（聚酯纖維）會熔化結塊，有塑膠味。</p>
             </div>
-            <div class="flex items-center gap-4">
-                <button onclick="toggleCart()" class="relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
-                        <path d="M3 6h18M16 10a4 4 0 0 1-8 0"/>
-                    </svg>
-                    <span id="cart-count" class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center hidden font-bold">0</span>
-                </button>
-                <button onclick="toggleMobileMenu()" class="md:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 12h18M3 6h18M3 18h18"/>
-                    </svg>
-                </button>
+            <div style="background:var(--white);padding:24px;border:1px solid var(--border-light);">
+                <h4 class="serif" style="font-size:16px;font-weight:400;margin-bottom:12px;color:var(--accent-gold);">觸感測試</h4>
+                <p class="serif-cn" style="font-size:12px;color:var(--text-secondary);line-height:1.7;">真桑蠶絲觸感溫潤柔滑，手握後有微暖感；柞蠶絲觸感偏粗糙乾澀；仿真絲（滌綸）觸感滑但偏涼且有塑膠質感。</p>
+            </div>
+            <div style="background:var(--white);padding:24px;border:1px solid var(--border-light);">
+                <h4 class="serif" style="font-size:16px;font-weight:400;margin-bottom:12px;color:var(--accent-gold);">光澤測試</h4>
+                <p class="serif-cn" style="font-size:12px;color:var(--text-secondary);line-height:1.7;">真桑蠶絲光澤柔和自然，隨角度變化呈現珍珠般的光彩；柞蠶絲光澤偏黃暗啞；仿真絲光澤過於均勻刺眼，缺乏層次感。</p>
+            </div>
+            <div style="background:var(--white);padding:24px;border:1px solid var(--border-light);">
+                <h4 class="serif" style="font-size:16px;font-weight:400;margin-bottom:12px;color:var(--accent-gold);">溶解測試</h4>
+                <p class="serif-cn" style="font-size:12px;color:var(--text-secondary);line-height:1.7;">將絲線放入 84 消毒液或漂白水中，真桑蠶絲（蛋白質纖維）會在數分鐘內溶解消失；仿真絲和柞蠶絲則不會完全溶解。</p>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
-            <div class="flex flex-col py-4 px-6 space-y-4 text-xs font-medium tracking-widest uppercase">
-                <a href="#home" onclick="toggleMobileMenu()">主頁</a>
-                <a href="#brand" onclick="toggleMobileMenu()">品牌</a>
-                <a href="#products" onclick="toggleMobileMenu()">產品</a>
-                <a href="#science" onclick="toggleMobileMenu()">科普知識</a>
-                <a href="#reviews" onclick="toggleMobileMenu()">好評</a>
-                <a href="#faq" onclick="toggleMobileMenu()">FAQ</a>
-                <a href="#order-guide" onclick="toggleMobileMenu()">下單指南</a>
-                <a href="#promotion" onclick="toggleMobileMenu()">優惠</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- HOME -->
-    <section id="home" class="hero-section pt-32 pb-20 px-6">
-        <div class="max-w-6xl mx-auto text-center">
-            <div class="mb-12">
-                <h1 class="text-7xl md:text-8xl tracking-[0.2em] font-light mb-4" style="font-family: 'Playfair Display', serif; letter-spacing: 0.15em;">SILKDREAM</h1>
-            </div>
-            
-            <p class="text-xs tracking-[0.5em] uppercase font-medium text-gray-500 mb-4">全港首個專業蠶絲睡帽品牌</p>
-            <p class="text-[10px] tracking-[0.3em] uppercase text-gray-400 mb-8">Premium 22 Momme Mulberry Silk | Unisex Design</p>
-            
-            <h1 class="text-6xl md:text-8xl serif font-bold mb-8 leading-tight">
-                愛自己<br/>
-                <span class="text-gray-600">從「頭」開始</span>
-            </h1>
-            
-            <p class="text-xl text-gray-700 max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
-                真正有效的護髮是不需手動操作，<br/>便能重新定義你的髮質
-            </p>
-
-            <div class="countdown-box max-w-md mx-auto mb-10">
-                <p class="text-xs uppercase tracking-widest mb-3 text-gray-300">單件裝限時 8 折優惠倒數</p>
-                <div id="solo-countdown" class="text-3xl font-mono font-bold tracking-wider"></div>
-            </div>
-            
-            <a href="#products" class="btn-primary inline-block">立即選購</a>
-        </div>
-        
-        <div class="max-w-5xl mx-auto mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div class="p-6"><p class="text-4xl serif font-bold mb-2">25%+</p><p class="text-xs uppercase tracking-widest text-gray-500">水分流失減少</p></div>
-            <div class="p-6"><p class="text-4xl serif font-bold mb-2">60%-</p><p class="text-xs uppercase tracking-widest text-gray-500">局部壓力降低</p></div>
-            <div class="p-6"><p class="text-4xl serif font-bold mb-2">1.5X</p><p class="text-xs uppercase tracking-widest text-gray-500">散熱效率提升</p></div>
-            <div class="p-6"><p class="text-4xl serif font-bold mb-2">0%</p><p class="text-xs uppercase tracking-widest text-gray-500">醒後壓痕</p></div>
-        </div>
-    </section>
-
-    <!-- BRAND -->
-    <section id="brand" class="py-24 px-6 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl serif font-bold mb-6">品牌理念</h2>
-                <p class="text-gray-500 text-sm uppercase tracking-widest">Material First, Not Brand Premium</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-16 items-center mb-24">
-                <div>
-                    <h3 class="text-3xl serif font-bold mb-6">為什麼選擇 SilkDream？</h3>
-                    <div class="space-y-6 text-gray-700 leading-relaxed">
-                        <p>市場上充斥著昂貴的護髮產品，但消費者往往忽略了睡眠中長達 8 小時的物理損傷。焗油、護髮素效果不明顯，更浪費大量時間。</p>
-                        <p class="font-semibold">SilkDream 主張：真正有效的護髮，不需手動操作便能重新定義你的髮質。</p>
-                        <p>我們採用 <strong>22 Momme 雙面桑蠶絲</strong>，剔除品牌溢價，將錢花在材料上而非廣告。讓頂級蠶絲從高端名媛的床頭，走進每個人的臥室。</p>
-                    </div>
-                </div>
-                <div class="bg-gray-100 aspect-square rounded-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&q=80" class="w-full h-full object-cover" alt="Brand Philosophy">
-                </div>
-            </div>
-
-            <div class="bg-[#FAFAF8] p-12 rounded-lg mb-24">
-                <div class="text-center mb-12">
-                    <h3 class="text-3xl serif font-bold mb-4">創辦人理念</h3>
-                    <p class="text-sm uppercase tracking-widest text-gray-500">Founders' Vision</p>
-                </div>
-                <div class="flex justify-center gap-8 mb-10">
-                    <div class="w-32 h-32 rounded-full overflow-hidden border-2 border-gray-200">
-                        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,g_face,w_300,h_300/v1770968465/CHAN_CHUN_SilkDream_Selfies_wwtzc8.jpg" class="w-full h-full object-cover" alt="Founder 1">
-                    </div>
-                    <div class="w-32 h-32 rounded-full overflow-hidden border-2 border-gray-200">
-                        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,g_face,w_300,h_300/v1771496110/CL_ra5sce.jpg" class="w-full h-full object-cover" alt="Founder 2">
-                    </div>
-                </div>
-                <blockquote class="text-center max-w-3xl mx-auto">
-                    <p class="text-xl leading-relaxed mb-6 text-gray-700 font-light italic">
-                        「健康的髮絲是基本權利，而非奢侈。我們剔除品牌溢價，拒絕虛假標籤。SilkDream 的簡約設計男女通用，只為將大自然的修復力，交還給追求健康的你。」
-                    </p>
-                    <cite class="text-sm uppercase tracking-widest text-gray-500 font-semibold not-italic">— SilkDream Founders</cite>
-                </blockquote>
-            </div>
-
-            <div class="bg-gradient-to-br from-gray-900 to-gray-800 text-white p-12 rounded-lg">
-                <h4 class="text-3xl serif font-bold mb-8 text-center">其他品牌的真相</h4>
-                <div class="grid md:grid-cols-2 gap-8 mb-8">
-                    <div class="bg-white/10 p-6 rounded-lg">
-                        <h5 class="font-bold text-xl mb-4 text-red-300">❌ 其他品牌</h5>
-                        <ul class="space-y-3 text-sm text-gray-300">
-                            <li>• 單面真絲，外層粗糙布料</li>
-                            <li>• 16-19 Momme 低密度蠶絲</li>
-                            <li>• 甚至使用柞蠶絲，質底差劣</li>
-                            <li>• 品牌溢價高達 300%-500%</li>
-                            <li>• 明星代言、廣告成本轉嫁消費者</li>
-                            <li>• CP 值極低，貴也沒用</li>
-                        </ul>
-                    </div>
-                    <div class="bg-white/10 p-6 rounded-lg border-2 border-yellow-300">
-                        <h5 class="font-bold text-xl mb-4 text-yellow-300">✓ SilkDream</h5>
-                        <ul class="space-y-3 text-sm">
-                            <li>• 雙面真絲，360° 全方位保護</li>
-                            <li>• 22 Momme 奢華級標準</li>
-                            <li>• 100% 桑蠶絲，6A 最高等級</li>
-                            <li>• 工廠直送，零中間商</li>
-                            <li>• 無廣告成本，純材料價值</li>
-                            <li>• 真正的材料價格，CP 值最高</li>
-                        </ul>
-                    </div>
-                </div>
-                <p class="text-center text-yellow-300 text-lg font-semibold">
-                    同樣 22 Momme 桑蠶絲，其他品牌賣 HK$800-1,200<br/>
-                    SilkDream 限時 8 折後只需 HK$198
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRODUCTS -->
-    <section id="products" class="py-24 px-6 bg-[#FAFAF8]">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl serif font-bold mb-6">22 Momme 系列</h2>
-                <p class="text-gray-500 text-sm uppercase tracking-widest">The Cloud-Wrap Collection</p>
-            </div>
-
-            <div class="mb-24">
-                <div class="mb-12">
-                    <h3 class="text-3xl serif font-bold mb-2">The Solo Ritual</h3>
-                    <p class="text-sm uppercase tracking-widest text-gray-500">單件系列 | 個人護髮體驗</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                    <div class="product-card rounded-lg overflow-hidden">
-                        <div class="relative">
-                            <span class="absolute top-3 left-3 bg-orange-500 text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider z-10">Hot 熱賣</span>
-                            <div class="aspect-square bg-gray-100 overflow-hidden">
-                                <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/Silk_Dream_Finalized_Pink_kfwull.jpg" class="product-img w-full h-full object-cover" alt="珍珠腮紅粉">
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h4 class="font-bold text-lg mb-2 uppercase tracking-wide">珍珠腮紅粉</h4>
-                            <p class="text-sm text-gray-600 mb-3 leading-relaxed">溫柔粉調，適合各種膚色，展現優雅氣質</p>
-                            <div class="flex items-center gap-2 mb-4">
-                                <div class="stars text-lg">★★★★<span class="text-gray-300">★</span></div>
-                                <span class="text-xs text-gray-500">(287)</span>
-                            </div>
-                            <div class="mb-4">
-                                <div class="flex items-center gap-2 mb-1">
-                                    <span class="price-strike text-lg text-gray-400">HK$398</span>
-                                    <span class="text-xs bg-red-500 text-white px-2 py-1 rounded">市場價</span>
-                                </div>
-                                <div class="flex items-center gap-2 mb-1">
-                                    <span class="price-strike text-xl text-gray-500">HK$248</span>
-                                    <span class="text-xs bg-orange-500 text-white px-2 py-1 rounded">原價</span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <span class="text-3xl font-bold serif">HK$198</span>
-                                    <span class="text-sm bg-green-500 text-white px-3 py-1 rounded font-bold">限時 8 折</span>
-                                </div>
-                                <p class="text-xs text-green-600 mt-2 font-semibold">✓ 全港免運費</p>
-                            </div>
-                            <button onclick="addToCart('珍珠腮紅粉', 198, this)" class="btn-secondary w-full text-xs py-3">立即搶購</button>
-                        </div>
-                    </div>
-
-                    <div class="product-card rounded-lg overflow-hidden">
-                        <div class="relative">
-                            <div class="aspect-square bg-gray-100 overflow-hidden">
-                                <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/SilKDream_Finalized_blue_shiewx.jpg" class="product-img w-full h-full object-cover" alt="午夜藍寶石">
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h4 class="font-bold text-lg mb-2 uppercase tracking-wide">午夜藍寶石</h4>
-                            <p class="text-sm text-gray-600 mb-3 leading-relaxed">深邃藍調，低調奢華，適合中性風格</p>
-                            <div class="flex items-center gap-2 mb-4">
-                                <div class="stars text-lg">★★★★<span class="text-gray-300">★</span></div>
-                                <span class="text-xs text-gray-500">(193)</span>
-                            </div>
-                            <div class="mb-4">
-                                <div class="flex items-center gap-2 mb-1">
-                                    <span class="price-strike text-lg text-gray-400">HK$398</span>
-                                    <span class="text-xs bg-red-500 text-white px-2 py-1 rounded">市場價</span>
-                                </div>
-                                <div class="flex items-center gap-2 mb-1">
-                                    <span class="price-strike text-xl text-gray-500">HK$248</span>
-                                    <span class="text-xs bg-orange-500 text-white px-2 py-1 rounded">原價</span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <span class="text-3xl font-bold serif">HK$198</span>
-                                    <span class="text-sm bg-green-500 text-white px-3 py-1 rounded font-bold">限時 8 折</span>
-                                </div>
-                                <p class="text-xs text-green-600 mt-2 font-semibold">✓ 全港免運費</p>
-                            </div>
-                            <button onclick="addToCart('午夜藍寶石', 198, this)" class="btn-secondary w-full text-xs py-3">立即搶購</button>
-                        </div>
-                    </div>
-
-                    <div class="product-card rounded-lg overflow-hidden">
-                        <div class="relative">
-                            <div class="aspect-square bg-gray-100 overflow-hidden">
-                                <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/a52dbd6e-c0ef-47f0-9d5b-d2b45ee949a8_vzccqe.jpg" class="product-img w-full h-full object-cover" alt="香檳金">
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h4 class="font-bold text-lg mb-2 uppercase tracking-wide">香檳金</h4>
-                            <p class="text-sm text-gray-600 mb-3 leading-relaxed">奢華金色，彰顯品味，送禮首選</p>
-                            <div class="flex items-center gap-2 mb-4">
-                                <div class="stars text-lg">★★★★<span class="text-gray-300">★</span></div>
-                                <span class="text-xs text-gray-500">(156)</span>
-                            </div>
-                            <div class="mb-4">
-                                <div class="flex items-center gap-2 mb-1">
-                                    <span class="price-strike text-lg text-gray-400">HK$398</span>
-                                    <span class="text-xs bg-red-500 text-white px-2 py-1 rounded">市場價</span>
-                                </div>
-                                <div class="flex items-center gap-2 mb-1">
-                                    <span class="price-strike text-xl text-gray-500">HK$248</span>
-                                    <span class="text-xs bg-orange-500 text-white px-2 py-1 rounded">原價</span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <span class="text-3xl font-bold serif">HK$198</span>
-                                    <span class="text-sm bg-green-500 text-white px-3 py-1 rounded font-bold">限時 8 折</span>
-                                </div>
-                                <p class="text-xs text-green-600 mt-2 font-semibold">✓ 全港免運費</p>
-                            </div>
-                            <button onclick="addToCart('香檳金', 198, this)" class="btn-secondary w-full text-xs py-3">立即搶購</button>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-xs text-gray-400 mt-6 text-center italic">* 圖片僅供參考，顏色以實物為準</p>
-            </div>
-
-            <div class="bg-white rounded-lg overflow-hidden border border-gray-100">
-                <div class="grid md:grid-cols-2 gap-0">
-                    <div class="aspect-square md:aspect-auto overflow-hidden">
-                        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1200/Silk_Dream_Finalized_combo_p2ur2h.jpg" class="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" alt="奢華套裝">
-                    </div>
-                    <div class="p-12 flex flex-col justify-center">
-                        <span class="bg-[#D4AF37] text-white px-4 py-2 text-xs font-bold uppercase tracking-widest inline-block mb-6 w-fit">Buy 3 Get 1 Free</span>
-                        <h3 class="text-4xl serif font-bold mb-4">The Glow-Up Bundle</h3>
-                        <p class="text-sm uppercase tracking-widest text-gray-500 mb-6">套裝系列 | 4 件裝（套裝設計為買三送一）</p>
-                        <p class="text-gray-700 leading-relaxed mb-3">
-                            與最親的人分享這份「睡眠護髮禮」。此套裝本身設計為買三送一優惠，包含 4 件睡帽，平均單價只需 <strong class="text-black">HK$147</strong>。
-                        </p>
-                        <p class="text-sm text-gray-600 mb-8">適合家庭分享或作為閨蜜禮物，比單買立省 HK$204。</p>
-                        
-                        <div class="flex items-center gap-2 mb-6">
-                            <div class="stars text-2xl">★★★★★</div>
-                            <span class="text-sm text-gray-500">(412)</span>
-                        </div>
-                        
-                        <div class="mb-8">
-                            <p class="text-sm text-gray-400 line-through mb-2">單買價值 HK$792</p>
-                            <p class="text-5xl serif font-bold mb-2">HK$588</p>
-                            <p class="text-green-600 text-sm font-semibold">✓ 全港免運 | 現省 HK$204</p>
-                        </div>
-                        
-                        <button onclick="addToCart('奢華套裝 (4件裝-買三送一)', 588, this)" class="btn-primary w-full">立即選購</button>
-                        <p class="text-xs text-gray-400 mt-4 text-center italic">* 套裝圖片僅供參考，隨機配色</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SCIENCE -->
-    <section id="science" class="py-24 px-6 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl serif font-bold mb-6">科普知識</h2>
-                <p class="text-gray-500 text-sm uppercase tracking-widest">Science Behind Silk</p>
-            </div>
-
-            <div class="mb-20">
-                <h3 class="text-3xl serif font-bold mb-10 text-center">桑蠶絲 vs 柞蠶絲</h3>
-                <div class="grid md:grid-cols-2 gap-10">
-                    <div class="bg-gradient-to-br from-green-50 to-green-100 p-10 rounded-lg border-2 border-green-200">
-                        <h4 class="text-2xl font-bold mb-6 text-green-800">✓ 桑蠶絲（Mulberry Silk）</h4>
-                        <ul class="space-y-4 text-gray-700">
-                            <li><strong>來源：</strong>家養桑蠶，以桑葉為食</li>
-                            <li><strong>顏色：</strong>天然乳白色，色澤均勻</li>
-                            <li><strong>質地：</strong>纖維細膩，觸感極致柔滑</li>
-                            <li><strong>絲蛋白含量：</strong>18 種天然氨基酸，含量高達 97%</li>
-                            <li><strong>護髮效果：</strong>極佳，能深層滋養髮質</li>
-                            <li><strong>價格：</strong>較高，屬奢華級材料</li>
-                        </ul>
-                        <p class="mt-6 text-sm font-semibold text-green-800">SilkDream 採用 100% 桑蠶絲</p>
-                    </div>
-
-                    <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-10 rounded-lg border-2 border-yellow-200">
-                        <h4 class="text-2xl font-bold mb-6 text-yellow-800">❌ 柞蠶絲（Tussah Silk）</h4>
-                        <ul class="space-y-4 text-gray-700">
-                            <li><strong>來源：</strong>野生柞蠶，以柞樹葉為食</li>
-                            <li><strong>顏色：</strong>天然灰黃色，需化學漂白</li>
-                            <li><strong>質地：</strong>纖維較粗糙，觸感欠佳</li>
-                            <li><strong>絲蛋白含量：</strong>較低，約 85-90%</li>
-                            <li><strong>護髮效果：</strong>一般，難以滋養髮質</li>
-                            <li><strong>價格：</strong>較低，常用於平價產品</li>
-                        </ul>
-                        <p class="mt-6 text-sm font-semibold text-yellow-800">市面廉價睡帽多用柞蠶絲</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-20 bg-[#FAFAF8] p-10 rounded-lg">
-                <h3 class="text-3xl serif font-bold mb-6">什麼是 Momme（姆米）？</h3>
-                <p class="text-gray-700 leading-relaxed mb-6">
-                    <strong>Momme (mm)</strong> 是衡量真絲品質的國際標準單位，代表每 100 碼蠶絲布料的重量。數值越高，代表絲線越密實、越耐用。
-                </p>
-                <div class="grid md:grid-cols-4 gap-6">
-                    <div class="bg-white p-6 rounded-lg text-center border border-gray-200">
-                        <p class="text-2xl font-bold mb-2">12-16 mm</p>
-                        <p class="text-sm text-gray-600">輕薄級</p>
-                        <p class="text-xs text-gray-500 mt-2">適合內衣、襯裡</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg text-center border border-gray-200">
-                        <p class="text-2xl font-bold mb-2">16-19 mm</p>
-                        <p class="text-sm text-gray-600">標準級</p>
-                        <p class="text-xs text-gray-500 mt-2">一般市售睡帽</p>
-                    </div>
-                    <div class="bg-gradient-to-br from-yellow-100 to-yellow-50 p-6 rounded-lg text-center border-2 border-yellow-400">
-                        <p class="text-2xl font-bold mb-2 text-yellow-800">22 mm</p>
-                        <p class="text-sm text-yellow-800 font-bold">奢華級 ★</p>
-                        <p class="text-xs text-yellow-700 mt-2">SilkDream 標準</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg text-center border border-gray-200">
-                        <p class="text-2xl font-bold mb-2">25+ mm</p>
-                        <p class="text-sm text-gray-600">超厚重級</p>
-                        <p class="text-xs text-gray-500 mt-2">過厚，不適合睡眠</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-20">
-                <h3 class="text-3xl serif font-bold mb-10 text-center">睡帽防毛躁的科學原理</h3>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-lg border border-gray-100">
-                        <div class="w-16 h-16 mb-6 bg-gray-50 rounded-full flex items-center justify-center">
-                            <svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                            </svg>
-                        </div>
-                        <h4 class="font-bold text-xl mb-4">減少摩擦力</h4>
-                        <p class="text-gray-700 leading-relaxed">
-                            棉質枕頭摩擦係數是真絲的 <strong>3-4 倍</strong>。睡眠時頭部平均轉動 20-30 次，棉質枕頭會對髮絲造成嚴重拉扯和斷裂。
-                        </p>
-                    </div>
-                    <div class="bg-white p-8 rounded-lg border border-gray-100">
-                        <div class="w-16 h-16 mb-6 bg-gray-50 rounded-full flex items-center justify-center">
-                            <svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                            </svg>
-                        </div>
-                        <h4 class="font-bold text-xl mb-4">鎖住水分</h4>
-                        <p class="text-gray-700 leading-relaxed">
-                            真絲含有天然 <strong>絲蛋白（Sericin）</strong> 和 <strong>18 種氨基酸</strong>，能在髮絲表面形成微型保濕層，水分蒸發率減少 <strong>25%</strong>。
-                        </p>
-                    </div>
-                    <div class="bg-white p-8 rounded-lg border border-gray-100">
-                        <div class="w-16 h-16 mb-6 bg-gray-50 rounded-full flex items-center justify-center">
-                            <svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                            </svg>
-                        </div>
-                        <h4 class="font-bold text-xl mb-4">溫度調節</h4>
-                        <p class="text-gray-700 leading-relaxed">
-                            真絲的散熱速度是棉布的 <strong>1.5 倍</strong>，能有效調節頭皮溫度，減少出汗和油脂分泌。
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-gradient-to-br from-gray-900 to-gray-800 text-white p-12 rounded-lg">
-                <h3 class="text-3xl serif font-bold mb-8 text-center">SilkDream 雙面真絲優勢</h3>
-                <div class="grid md:grid-cols-2 gap-10">
-                    <div>
-                        <h4 class="text-xl font-bold mb-4 text-red-300">❌ 市面單面睡帽的問題</h4>
-                        <ul class="space-y-3 text-gray-300">
-                            <li>• 只有內層使用真絲，外層是棉布或滌綸</li>
-                            <li>• 外層粗糙材質與枕頭摩擦，容易滑落</li>
-                            <li>• 睡眠中頭髮翻轉，接觸外層粗糙面</li>
-                            <li>• 透氣性差，頭皮容易悶熱出汗</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold mb-4 text-green-300">✓ SilkDream 雙面真絲</h4>
-                        <ul class="space-y-3">
-                            <li>• 內外皆為 22 Momme 桑蠶絲</li>
-                            <li>• 外層絲綢與枕頭無阻力滑動，不易脫落</li>
-                            <li>• 360° 全方位保護，無論如何翻身都安心</li>
-                            <li>• 雙層透氣，散熱效果更佳</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- REVIEWS -->
-    <section id="reviews" class="py-24 px-6 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl serif font-bold mb-6">顧客好評</h2>
-                <p class="text-gray-500 text-sm uppercase tracking-widest">Customer Testimonials</p>
-            </div>
-
-            <!-- Customer Reviews with Profile Images -->
-            <div class="grid md:grid-cols-3 gap-10 mb-20">
-                <div class="bg-[#FAFAF8] p-8 border border-gray-100">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 rounded-full overflow-hidden border border-gray-200">
-                            <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,g_face,w_150,h_150/v1770968885/Comment_2_kndtbo.jpg" class="w-full h-full object-cover" alt="Customer">
-                        </div>
-                        <div>
-                            <p class="font-semibold text-sm">Sarah L.</p>
-                            <div class="stars text-sm">★★★★★</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed text-sm">
-                        「用了兩個星期，髮質真的改善了很多。以前每天早上都要花時間整理亂髮，現在起床頭髮依然順滑。雙面真絲的質感確實不一樣，完全值得這個價錢。」
-                    </p>
-                </div>
-
-                <div class="bg-[#FAFAF8] p-8 border border-gray-100">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 rounded-full overflow-hidden border border-gray-200">
-                            <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,g_face,w_150,h_150/v1770968873/Comments_1_cjl5vk.jpg" class="w-full h-full object-cover" alt="Customer">
-                        </div>
-                        <div>
-                            <p class="font-semibold text-sm">Michelle C.</p>
-                            <div class="stars text-sm">★★★★★</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed text-sm">
-                        「摸起來真的很滑，可以感受到是真材實料的桑蠶絲。比我之前買的其他牌子好太多，而且價格合理。睡覺時完全不會悶熱，透氣度很好。已經推薦給朋友了。」
-                    </p>
-                </div>
-
-                <div class="bg-[#FAFAF8] p-8 border border-gray-100">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 rounded-full overflow-hidden border border-gray-200">
-                            <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,g_face,w_150,h_150/v1770968893/Comment_3_xue1if.jpg" class="w-full h-full object-cover" alt="Customer">
-                        </div>
-                        <div>
-                            <p class="font-semibold text-sm">Emily W.</p>
-                            <div class="stars text-sm">★★★★★</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed text-sm">
-                        「我是捲髮，最怕睡醒後頭髮被壓扁。用了這個睡帽之後，早上起床頭髮還是很蓬鬆，捲度保持得很好。而且戴著睡覺很舒服，不會有壓痕。」
-                    </p>
-                </div>
-            </div>
-
-            <!-- Reserved for WhatsApp Screenshots -->
-            <div class="border-t border-gray-100 pt-16">
-                <h3 class="text-2xl serif font-bold mb-10 text-center">客戶分享</h3>
-                <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-                    <!-- Screenshot Placeholder 1 -->
-                    <div class="bg-gray-50 p-6 rounded border border-gray-200 min-h-[400px] flex items-center justify-center">
-                        <div class="text-center text-gray-400">
-                            <svg class="w-16 h-16 mx-auto mb-4 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                            </svg>
-                            <p class="text-sm">預留位置</p>
-                        </div>
-                    </div>
-
-                    <!-- Screenshot Placeholder 2 -->
-                    <div class="bg-gray-50 p-6 rounded border border-gray-200 min-h-[400px] flex items-center justify-center">
-                        <div class="text-center text-gray-400">
-                            <svg class="w-16 h-16 mx-auto mb-4 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                            </svg>
-                            <p class="text-sm">預留位置</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="py-24 px-6 bg-white">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl serif font-bold mb-6">常見問題</h2>
-                <p class="text-gray-500 text-sm uppercase tracking-widest">Frequently Asked Questions</p>
-            </div>
-
-            <div class="space-y-6">
-                <div class="bg-[#FAFAF8] p-8 rounded-lg">
-                    <h4 class="font-bold text-lg mb-3">為什麼 SilkDream 值得入手？</h4>
-                    <p class="text-gray-700 leading-relaxed">
-                        我們採用 22 Momme 頂級雙面桑蠶絲，內外皆為 6A 級絲蛋白保護。相比市面上單面真絲睡帽，我們確保 360° 全方位保護你的髮質。
-                    </p>
-                </div>
-
-                <div class="bg-[#FAFAF8] p-8 rounded-lg">
-                    <h4 class="font-bold text-lg mb-3">物流配送如何計算？</h4>
-                    <p class="text-gray-700 leading-relaxed">
-                        全線產品均享 <strong>HK$0 運費（全港包郵）</strong>。我們使用順豐速運，一般 2-3 個工作天送達。
-                    </p>
-                </div>
-
-                <div class="bg-[#FAFAF8] p-8 rounded-lg">
-                    <h4 class="font-bold text-lg mb-3">蠶絲產品該如何清洗和保養？</h4>
-                    <p class="text-gray-700 leading-relaxed mb-3">
-                        建議每兩週用冷水或溫水（30°C 以下）手洗，使用中性洗滌劑。步驟：
-                    </p>
-                    <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4 text-sm">
-                        <li>浸泡在冷水中 3-5 分鐘</li>
-                        <li>加入少量洗滌劑，輕輕按壓（切勿搓揉）</li>
-                        <li>用清水沖洗乾淨</li>
-                        <li>用毛巾輕輕吸乾水分（不要擰乾）</li>
-                        <li>平放或掛在通風處自然風乾</li>
-                    </ol>
-                </div>
-
-                <div class="bg-[#FAFAF8] p-8 rounded-lg">
-                    <h4 class="font-bold text-lg mb-3">真的對減少脫髮有幫助嗎？</h4>
-                    <p class="text-gray-700 leading-relaxed">
-                        SilkDream 能極大程度減少睡眠時的摩擦拉扯（這是頭髮斷裂的主因），並保持髮絲水分，為頭皮營造健康的生長環境。
-                    </p>
-                </div>
-
-                <div class="bg-red-50 p-8 rounded-lg border-2 border-red-200">
-                    <h4 class="font-bold text-lg mb-3 text-red-700">退換貨政策</h4>
-                    <p class="text-red-700 leading-relaxed font-semibold">
-                        【重要聲明】基於個人衛生安全考量，所有蠶絲產品一經售出，恕不接受任何理由之退換貨申請。下單前請確認顏色與款式。
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ORDER GUIDE -->
-    <section id="order-guide" class="py-24 px-6 bg-[#FAFAF8]">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl serif font-bold mb-6">如何下單</h2>
-                <p class="text-gray-500 text-sm uppercase tracking-widest">Step-by-Step Guide</p>
-            </div>
-
-            <div class="space-y-8">
-                <div class="flex gap-6 items-start">
-                    <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
-                    <div>
-                        <h4 class="font-bold text-xl mb-2">選擇產品</h4>
-                        <p class="text-gray-700 leading-relaxed">瀏覽「產品」頁面，選擇你喜歡的顏色和數量。</p>
-                    </div>
-                </div>
-
-                <div class="flex gap-6 items-start">
-                    <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">2</div>
-                    <div>
-                        <h4 class="font-bold text-xl mb-2">加入購物車</h4>
-                        <p class="text-gray-700 leading-relaxed">點擊「立即搶購」按鈕，產品會自動添加到購物車。</p>
-                    </div>
-                </div>
-
-                <div class="flex gap-6 items-start">
-                    <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">3</div>
-                    <div>
-                        <h4 class="font-bold text-xl mb-2">填寫資料</h4>
-                        <p class="text-gray-700 leading-relaxed">填寫收件人全名、電郵、電話、順豐站編號或住宅地址。</p>
-                    </div>
-                </div>
-
-                <div class="flex gap-6 items-start">
-                    <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">4</div>
-                    <div>
-                        <h4 class="font-bold text-xl mb-2">確認並付款</h4>
-                        <p class="text-gray-700 leading-relaxed">系統會自動跳轉至 Stripe 安全付款頁面，支持信用卡、Apple Pay 等多種付款方式。</p>
-                    </div>
-                </div>
-
-                <div class="flex gap-6 items-start">
-                    <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">5</div>
-                    <div>
-                        <h4 class="font-bold text-xl mb-2">等待送貨</h4>
-                        <p class="text-gray-700 leading-relaxed">付款成功後，我們會在 1-2 個工作天內安排發貨，一般 2-3 個工作天送達。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROMOTION -->
-    <section id="promotion" class="py-24 px-6 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-        <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-5xl serif font-bold mb-6">限時優惠</h2>
-            <p class="text-gray-300 text-sm uppercase tracking-widest mb-12">Special Offer</p>
-
-            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-10 mb-12">
-                <div class="w-24 h-24 mx-auto mb-6 bg-white/10 rounded-full flex items-center justify-center">
-                    <svg class="w-12 h-12 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/>
-                    </svg>
-                </div>
-                <h3 class="text-3xl serif font-bold mb-4">消費滿 HK$1,500 送神秘禮品</h3>
-                <p class="text-gray-300 leading-relaxed mb-6">
-                    購買任何組合，訂單金額達 HK$1,500 或以上，即可獲贈限量版蠶絲眼罩一個（價值 HK$198）。
-                </p>
-                <p class="text-sm text-yellow-300 font-semibold">
-                    數量有限，送完即止
-                </p>
-            </div>
-
-            <a href="#products" class="btn-secondary inline-block bg-white text-black border-white hover:bg-transparent hover:text-white">立即選購</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black text-white py-16 px-6">
-        <div class="max-w-6xl mx-auto text-center">
-            <div class="text-3xl serif font-bold mb-6 tracking-widest">SILKDREAM</div>
-            <p class="text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-                真正有效的護髮，是在睡眠中完成修復。<br/>
-                優質髮質不應是少數人的奢侈，而應該是每個人的權利。
-            </p>
-            <p class="text-xs text-gray-500">© 2025 SilkDream. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Cart Overlay -->
-    <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/60 z-[60] hidden"></div>
-
-    <!-- Cart Sidebar -->
-    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[70] translate-x-full cart-sidebar flex flex-col shadow-2xl">
-        <div class="p-8 border-b border-gray-100">
-            <div class="flex justify-between items-center">
-                <h2 class="text-2xl serif font-bold">購物車</h2>
-                <button onclick="toggleCart()" class="text-2xl">✕</button>
-            </div>
-        </div>
-        <div id="cart-items" class="flex-1 overflow-y-auto p-8"></div>
-        <div class="p-8 border-t border-gray-100 bg-gray-50">
-            <div class="flex justify-between items-center mb-6 text-xl font-bold">
-                <span>總計</span>
-                <span id="cart-total" class="serif">HK$0</span>
-            </div>
-            <button onclick="openCheckout()" class="btn-primary w-full">前往結帳</button>
-        </div>
+        <p style="text-align:center;font-size:11px;color:var(--accent-rose);margin-top:16px;font-weight:500;" class="serif-cn">SilkDream 每批產品均附 OEKO-TEX® Standard 100 認證，確保 100% 桑蠶絲真材實料</p>
     </div>
-
-    <!-- Checkout Modal -->
-    <div id="checkout-modal" class="fixed inset-0 bg-white z-[100] translate-y-full overflow-y-auto" style="transition: transform 0.4s;">
-        <div class="max-w-3xl mx-auto px-6 py-20">
-            <div id="modal-inner">
-                <div class="flex justify-between items-center mb-12">
-                    <h2 class="text-4xl serif font-bold">配送資料</h2>
-                    <button onclick="closeCheckout()" class="text-gray-400 hover:text-black">返回</button>
-                </div>
-                <form id="orderForm" class="space-y-8">
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div><label class="block text-xs uppercase tracking-widest text-gray-500 font-semibold mb-2">收件人全名 *</label><input type="text" name="name" required class="w-full border-b-2 border-gray-200 pb-3 outline-none focus:border-black"></div>
-                        <div><label class="block text-xs uppercase tracking-widest text-gray-500 font-semibold mb-2">電郵地址 *</label><input type="email" name="email" required class="w-full border-b-2 border-gray-200 pb-3 outline-none focus:border-black"></div>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div><label class="block text-xs uppercase tracking-widest text-gray-500 font-semibold mb-2">聯絡電話 (WhatsApp) *</label><input type="tel" name="phone" required class="w-full border-b-2 border-gray-200 pb-3 outline-none focus:border-black"></div>
-                    </div>
-                    <div><label class="block text-xs uppercase tracking-widest text-gray-500 font-semibold mb-2">順豐站編號 / 智能櫃 / 住宅地址 * <a href="https://htm.sf-express.com/hk/tc/dynamic_function/S.F.Network/SF_store_address/" target="_blank" class="text-blue-600 underline ml-2 normal-case font-normal">(查詢順豐站)</a></label><input type="text" name="address" required class="w-full border-b-2 border-gray-200 pb-3 outline-none focus:border-black"></div>
-                    <div class="bg-gray-50 p-8 rounded-lg border border-gray-200">
-                        <h3 class="font-bold mb-4">訂單摘要</h3>
-                        <div id="order-summary" class="space-y-2 mb-6 text-sm text-gray-700"></div>
-                        <div class="border-t pt-4 flex justify-between items-center text-2xl font-bold serif">
-                            <span>總計</span>
-                            <span id="summary-total">HK$0</span>
-                        </div>
-                    </div>
-                    <button type="submit" id="submitBtn" class="btn-primary w-full text-base">確認訂單並付款</button>
-                </form>
-            </div>
-        </div>
+</div>
+<div id="reviews" class="sec has-bg">
+    <div class="bg-glow bg-rose" style="width:380px;height:380px;top:5%;left:-80px;"></div>
+    <div class="bg-glow bg-white" style="width:420px;height:420px;bottom:-40px;right:-100px;"></div>
+    <div class="silk-pat"></div>
+    <div class="sh"><h2>Testimonials</h2><p class="sub serif-cn">顧客好評</p></div>
+    <div class="rev-grid">
+        <div class="rev-card"><div class="rev-top"><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,g_face,w_150,h_150/v1770968885/Comment_2_kndtbo.jpg" alt="C"><div><p class="nm">Sarah L.</p><div class="stars" style="font-size:11px;">★★★★★</div></div></div><p>「用了兩個星期，髮質真的改善了很多。以前每天早上都要花時間整理亂髮，現在起床頭髮依然順滑。雙面真絲的質感確實不一樣，完全值得這個價錢。」</p></div>
+        <div class="rev-card"><div class="rev-top"><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,g_face,w_150,h_150/v1770968873/Comments_1_cjl5vk.jpg" alt="C"><div><p class="nm">Michelle C.</p><div class="stars" style="font-size:11px;">★★★★★</div></div></div><p>「摸起來真的很滑，可以感受到是真材實料的桑蠶絲。比我之前買的其他牌子好太多，而且價格合理。睡覺時完全不會悶熱。已經推薦給朋友了。」</p></div>
+        <div class="rev-card"><div class="rev-top"><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,g_face,w_150,h_150/v1770968893/Comment_3_xue1if.jpg" alt="C"><div><p class="nm">Emily W.</p><div class="stars" style="font-size:11px;">★★★★★</div></div></div><p>「我是捲髮，最怕睡醒後頭髮被壓扁。用了這個睡帽之後，早上起床頭髮還是很蓬鬆，捲度保持得很好。戴著睡覺很舒服，不會有壓痕。」</p></div>
     </div>
+    <h3 class="serif" style="font-size:20px;font-weight:400;text-align:center;margin-bottom:24px;">客戶分享</h3>
+    <div class="rev-ph">
+        <div class="rev-placeholder"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+        <div class="rev-placeholder"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+    </div>
+</div>
 
-    <script>
-        function updateCountdown() {
-            const now = new Date();
-            const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-            const diff = tomorrow - now;
-            const h = Math.floor(diff / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
-            document.getElementById('solo-countdown').innerText = 
-                `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+<!-- ===== FAQ ===== -->
+<div id="faq" class="sec has-bg">
+    <div class="bg-glow bg-blush" style="width:360px;height:360px;top:8%;right:-80px;"></div>
+    <div class="bg-glow bg-white" style="width:460px;height:460px;bottom:-80px;left:-100px;"></div>
+    <div class="silk-pat"></div>
+    <div class="sh"><h2>FAQ</h2><p class="sub serif-cn">常見問題</p></div>
+    <div class="faq-list">
+        <div class="faq-item"><h4>為什麼 SilkDream 值得入手？</h4><p class="serif-cn">我們採用 22 Momme 頂級雙面桑蠶絲，內外皆為 6A 級絲蛋白保護。相比市面上單面真絲睡帽，我們確保 360° 全方位保護你的髮質。</p></div>
+        <div class="faq-item"><h4>物流配送如何計算？</h4><p class="serif-cn">全線產品均享 <strong>HK$0 運費（全港包郵）</strong>。我們使用順豐速運，一般 2-3 個工作天送達。</p></div>
+        <div class="faq-item"><h4>蠶絲產品該如何清洗和保養？</h4><p class="serif-cn">建議每兩週用冷水或溫水（30°C 以下）手洗，使用中性洗滌劑。</p><ol><li>浸泡在冷水中 3-5 分鐘</li><li>加入少量洗滌劑，輕輕按壓（切勿搓揉）</li><li>用清水沖洗乾淨</li><li>用毛巾輕輕吸乾水分（不要擰乾）</li><li>平放或掛在通風處自然風乾</li></ol></div>
+        <div class="faq-item"><h4>真的對減少脫髮有幫助嗎？</h4><p class="serif-cn">SilkDream 能極大程度減少睡眠時的摩擦拉扯（這是頭髮斷裂的主因），並保持髮絲水分，為頭皮營造健康的生長環境。</p></div>
+        <div class="faq-item"><h4>為什麼 SilkDream 比其他品牌便宜那麼多？</h4><p class="serif-cn">我們從工廠直送，優化每一個從生產到消費者的環節，剔除品牌溢價、明星代言費和多層中間商成本。我們把錢花在材料上而非廣告，讓你以合理價格獲得真正高端品質。</p></div>
+        <div class="faq-item"><h4>單面真絲和雙面真絲有什麼分別？</h4><p class="serif-cn">單面真絲睡帽只有內層是絲綢，外層是棉布或滌綸，這會與枕頭產生阻力導致帽子移位，而且翻身時頭髮可能接觸外層粗糙面。SilkDream 雙面真絲讓帽子在枕頭上無阻力滑動，360° 全方位保護。</p></div>
+        <div class="faq-item"><h4>睡帽會勒頭嗎？戴著會不會悶熱？</h4><p class="serif-cn">不會。我們採用 3.5cm 寬幅真絲緩衝帶取代細窄橡皮筋，接觸皮膚部分也是 100% 桑蠶絲，不會起紅痕或疹子。真絲散熱速度是棉布的 1.5 倍，透氣乾爽不悶熱。</p></div>
+        <div class="faq-item"><h4>長髮、捲髮適合嗎？</h4><p class="serif-cn">完全適合。我們的立體剪裁設計（Volumetric Crown）特別增加頂部空間，確保長髮或捲髮不會被壓扁，保持髮根蓬鬆和捲度。</p></div>
+        <div class="faq-item"><h4>OEKO-TEX® 認證是什麼意思？</h4><p class="serif-cn">OEKO-TEX® Standard 100 是國際紡織品安全認證的最高標準之一，確保產品不含任何有害化學物質（包括甲醛、重金屬、致癌染料等），對皮膚和環境完全安全。SilkDream 每批產品均通過此認證。</p></div>
+        <div class="faq-item"><h4>男生也可以用嗎？</h4><p class="serif-cn">當然可以。SilkDream 採用簡約 unisex 設計，男女通用。護髮需求不分性別，任何關心髮質健康的人都適用。</p></div>
+        <div class="faq-item faq-warn"><h4>退換貨政策</h4><p class="serif-cn">【重要聲明】基於個人衛生安全考量，所有蠶絲產品一經售出，恕不接受任何理由之退換貨申請。下單前請確認顏色與款式。</p></div>
+    </div>
+</div>
 
-        setTimeout(() => {
-            document.getElementById('promo-modal').classList.add('show');
-        }, 2000);
+<!-- ===== ORDER GUIDE ===== -->
+<div id="guide" class="sec has-bg">
+    <div class="bg-glow bg-rose" style="width:380px;height:380px;top:10%;left:-80px;"></div>
+    <div class="bg-glow bg-white" style="width:440px;height:440px;bottom:-60px;right:-100px;"></div>
+    <div class="silk-pat"></div>
+    <div class="sh"><h2>How to Order</h2><p class="sub serif-cn">如何下單</p></div>
+    <div class="og-list">
+        <div class="og-step"><div class="og-num">1</div><div><h4>選擇產品</h4><p class="serif-cn">瀏覽「產品」頁面，選擇你喜歡的顏色和數量。</p></div></div>
+        <div class="og-step"><div class="og-num">2</div><div><h4>加入購物車</h4><p class="serif-cn">點擊「加入購物車」按鈕，產品會自動添加。</p></div></div>
+        <div class="og-step"><div class="og-num">3</div><div><h4>填寫資料</h4><p class="serif-cn">填寫收件人全名、電郵、電話、順豐站編號。</p></div></div>
+        <div class="og-step"><div class="og-num">4</div><div><h4>確認並付款</h4><p class="serif-cn">系統自動跳轉至 Stripe 安全付款頁面，支持信用卡、Apple Pay 等。</p></div></div>
+        <div class="og-step"><div class="og-num">5</div><div><h4>等待送貨</h4><p class="serif-cn">付款成功後，1-2 個工作天安排發貨，一般 2-3 個工作天送達。</p></div></div>
+    </div>
+</div>
 
-        function closePromoModal() {
-            document.getElementById('promo-modal').classList.remove('show');
-        }
+<!-- ===== PROMO ===== -->
+<div id="promo" class="sec">
+    <div class="promo-sec">
+        <h2>Special Offer</h2>
+        <p style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-light);margin-bottom:24px;" class="serif-cn">限時優惠</p>
+        <div class="promo-inner">
+            <div class="ico2"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg></div>
+            <h3>消費滿 HK$1,500 送神秘禮品</h3>
+            <p>購買任何組合，訂單金額達 HK$1,500 或以上，即可獲贈限量版蠶絲眼罩一個（價值 HK$198）。</p>
+            <p class="hl">數量有限，送完即止</p>
+        </div>
+        <div style="margin-top:28px;"><a class="btn-p" onclick="switchTo('products')" style="background:var(--bg);color:var(--text-primary);border-color:var(--bg);">立即選購</a></div>
+    </div>
+</div>
 
-        function toggleMobileMenu() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        }
+<!-- FOOTER -->
+<footer>
+    <div class="flogo">SILKDREAM</div>
+    <p class="serif-cn">真正有效的護髮，是在睡眠中完成修復。<br/>優質髮質不應是少數人的奢侈，而應該是每個人的權利。</p>
+    <div class="copy">© 2025 SilkDream. All rights reserved.</div>
+</footer>
 
-        const notifications = [
-            { name: 'Amy L.', location: '香港島', product: '珍珠腮紅粉' },
-            { name: 'Jennifer C.', location: '九龍', product: '午夜藍寶石' },
-            { name: 'Michelle W.', location: '新界', product: '香檳金' },
-            { name: 'Sarah T.', location: '沙田', product: '珍珠腮紅粉' },
-            { name: 'Emily K.', location: '銅鑼灣', product: '午夜藍寶石' },
-            { name: 'Lisa M.', location: '尖沙咀', product: '奢華套裝 (4件裝-買三送一)' },
-            { name: 'Rachel H.', location: '中環', product: '珍珠腮紅粉' },
-            { name: 'Chloe Y.', location: '荃灣', product: '香檳金' },
-            { name: 'Jessica L.', location: '旺角', product: '午夜藍寶石' },
-            { name: 'Karen P.', location: '將軍澳', product: '奢華套裝 (4件裝-買三送一)' },
-            { name: 'Sophie C.', location: '元朗', product: '珍珠腮紅粉' },
-            { name: 'Nicole T.', location: '屯門', product: '香檳金' },
-            { name: 'Vivian L.', location: '觀塘', product: '午夜藍寶石' },
-            { name: 'Tiffany W.', location: '太古', product: '珍珠腮紅粉' },
-            { name: 'Crystal M.', location: '柴灣', product: '奢華套裝 (4件裝-買三送一)' },
-            { name: 'Jasmine H.', location: '北角', product: '香檳金' },
-            { name: 'Mandy K.', location: '西環', product: '珍珠腮紅粉' },
-            { name: 'Winnie Y.', location: '紅磡', product: '午夜藍寶石' },
-            { name: 'Catherine P.', location: '青衣', product: '香檳金' },
-            { name: 'Grace L.', location: '馬鞍山', product: '奢華套裝 (4件裝-買三送一)' }
-        ];
+<!-- CART OVERLAY + SIDEBAR -->
+<div id="cart-ov" class="cart-ov" onclick="toggleCart()"></div>
+<div id="cart-sb" class="cart-sb">
+    <div class="cart-head"><h2>購物車</h2><button onclick="toggleCart()">✕</button></div>
+    <div id="cart-items"></div>
+    <div class="cart-foot">
+        <div class="row"><span>總計</span><span id="cart-total">HK$0</span></div>
+        <button class="btn-p" style="width:100%" onclick="openCheckout()">前往結帳</button>
+    </div>
+</div>
 
-        let notificationIndex = 0;
-        function showNotification() {
-            const toast = document.getElementById('notification-toast');
-            const notif = notifications[notificationIndex];
-            const timeAgo = Math.floor(Math.random() * 30) + 1;
-            document.getElementById('notification-name').innerText = `${notif.name} 剛購買了`;
-            document.getElementById('notification-details').innerText = `${notif.product} · ${notif.location} · ${timeAgo} 分鐘前`;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 5000);
-            notificationIndex = (notificationIndex + 1) % notifications.length;
-        }
-        setTimeout(() => {
-            showNotification();
-            setInterval(showNotification, 12000);
-        }, 3000);
+<!-- CHECKOUT MODAL -->
+<div id="ck-modal" class="ck-modal">
+    <div class="ck-inner" id="ck-inner">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;">
+            <h2>配送資料</h2>
+            <button class="ck-back" onclick="closeCK()">返回</button>
+        </div>
+        <form id="orderForm">
+            <div class="row2">
+                <div class="field"><label>收件人全名 *</label><input type="text" name="name" required></div>
+                <div class="field"><label>電郵地址 *</label><input type="email" name="email" required></div>
+            </div>
+            <div class="row2">
+                <div class="field"><label>聯絡電話 (WhatsApp) *</label><input type="tel" name="phone" required></div>
+                <div class="field"></div>
+            </div>
+            <div class="field"><label>順豐站編號 * <a href="https://htm.sf-express.com/hk/tc/dynamic_function/S.F.Network/SF_store_address/" target="_blank" style="color:var(--accent-rose);text-decoration:underline;font-size:10px;letter-spacing:0;text-transform:none;font-weight:400;">(查詢順豐站)</a></label><input type="text" name="address" required placeholder="例：H852"></div>
+            <div class="ck-summary">
+                <h3>訂單摘要</h3>
+                <div id="order-summary"></div>
+                <div class="total-line"><span>總計</span><span id="summary-total">HK$0</span></div>
+            </div>
+            <button type="submit" id="submitBtn" class="btn-p" style="width:100%;font-size:12px;">確認訂單並付款</button>
+        </form>
+    </div>
+</div>
+<script>
+    // === SECTION SWITCHING ===
+    function switchTo(id) {
+        document.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        document.querySelectorAll('#navlinks a').forEach(a => a.classList.remove('active'));
+        const links = document.querySelectorAll('#navlinks a');
+        const map = ['home','brand','products','science','reviews','faq','guide','promo'];
+        const idx = map.indexOf(id);
+        if (idx >= 0 && links[idx]) links[idx].classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function closeMob() { document.getElementById('mob-menu').style.display = 'none'; }
 
-        let cart = [];
-        function toggleCart() {
-            document.getElementById('cart-sidebar').classList.toggle('translate-x-full');
-            document.getElementById('cart-overlay').classList.toggle('hidden');
-        }
-        function addToCart(name, price, btn) {
-            const existing = cart.find(i => i.name === name);
-            if (existing) {
-                existing.quantity++;
-            } else {
-                cart.push({ name, price, quantity: 1 });
-            }
-            updateCart();
-            if (document.getElementById('cart-sidebar').classList.contains('translate-x-full')) {
-                toggleCart();
-            }
-            const originalText = btn.innerText;
-            btn.innerText = "已加入 ✓";
-            setTimeout(() => btn.innerText = originalText, 1500);
-        }
-        function updateQuantity(index, delta) {
-            cart[index].quantity += delta;
-            if (cart[index].quantity < 1) cart.splice(index, 1);
-            updateCart();
-        }
-        function updateCart() {
-            const container = document.getElementById('cart-items');
-            let total = 0, count = 0;
-            if (cart.length === 0) {
-                container.innerHTML = '<p class="text-center text-gray-400 py-20 text-sm">購物車是空的</p>';
-            } else {
-                container.innerHTML = '';
-                cart.forEach((item, i) => {
-                    total += item.price * item.quantity;
-                    count += item.quantity;
-                    const div = document.createElement('div');
-                    div.className = 'border-b border-gray-100 pb-6 mb-6';
-                    div.innerHTML = `
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <p class="font-semibold uppercase text-sm tracking-wide">${item.name}</p>
-                                <p class="text-2xl serif font-bold mt-2">HK$${item.price}</p>
-                            </div>
+    // === COUNTDOWN ===
+    function updateCD() {
+        const now = new Date();
+        const tom = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+        const d = tom - now;
+        const h = Math.floor(d / 3600000), m = Math.floor((d % 3600000) / 60000), s = Math.floor((d % 60000) / 1000);
+        document.getElementById('countdown').innerText = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+    }
+    setInterval(updateCD, 1000); updateCD();
+
+    // === PROMO MODAL ===
+    setTimeout(() => document.getElementById('pm').classList.add('show'), 2000);
+    function closePM() { document.getElementById('pm').classList.remove('show'); }
+
+    // === NOTIFICATIONS (ORIGINAL LOGIC) ===
+    const notifications = [
+        {name:'Amy L.',location:'香港島',product:'珍珠腮紅粉'},{name:'Jennifer C.',location:'九龍',product:'午夜藍寶石'},
+        {name:'Michelle W.',location:'新界',product:'香檳金'},{name:'Sarah T.',location:'沙田',product:'珍珠腮紅粉'},
+        {name:'Emily K.',location:'銅鑼灣',product:'午夜藍寶石'},{name:'Lisa M.',location:'尖沙咀',product:'奢華套裝 (4件裝-買三送一)'},
+        {name:'Rachel H.',location:'中環',product:'珍珠腮紅粉'},{name:'Chloe Y.',location:'荃灣',product:'香檳金'},
+        {name:'Jessica L.',location:'旺角',product:'午夜藍寶石'},{name:'Karen P.',location:'將軍澳',product:'奢華套裝 (4件裝-買三送一)'},
+        {name:'Sophie C.',location:'元朗',product:'珍珠腮紅粉'},{name:'Nicole T.',location:'屯門',product:'香檳金'},
+        {name:'Vivian L.',location:'觀塘',product:'午夜藍寶石'},{name:'Tiffany W.',location:'太古',product:'珍珠腮紅粉'},
+        {name:'Crystal M.',location:'柴灣',product:'奢華套裝 (4件裝-買三送一)'},{name:'Jasmine H.',location:'北角',product:'香檳金'},
+        {name:'Mandy K.',location:'西環',product:'珍珠腮紅粉'},{name:'Winnie Y.',location:'紅磡',product:'午夜藍寶石'},
+        {name:'Catherine P.',location:'青衣',product:'香檳金'},{name:'Grace L.',location:'馬鞍山',product:'奢華套裝 (4件裝-買三送一)'}
+    ];
+    let nIdx = 0;
+    function showNotif() {
+        const t = document.getElementById('notif'), n = notifications[nIdx];
+        const ago = Math.floor(Math.random() * 30) + 1;
+        document.getElementById('n-name').innerText = `${n.name} 剛購買了`;
+        document.getElementById('n-det').innerText = `${n.product} · ${n.location} · ${ago} 分鐘前`;
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 5000);
+        nIdx = (nIdx + 1) % notifications.length;
+    }
+    setTimeout(() => { showNotif(); setInterval(showNotif, 12000); }, 3000);
+
+    // === CART (ORIGINAL LOGIC) ===
+    let cart = [];
+    function toggleCart() {
+        document.getElementById('cart-sb').classList.toggle('open');
+        document.getElementById('cart-ov').style.display = document.getElementById('cart-sb').classList.contains('open') ? 'block' : 'none';
+    }
+    function addToCart(name, price, btn) {
+        const ex = cart.find(i => i.name === name);
+        if (ex) ex.quantity++; else cart.push({ name, price, quantity: 1 });
+        updateCart();
+        if (!document.getElementById('cart-sb').classList.contains('open')) toggleCart();
+        const orig = btn.innerText;
+        btn.innerText = '已加入 ✓'; setTimeout(() => btn.innerText = orig, 1500);
+    }
+    function updateQty(i, d) {
+        cart[i].quantity += d;
+        if (cart[i].quantity < 1) cart.splice(i, 1);
+        updateCart();
+    }
+    function updateCart() {
+        const c = document.getElementById('cart-items');
+        let total = 0, count = 0;
+        if (!cart.length) {
+            c.innerHTML = '<p style="text-align:center;color:var(--text-light);padding:60px 0;font-size:12px;">購物車是空的</p>';
+        } else {
+            c.innerHTML = '';
+            cart.forEach((item, i) => {
+                total += item.price * item.quantity; count += item.quantity;
+                const d = document.createElement('div');
+                d.style.cssText = 'border-bottom:1px solid var(--border-light);padding:20px 0;';
+                d.innerHTML = `
+                    <p style="font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">${item.name}</p>
+                    <p style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--accent-rose);margin-bottom:12px;">HK$${item.price}</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+                        <div style="display:flex;border:1px solid var(--border);">
+                            <button onclick="updateQty(${i},-1)" style="padding:6px 14px;background:none;border:none;cursor:pointer;font-size:14px;">−</button>
+                            <span style="padding:6px 16px;font-size:13px;background:var(--bg);">${item.quantity}</span>
+                            <button onclick="updateQty(${i},1)" style="padding:6px 14px;background:none;border:none;cursor:pointer;font-size:14px;">+</button>
                         </div>
-                        <div class="flex justify-between items-center">
-                            <div class="flex border border-gray-300 rounded">
-                                <button onclick="updateQuantity(${i}, -1)" class="px-4 py-2 hover:bg-gray-100 font-bold">-</button>
-                                <span class="px-6 py-2 font-mono bg-gray-50">${item.quantity}</span>
-                                <button onclick="updateQuantity(${i}, 1)" class="px-4 py-2 hover:bg-gray-100 font-bold">+</button>
-                            </div>
-                            <span class="text-lg font-bold serif">HK$${item.price * item.quantity}</span>
-                        </div>
-                    `;
-                    container.appendChild(div);
-                });
-            }
-            document.getElementById('cart-total').innerText = `HK$${total}`;
-            document.getElementById('cart-count').innerText = count;
-            document.getElementById('cart-count').classList.toggle('hidden', count === 0);
+                        <span style="font-family:'Cormorant Garamond',serif;font-size:18px;">HK$${item.price * item.quantity}</span>
+                    </div>`;
+                c.appendChild(d);
+            });
         }
-        function openCheckout() {
-            if (!cart.length) return;
-            const summary = document.getElementById('order-summary');
-            let total = 0;
-            summary.innerHTML = cart.map(i => {
-                total += i.price * i.quantity;
-                return `<div class="flex justify-between"><span>${i.name} x ${i.quantity}</span><span class="font-semibold">HK$${i.price * i.quantity}</span></div>`;
-            }).join('');
-            
-            if (total >= 1500) {
-                summary.innerHTML += `<div class="mt-4 p-4 bg-gradient-to-r from-yellow-50 to-yellow-100 border-l-4 border-yellow-400"><div class="flex items-center gap-3"><svg class="w-6 h-6 text-yellow-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg><div><p class="text-sm font-bold text-yellow-900">恭喜！您已獲得贈品</p><p class="text-xs text-yellow-700 mt-1">限量版蠶絲眼罩 (價值 HK$198)</p></div></div></div>`;
-            }
-            
-            document.getElementById('summary-total').innerText = `HK$${total}`;
-            document.getElementById('checkout-modal').classList.remove('translate-y-full');
+        document.getElementById('cart-total').innerText = `HK$${total}`;
+        const badge = document.getElementById('cart-count');
+        badge.innerText = count;
+        badge.style.display = count > 0 ? 'flex' : 'none';
+    }
+
+    // === CHECKOUT (ORIGINAL LOGIC) ===
+    function openCheckout() {
+        if (!cart.length) return;
+        const s = document.getElementById('order-summary');
+        let total = 0;
+        s.innerHTML = cart.map(i => {
+            total += i.price * i.quantity;
+            return `<div class="line"><span>${i.name} x ${i.quantity}</span><span>HK$${i.price * i.quantity}</span></div>`;
+        }).join('');
+        if (total >= 1500) {
+            s.innerHTML += `<div class="gift-box"><p class="g-title">恭喜！您已獲得贈品</p><p class="g-sub">限量版蠶絲眼罩 (價值 HK$198)</p></div>`;
         }
-        function closeCheckout() {
-            document.getElementById('checkout-modal').classList.add('translate-y-full');
-        }
-        document.getElementById('orderForm').onsubmit = async function(e) {
-            e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            btn.innerText = "處理中...";
-            btn.disabled = true;
-            const orderId = 'SD' + Date.now().toString().slice(-8);
-            let totalAmount = 0;
-            cart.forEach(item => { totalAmount += item.price * item.quantity; });
-            const orderData = {
-                order_id: orderId,
-                order_date: new Date().toISOString(),
-                name: this.name.value,
-                email: this.email.value,
-                phone: this.phone.value,
-                address: this.address.value,
-                items: cart.map(i => `${i.name} x ${i.quantity}`).join(', '),
-                total: totalAmount,
-                currency: 'HKD'
-            };
-            try {
-                const response = await fetch('https://hook.us2.make.com/1xcia9mf029g7e6u8uftsfoceqvy13kd', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(orderData)
-                });
-                const result = await response.json();
-                if (result.success && result.stripe_url) {
-                    document.getElementById('modal-inner').innerHTML = `
-                        <div class="text-center py-20">
-                            <div class="w-20 h-20 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-8 text-4xl animate-pulse">⏳</div>
-                            <h2 class="text-4xl serif font-bold mb-4">正在跳轉至付款頁面...</h2>
-                            <p class="text-gray-500 text-sm tracking-widest uppercase mb-8">訂單編號: ${orderId}</p>
-                        </div>
-                    `;
-                    setTimeout(() => { window.location.href = result.stripe_url; }, 2000);
-                    cart = [];
-                    updateCart();
-                } else {
-                    throw new Error('無法生成付款連結');
-                }
-            } catch (error) {
-                alert('系統錯誤，請聯絡客服 WhatsApp: +852 98560191');
-                btn.innerText = "確認訂單並付款";
-                btn.disabled = false;
-            }
+        document.getElementById('summary-total').innerText = `HK$${total}`;
+        document.getElementById('ck-modal').classList.add('open');
+    }
+    function closeCK() { document.getElementById('ck-modal').classList.remove('open'); }
+
+    // === ORDER SUBMIT (ORIGINAL MAKE.COM + STRIPE LOGIC - UNCHANGED) ===
+    document.getElementById('orderForm').onsubmit = async function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        btn.innerText = "處理中...";
+        btn.disabled = true;
+        const orderId = 'SD' + Date.now().toString().slice(-8);
+        let totalAmount = 0;
+        cart.forEach(item => { totalAmount += item.price * item.quantity; });
+        const orderData = {
+            order_id: orderId,
+            order_date: new Date().toISOString(),
+            name: this.name.value,
+            email: this.email.value,
+            phone: this.phone.value,
+            address: this.address.value,
+            items: cart.map(i => `${i.name} x ${i.quantity}`).join(', '),
+            total: totalAmount,
+            currency: 'HKD'
         };
-    </script>
-
+        try {
+            const response = await fetch('https://hook.us2.make.com/1xcia9mf029g7e6u8uftsfoceqvy13kd', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(orderData)
+            });
+            const result = await response.json();
+            if (result.success && result.stripe_url) {
+                document.getElementById('ck-inner').innerHTML = `
+                    <div style="text-align:center;padding:80px 0;">
+                        <div style="width:64px;height:64px;border:1px solid var(--accent-gold);border-radius:50%;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;">
+                            <svg width="28" height="28" fill="none" stroke="#C9A96E" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h2 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;margin-bottom:12px;">正在跳轉至付款頁面...</h2>
+                        <p style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-secondary);">訂單編號: ${orderId}</p>
+                    </div>`;
+                setTimeout(() => { window.location.href = result.stripe_url; }, 2000);
+                cart = []; updateCart();
+            } else { throw new Error('無法生成付款連結'); }
+        } catch (error) {
+            alert('系統錯誤，請聯絡客服 WhatsApp: +852 98560191');
+            btn.innerText = "確認訂單並付款";
+            btn.disabled = false;
+        }
+    };
+</script>
 </body>
 </html>

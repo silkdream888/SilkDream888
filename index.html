@@ -71,7 +71,7 @@
         /* HERO */
         .hero-carousel { width:100%; overflow:hidden; }
         .hero-track { display:flex; animation:hSlide 40s linear infinite; }
-        .hero-track img { width:42vw; height:48vh; object-fit:contain; flex-shrink:0; background:var(--bg-warm); }
+        .hero-track img { width:42vw; height:48vh; object-fit:cover; flex-shrink:0; }
         @keyframes hSlide { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
         .hero-body { text-align:center; padding:56px 28px 72px; position:relative; }
         .hero-body::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:min(640px,88%); height:100%; background:radial-gradient(ellipse,rgba(254,253,251,0.65) 0%,rgba(242,240,235,0.25) 55%,transparent 78%); pointer-events:none; z-index:0; }
@@ -111,7 +111,7 @@
         .pcard { background:var(--white); overflow:hidden; transition:all 0.4s; cursor:pointer; }
         .pcard:hover { box-shadow:0 12px 40px rgba(212,165,165,0.12),0 4px 16px rgba(0,0,0,0.03); }
         .pcard .iw { position:relative; overflow:hidden; aspect-ratio:4/5; background:var(--bg-warm); }
-        .pcard .iw img { width:100%; height:100%; object-fit:contain; transition:transform 0.8s; }
+        .pcard .iw img { width:100%; height:100%; object-fit:cover; transition:transform 0.8s; }
         .pcard:hover .iw img { transform:scale(1.06); }
         .pcard .tag { position:absolute; top:14px; left:14px; font-size:8px; letter-spacing:0.14em; text-transform:uppercase; background:var(--accent-rose); color:var(--white); padding:4px 10px; }
         .pinfo { padding:22px; }
@@ -386,28 +386,28 @@
     <div class="silk-pat"></div>
     <div class="petal" style="top:18%;left:8%;"></div><div class="petal" style="top:28%;right:12%;"></div><div class="petal" style="bottom:22%;left:14%;"></div>
     <div class="hero-carousel"><div class="hero-track">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567702/C01_01_1_vomfcc.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567724/C01_02_1_uinztn.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567750/C01_03_1_sj0tbe.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567774/C01_04_1_y3h4o4.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567798/C01_05_1_hu8uoo.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567834/C01_06_1_cmfo3r.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567861/C01_05_1_azo3iu.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567884/C01_07_1_zl3jwj.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567908/C01_08_1_n6tbx4.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567935/C01_09_1_iezkst.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567965/C01_10_1_e9tq2l.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567702/C01_01_1_vomfcc.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567724/C01_02_1_uinztn.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567750/C01_03_1_sj0tbe.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567774/C01_04_1_y3h4o4.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567798/C01_05_1_hu8uoo.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567834/C01_06_1_cmfo3r.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567861/C01_05_1_azo3iu.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567884/C01_07_1_zl3jwj.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567908/C01_08_1_n6tbx4.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567935/C01_09_1_iezkst.png" alt="SilkDream">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1773567965/C01_10_1_e9tq2l.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567702/C01_01_1_vomfcc.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567724/C01_02_1_uinztn.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567750/C01_03_1_sj0tbe.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567774/C01_04_1_y3h4o4.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567798/C01_05_1_hu8uoo.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567834/C01_06_1_cmfo3r.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567861/C01_05_1_azo3iu.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567884/C01_07_1_zl3jwj.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567908/C01_08_1_n6tbx4.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567935/C01_09_1_iezkst.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567965/C01_10_1_e9tq2l.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567702/C01_01_1_vomfcc.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567724/C01_02_1_uinztn.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567750/C01_03_1_sj0tbe.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567774/C01_04_1_y3h4o4.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567798/C01_05_1_hu8uoo.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567834/C01_06_1_cmfo3r.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567861/C01_05_1_azo3iu.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567884/C01_07_1_zl3jwj.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567908/C01_08_1_n6tbx4.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567935/C01_09_1_iezkst.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_950/v1773567965/C01_10_1_e9tq2l.png" alt="SilkDream">
     </div></div>
     <div class="hero-body">
         <p class="hero-tag">全 港 首 個 專 業 蠶 絲 睡 帽 品 牌</p>
@@ -440,17 +440,17 @@
         <p class="serif-cn" style="font-size:11px;color:var(--text-secondary);letter-spacing:0.1em;">單件裝 ｜ 剔除溢價的純粹體驗</p>
     </div>
     <div class="pgrid">
-        <div class="pcard"><div class="iw"><span class="tag">Hot</span><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/v1773570248/Pink_Final_vs7ncx.jpg" alt="Rose Quartz"></div>
+        <div class="pcard"><div class="iw"><span class="tag">Hot</span><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_1000,h_1250/v1773570248/Pink_Final_vs7ncx.jpg" alt="Rose Quartz"></div>
             <div class="pinfo"><h4>Cloud-Wrap (Rose Quartz)</h4><p class="desc">珍珠腮紅粉 · 溫柔粉調，展現優雅氣質</p>
                 <div class="stars">★★★★<span style="background:linear-gradient(90deg,var(--accent-gold) 50%,var(--border) 50%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">★</span> <span style="font-size:10px;color:var(--text-light);font-family:Inter">(142)</span></div>
                 <div class="pb"><div class="old"><span class="sk">HK$398</span><span class="skl">市場價</span><span class="sk">HK$248</span><span class="skl">原價</span></div><span class="fp">HK$198</span><span class="bd">限時 8 折</span><p class="ship">全港免運費</p></div>
                 <button class="btn-s" onclick="addToCart('珍珠腮紅粉',198,this)">加入購物車</button></div></div>
-        <div class="pcard"><div class="iw"><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/v1773570194/Blue_Final_bjyooh.jpg" alt="Midnight Sapphire"></div>
+        <div class="pcard"><div class="iw"><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_1000,h_1250/v1773570194/Blue_Final_bjyooh.jpg" alt="Midnight Sapphire"></div>
             <div class="pinfo"><h4>Cloud-Wrap (Midnight Sapphire)</h4><p class="desc">午夜藍寶石 · 深邃藍調，低調奢華</p>
                 <div class="stars">★★★★<span style="background:linear-gradient(90deg,var(--accent-gold) 50%,var(--border) 50%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">★</span> <span style="font-size:10px;color:var(--text-light);font-family:Inter">(118)</span></div>
                 <div class="pb"><div class="old"><span class="sk">HK$398</span><span class="skl">市場價</span><span class="sk">HK$248</span><span class="skl">原價</span></div><span class="fp">HK$198</span><span class="bd">限時 8 折</span><p class="ship">全港免運費</p></div>
                 <button class="btn-s" onclick="addToCart('午夜藍寶石',198,this)">加入購物車</button></div></div>
-        <div class="pcard"><div class="iw"><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/v1773570212/Gold_Final_o9x4qm.jpg" alt="Champagne Gold"></div>
+        <div class="pcard"><div class="iw"><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_1000,h_1250/v1773570212/Gold_Final_o9x4qm.jpg" alt="Champagne Gold"></div>
             <div class="pinfo"><h4>Cloud-Wrap (Champagne Gold)</h4><p class="desc">香檳金 · 奢華金色，送禮首選</p>
                 <div class="stars">★★★★<span style="background:linear-gradient(90deg,var(--accent-gold) 50%,var(--border) 50%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">★</span> <span style="font-size:10px;color:var(--text-light);font-family:Inter">(106)</span></div>
                 <div class="pb"><div class="old"><span class="sk">HK$398</span><span class="skl">市場價</span><span class="sk">HK$248</span><span class="skl">原價</span></div><span class="fp">HK$198</span><span class="bd">限時 8 折</span><p class="ship">全港免運費</p></div>
@@ -460,9 +460,9 @@
     <div class="bundle">
         <div class="bundle-grid">
             <div class="bundle-img" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;">
-                <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_800/v1772791095/SilkDream_Combo_new_2_wl8pod.jpg" alt="Bundle" style="grid-row:1/3;width:100%;height:100%;object-fit:contain;background:var(--bg-warm);">
-                <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_500/Silk_Dream_Finalized_combo_p2ur2h.jpg" alt="Bundle detail" style="width:100%;height:100%;object-fit:contain;background:var(--bg-warm);">
-                <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_500/v1773567798/C01_05_1_hu8uoo.png" alt="Bundle detail" style="width:100%;height:100%;object-fit:contain;background:var(--bg-warm);">
+                <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_800,h_1000/v1772791095/SilkDream_Combo_new_2_wl8pod.jpg" alt="Bundle" style="grid-row:1/3;width:100%;height:100%;object-fit:cover;">
+                <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_500,h_500/Silk_Dream_Finalized_combo_p2ur2h.jpg" alt="Bundle detail" style="width:100%;height:100%;object-fit:cover;">
+                <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_pad,b_rgb:EAE7E0,w_500,h_500/v1773567798/C01_05_1_hu8uoo.png" alt="Bundle detail" style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div class="bundle-info">
                 <span class="bundle-tag">Buy 3 Get 1 Free</span>

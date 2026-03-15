@@ -70,8 +70,8 @@
 
         /* HERO */
         .hero-carousel { width:100%; overflow:hidden; }
-        .hero-track { display:flex; animation:hSlide 24s linear infinite; }
-        .hero-track img { width:50vw; height:60vh; object-fit:cover; flex-shrink:0; }
+        .hero-track { display:flex; animation:hSlide 40s linear infinite; }
+        .hero-track img { width:42vw; height:48vh; object-fit:cover; flex-shrink:0; filter:brightness(1.02) contrast(0.97); }
         @keyframes hSlide { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
         .hero-body { text-align:center; padding:56px 28px 72px; position:relative; }
         .hero-body::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:min(640px,88%); height:100%; background:radial-gradient(ellipse,rgba(254,253,251,0.65) 0%,rgba(242,240,235,0.25) 55%,transparent 78%); pointer-events:none; z-index:0; }
@@ -197,9 +197,10 @@
         .rev-top img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:1px solid var(--border-light); }
         .rev-top .nm { font-size:12px; font-weight:500; }
         .rev-card p { font-family:'Noto Serif TC',serif; font-size:12.5px; color:var(--text-secondary); line-height:1.8; font-weight:300; }
-        .rev-ph { display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:700px; margin:0 auto; padding:0 28px 60px; }
-        .rev-placeholder { background:var(--bg); border:1px solid var(--border-light); min-height:320px; display:flex; align-items:center; justify-content:center; }
-        .rev-placeholder svg { width:40px; height:40px; stroke:var(--border); fill:none; stroke-width:1; opacity:0.4; }
+        .rev-ph { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; max-width:900px; margin:0 auto; padding:0 28px 60px; }
+        .rev-placeholder { background:var(--bg); border:1px solid var(--border-light); min-height:320px; overflow:hidden; }
+        .rev-placeholder img { width:100%; height:100%; object-fit:cover; filter:brightness(1.02) contrast(0.97); transition:transform 0.6s; }
+        .rev-placeholder:hover img { transform:scale(1.04); }
 
         /* FAQ */
         .faq-list { max-width:700px; margin:0 auto; padding:0 28px 60px; }
@@ -301,7 +302,7 @@
             .pgrid { grid-template-columns:1fr; gap:12px; padding:0 16px; }
             .stats-row { grid-template-columns:repeat(2,1fr); }
             .stat-i:nth-child(2) { border-right:none; }
-            .hero-track img { width:85vw; height:45vh; }
+            .hero-track img { width:78vw; height:38vh; }
             .hero-body { padding:36px 16px 56px; }
             .brand-grid { grid-template-columns:1fr; gap:24px; }
             .sci-grid { grid-template-columns:1fr; }
@@ -325,7 +326,7 @@
             <div class="pm-ico"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg></div>
             <h3>限時優惠</h3>
             <p class="pm-hl">消費滿 HK$1,500<br/>送限量版蠶絲眼罩</p>
-            <p class="pm-sub">價值 HK$198 · 數量有限，送完即止</p>
+            <p class="pm-sub">數量有限，送完即止</p>
         </div>
         <div class="pm-bottom">
             <p class="serif-cn">立即選購任意組合，訂單滿 $1,500 即可獲贈高級蠶絲眼罩。</p>
@@ -385,14 +386,28 @@
     <div class="silk-pat"></div>
     <div class="petal" style="top:18%;left:8%;"></div><div class="petal" style="top:28%;right:12%;"></div><div class="petal" style="bottom:22%;left:14%;"></div>
     <div class="hero-carousel"><div class="hero-track">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/Silk_Dream_Finalized_Pink_kfwull.jpg" alt="Product">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/SilKDream_Finalized_blue_shiewx.jpg" alt="Product">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/a52dbd6e-c0ef-47f0-9d5b-d2b45ee949a8_vzccqe.jpg" alt="Product">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1200/Silk_Dream_Finalized_combo_p2ur2h.jpg" alt="Bundle">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/Silk_Dream_Finalized_Pink_kfwull.jpg" alt="Product">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/SilKDream_Finalized_blue_shiewx.jpg" alt="Product">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/a52dbd6e-c0ef-47f0-9d5b-d2b45ee949a8_vzccqe.jpg" alt="Product">
-        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1200/Silk_Dream_Finalized_combo_p2ur2h.jpg" alt="Bundle">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567702/C01_01_1_vomfcc.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567724/C01_02_1_uinztn.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567750/C01_03_1_sj0tbe.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567774/C01_04_1_y3h4o4.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567798/C01_05_1_hu8uoo.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567834/C01_06_1_cmfo3r.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567861/C01_05_1_azo3iu.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567884/C01_07_1_zl3jwj.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567908/C01_08_1_n6tbx4.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567935/C01_09_1_iezkst.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567965/C01_10_1_e9tq2l.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567702/C01_01_1_vomfcc.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567724/C01_02_1_uinztn.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567750/C01_03_1_sj0tbe.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567774/C01_04_1_y3h4o4.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567798/C01_05_1_hu8uoo.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567834/C01_06_1_cmfo3r.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567861/C01_05_1_azo3iu.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567884/C01_07_1_zl3jwj.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567908/C01_08_1_n6tbx4.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567935/C01_09_1_iezkst.png" alt="SilkDream">
+        <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1773567965/C01_10_1_e9tq2l.png" alt="SilkDream">
     </div></div>
     <div class="hero-body">
         <p class="hero-tag">全 港 首 個 專 業 蠶 絲 睡 帽 品 牌</p>
@@ -425,19 +440,19 @@
         <p class="serif-cn" style="font-size:11px;color:var(--text-secondary);letter-spacing:0.1em;">單件裝 ｜ 剔除溢價的純粹體驗</p>
     </div>
     <div class="pgrid">
-        <div class="pcard"><div class="iw"><span class="tag">Hot</span><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/Silk_Dream_Finalized_Pink_kfwull.jpg" alt="Rose Quartz"></div>
+        <div class="pcard"><div class="iw"><span class="tag">Hot</span><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_1000,h_1250/v1773570248/Pink_Final_vs7ncx.jpg" alt="Rose Quartz"></div>
             <div class="pinfo"><h4>Cloud-Wrap (Rose Quartz)</h4><p class="desc">珍珠腮紅粉 · 溫柔粉調，展現優雅氣質</p>
-                <div class="stars">★★★★<span class="stars-g">★</span> <span style="font-size:10px;color:var(--text-light);font-family:Inter">(38)</span></div>
+                <div class="stars">★★★★<span style="background:linear-gradient(90deg,var(--accent-gold) 50%,var(--border) 50%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">★</span> <span style="font-size:10px;color:var(--text-light);font-family:Inter">(142)</span></div>
                 <div class="pb"><div class="old"><span class="sk">HK$398</span><span class="skl">市場價</span><span class="sk">HK$248</span><span class="skl">原價</span></div><span class="fp">HK$198</span><span class="bd">限時 8 折</span><p class="ship">全港免運費</p></div>
                 <button class="btn-s" onclick="addToCart('珍珠腮紅粉',198,this)">加入購物車</button></div></div>
-        <div class="pcard"><div class="iw"><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/SilKDream_Finalized_blue_shiewx.jpg" alt="Midnight Sapphire"></div>
+        <div class="pcard"><div class="iw"><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_1000,h_1250/v1773570194/Blue_Final_bjyooh.jpg" alt="Midnight Sapphire"></div>
             <div class="pinfo"><h4>Cloud-Wrap (Midnight Sapphire)</h4><p class="desc">午夜藍寶石 · 深邃藍調，低調奢華</p>
-                <div class="stars">★★★★<span class="stars-g">★</span> <span style="font-size:10px;color:var(--text-light);font-family:Inter">(24)</span></div>
+                <div class="stars">★★★★<span style="background:linear-gradient(90deg,var(--accent-gold) 50%,var(--border) 50%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">★</span> <span style="font-size:10px;color:var(--text-light);font-family:Inter">(118)</span></div>
                 <div class="pb"><div class="old"><span class="sk">HK$398</span><span class="skl">市場價</span><span class="sk">HK$248</span><span class="skl">原價</span></div><span class="fp">HK$198</span><span class="bd">限時 8 折</span><p class="ship">全港免運費</p></div>
                 <button class="btn-s" onclick="addToCart('午夜藍寶石',198,this)">加入購物車</button></div></div>
-        <div class="pcard"><div class="iw"><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1000/a52dbd6e-c0ef-47f0-9d5b-d2b45ee949a8_vzccqe.jpg" alt="Champagne Gold"></div>
+        <div class="pcard"><div class="iw"><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_1000,h_1250/v1773570212/Gold_Final_o9x4qm.jpg" alt="Champagne Gold"></div>
             <div class="pinfo"><h4>Cloud-Wrap (Champagne Gold)</h4><p class="desc">香檳金 · 奢華金色，送禮首選</p>
-                <div class="stars">★★★★<span class="stars-g">★</span> <span style="font-size:10px;color:var(--text-light);font-family:Inter">(19)</span></div>
+                <div class="stars">★★★★<span style="background:linear-gradient(90deg,var(--accent-gold) 50%,var(--border) 50%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">★</span> <span style="font-size:10px;color:var(--text-light);font-family:Inter">(106)</span></div>
                 <div class="pb"><div class="old"><span class="sk">HK$398</span><span class="skl">市場價</span><span class="sk">HK$248</span><span class="skl">原價</span></div><span class="fp">HK$198</span><span class="bd">限時 8 折</span><p class="ship">全港免運費</p></div>
                 <button class="btn-s" onclick="addToCart('香檳金',198,this)">加入購物車</button></div></div>
     </div>
@@ -445,9 +460,9 @@
     <div class="bundle">
         <div class="bundle-grid">
             <div class="bundle-img" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;">
-                <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_limit,w_1200/Silk_Dream_Finalized_combo_p2ur2h.jpg" alt="Bundle" style="grid-row:1/3;width:100%;height:100%;object-fit:cover;">
-                <div style="background:var(--bg);display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" fill="none" stroke="var(--border)" stroke-width="1" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
-                <div style="background:var(--bg);display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" fill="none" stroke="var(--border)" stroke-width="1" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+                <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_800,h_1000/v1772791095/SilkDream_Combo_new_2_wl8pod.jpg" alt="Bundle" style="grid-row:1/3;width:100%;height:100%;object-fit:cover;">
+                <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_400,h_500/Silk_Dream_Finalized_combo_p2ur2h.jpg" alt="Bundle detail" style="width:100%;height:100%;object-fit:cover;">
+                <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,w_400,h_500/v1773567798/C01_05_1_hu8uoo.png" alt="Bundle detail" style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div class="bundle-info">
                 <span class="bundle-tag">Buy 3 Get 1 Free</span>
@@ -455,7 +470,7 @@
                 <p class="serif-cn" style="font-size:11px;color:var(--text-secondary);letter-spacing:0.08em;margin-bottom:16px;">套裝系列 ｜ 4 件裝（買三送一）</p>
                 <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;">與最親的人分享這份「睡眠護髮禮」。平均單價只需 <strong style="color:var(--text-primary)">HK$147</strong>。</p>
                 <p style="font-size:12px;color:var(--text-light);margin-bottom:20px;">比單買立省 HK$204</p>
-                <div class="stars" style="margin-bottom:16px;">★★★★★ <span style="font-size:10px;color:var(--text-light);font-family:Inter">(52)</span></div>
+                <div class="stars" style="margin-bottom:16px;">★★★★★ <span style="font-size:10px;color:var(--text-light);font-family:Inter">(238)</span></div>
                 <div style="margin-bottom:20px;">
                     <p style="font-size:12px;color:var(--text-light);text-decoration:line-through;margin-bottom:3px;">單買價值 HK$792</p>
                     <p class="serif" style="font-size:36px;font-weight:400;color:var(--accent-rose);">HK$588</p>
@@ -598,10 +613,59 @@
         <div class="rev-card"><div class="rev-top"><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,g_face,w_150,h_150/v1770968873/Comments_1_cjl5vk.jpg" alt="C"><div><p class="nm">Michelle C.</p><div class="stars" style="font-size:11px;">★★★★★</div></div></div><p>「摸起來真的很滑，可以感受到是真材實料的桑蠶絲。比我之前買的其他牌子好太多，而且價格合理。睡覺時完全不會悶熱。已經推薦給朋友了。」</p></div>
         <div class="rev-card"><div class="rev-top"><img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto:best,f_auto,c_fill,g_face,w_150,h_150/v1770968893/Comment_3_xue1if.jpg" alt="C"><div><p class="nm">Emily W.</p><div class="stars" style="font-size:11px;">★★★★★</div></div></div><p>「我是捲髮，最怕睡醒後頭髮被壓扁。用了這個睡帽之後，早上起床頭髮還是很蓬鬆，捲度保持得很好。戴著睡覺很舒服，不會有壓痕。」</p></div>
     </div>
-    <h3 class="serif" style="font-size:20px;font-weight:400;text-align:center;margin-bottom:24px;">客戶分享</h3>
-    <div class="rev-ph">
-        <div class="rev-placeholder"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
-        <div class="rev-placeholder"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+    <h3 class="serif" style="font-size:20px;font-weight:400;text-align:center;margin-bottom:8px;">用家真實評價</h3>
+    <p style="text-align:center;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:20px;">Customer Reviews · 3 Panels</p>
+
+    <!-- Panel Tabs -->
+    <div style="display:flex;justify-content:center;gap:8px;margin-bottom:24px;padding:0 16px;flex-wrap:wrap;">
+        <button onclick="showPanel(1)" id="pt1" style="padding:8px 20px;font-size:10px;letter-spacing:0.1em;border:1px solid var(--accent-gold);background:var(--text-primary);color:var(--bg);cursor:pointer;font-family:'Noto Serif TC',serif;">用家真實評價</button>
+        <button onclick="showPanel(2)" id="pt2" style="padding:8px 20px;font-size:10px;letter-spacing:0.1em;border:1px solid var(--border);background:transparent;color:var(--text-secondary);cursor:pointer;font-family:'Noto Serif TC',serif;">男女都愛用 Unisex</button>
+        <button onclick="showPanel(3)" id="pt3" style="padding:8px 20px;font-size:10px;letter-spacing:0.1em;border:1px solid var(--border);background:transparent;color:var(--text-secondary);cursor:pointer;font-family:'Noto Serif TC',serif;">護髮實證·性價比·大容量</button>
+    </div>
+
+    <!-- Panel 1: 用家真實評價 -->
+    <div id="rp1" style="max-width:960px;margin:0 auto;padding:0 16px 40px;">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#D4A5A5;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">S</div><div><p style="font-size:11px;font-weight:600;">SkyeC_hk</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">收到即刻摸到係真絲嗰種涼涼滑滑嘅觸感，22姆米果然唔同，厚實又順滑</p><div style="margin-top:8px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:8px;background:rgba(212,165,165,0.15);color:var(--accent-rose);padding:2px 6px;">真材實料</span><span style="font-size:8px;color:var(--text-light);">3日前</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#C9A96E;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">L</div><div><p style="font-size:11px;font-weight:600;">Ling小姐</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">做工好精細，塊料滑到唔得了，真係真絲嚟！戴住唔會勒，又唔容易甩</p><div style="margin-top:8px;display:flex;justify-content:space-between;"><span style="font-size:8px;background:rgba(201,169,110,0.15);color:var(--accent-gold);padding:2px 6px;">質感超好</span><span style="font-size:8px;color:var(--text-light);">1星期前</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#A5BEB4;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">W</div><div><p style="font-size:11px;font-weight:600;">Wing_beauty</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">特登用打火機燒咗一小塊料試，即刻有燒頭髮嗰陣嘅焦味，確認係真蠶絲！</p><div style="margin-top:8px;display:flex;justify-content:space-between;"><span style="font-size:8px;background:rgba(165,190,180,0.2);color:#5a8a7a;padding:2px 6px;">驗證真絲</span><span style="font-size:8px;color:var(--text-light);">5日前</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#B4A5C8;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">J</div><div><p style="font-size:11px;font-weight:600;">JennyM_852</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">以前朝朝起身頭髮打晒結，用咗Cloud-Wrap之後順到唔敢信，慳返好多時間</p><div style="margin-top:8px;display:flex;justify-content:space-between;"><span style="font-size:8px;background:rgba(180,165,200,0.15);color:#8a6ab0;padding:2px 6px;">護髮神器</span><span style="font-size:8px;color:var(--text-light);">2星期前</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#C8AF9B;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">K</div><div><p style="font-size:11px;font-weight:600;">染髮控Kiki</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">染完頭髮最驚毛躁，戴咗兩個禮拜真係冇咁乾，髮尾滑咗好多，護髮素都慳埋</p><div style="margin-top:8px;display:flex;justify-content:space-between;"><span style="font-size:8px;background:rgba(200,175,155,0.2);color:#9a7a5a;padding:2px 6px;">染髮必備</span><span style="font-size:8px;color:var(--text-light);">3星期前</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#AAB9D2;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">M</div><div><p style="font-size:11px;font-weight:600;">MandyL_23</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">之前頭髮第三日就油到唔得了，用咗之後摘帽頭髮仲好清爽</p><div style="margin-top:8px;display:flex;justify-content:space-between;"><span style="font-size:8px;background:rgba(170,185,210,0.2);color:#5a7aaa;padding:2px 6px;">保持清爽</span><span style="font-size:8px;color:var(--text-light);">1個月前</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#C3A5AF;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">V</div><div><p style="font-size:11px;font-weight:600;">Vivian_vv</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">戴成晚都唔覺得有嘢，完全冇勒痕！第一次覺得戴睡帽可以咁舒服</p><div style="margin-top:8px;display:flex;justify-content:space-between;"><span style="font-size:8px;background:rgba(195,165,175,0.2);color:#a06a7a;padding:2px 6px;">超舒適</span><span style="font-size:8px;color:var(--text-light);">4日前</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#AFC3A5;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">A</div><div><p style="font-size:11px;font-weight:600;">AmyT_hk</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">之前買過其他牌子，勒到頭痛想死，呢個真係好唔同，鬆緊啱啱好</p><div style="margin-top:8px;display:flex;justify-content:space-between;"><span style="font-size:8px;background:rgba(175,195,165,0.2);color:#5a8a4a;padding:2px 6px;">不勒頭</span><span style="font-size:8px;color:var(--text-light);">2星期前</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#D2B9A5;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">Y</div><div><p style="font-size:11px;font-weight:600;">LongHair_Yuki</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">我頭髮到腰咁長，本身以為裝唔晒，點知綽綽有餘！長髮姐妹真心推薦</p><div style="margin-top:8px;display:flex;justify-content:space-between;"><span style="font-size:8px;background:rgba(210,185,165,0.2);color:#9a7a5a;padding:2px 6px;">大容量</span><span style="font-size:8px;color:var(--text-light);">3星期前</span></div></div>
+        </div>
+    </div>
+
+    <!-- Panel 2: 男女都愛用 Unisex -->
+    <div id="rp2" style="display:none;max-width:960px;margin:0 auto;padding:0 16px 40px;">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#7A8B9A;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">K</div><div><p style="font-size:11px;font-weight:600;">阿Ken_gym</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">本身以為睡帽係女仔先用，試咗之後朝朝起身髮型冇壓扁，正過用髮蠟</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(122,139,154,0.15);color:#5a7080;padding:2px 6px;">男士推薦</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#6B8A7A;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">D</div><div><p style="font-size:11px;font-weight:600;">Derek_IT男</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">女朋友買咗俾我試，一開始覺得好娘，用完一晚即刻真香，頭髮唔油唔扁</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(107,138,122,0.15);color:#4a7a6a;padding:2px 6px;">真香警告</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#8A7B6B;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">M</div><div><p style="font-size:11px;font-weight:600;">Mark_barber</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">做理髮師成日同客講要保養，自己都戴住瞓，22姆米真絲對髮質真係有分別</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(138,123,107,0.15);color:#7a6a5a;padding:2px 6px;">理髮師推薦</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#9A8A7A;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">S</div><div><p style="font-size:11px;font-weight:600;">Sam仔_波友</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">成日做運動頭髮好乾燥，戴咗兩個禮拜冇咁毛躁，$198直接護到髮</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(154,138,122,0.15);color:#7a6a5a;padding:2px 6px;">運動男必備</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#5A6A7A;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">C</div><div><p style="font-size:11px;font-weight:600;">Chris_設計師</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">黑色嗰個完全冇少女感，簡潔低調，男仔戴出街都唔會尷尬</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(90,106,122,0.15);color:#4a5a6a;padding:2px 6px;">男女都啱</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#7A9A8A;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">J</div><div><p style="font-size:11px;font-weight:600;">Jason_長髮男</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">紮咗man bun瞓覺最驚甩同打結，呢個大容量裝晒，朝早拆開仲好順滑</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(122,154,138,0.15);color:#4a7a5a;padding:2px 6px;">長髮男適用</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#D4A5A5;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">J</div><div><p style="font-size:11px;font-weight:600;">Jessica_多髮</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">頭髮又多又厚，之前買嘅睡帽塞唔晒成日彈開，呢個大容量一裝就啱</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(212,165,165,0.15);color:var(--accent-rose);padding:2px 6px;">大容量</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#C9A96E;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">F</div><div><p style="font-size:11px;font-weight:600;">Shopping_Faye</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">之前睇Slip要成千蚊，呢個$198就有22姆米雙面真絲，質感竟然差唔多</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(201,169,110,0.15);color:var(--accent-gold);padding:2px 6px;">超高性價比</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#C3A5AF;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">P</div><div><p style="font-size:11px;font-weight:600;">Pinky_回購</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">買咗一個用完即刻追加三個送朋友，$198呢個價位根本冇得輸</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(195,165,175,0.2);color:#a06a7a;padding:2px 6px;">回購送禮</span></div></div>
+        </div>
+    </div>
+
+    <!-- Panel 3: 護髮實證·性價比·大容量 -->
+    <div id="rp3" style="display:none;max-width:960px;margin:0 auto;padding:0 16px 40px;">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#D4A5A5;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">C</div><div><p style="font-size:11px;font-weight:600;">Carol_護髮日記</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">用之前每朝起身枕頭都係甩嘅頭髮，用咗一個月，枕頭乾乾淨淨，甩髮明顯少咗</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(212,165,165,0.15);color:var(--accent-rose);padding:2px 6px;">護髮實證</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#C9A96E;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">T</div><div><p style="font-size:11px;font-weight:600;">Tracy_乾燥救星</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">髮尾以前乾到好似稻草，用咗三個禮拜摸落去滑咗好多，連髮型師都問我做咗咩</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(201,169,110,0.15);color:var(--accent-gold);padding:2px 6px;">效果顯著</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#A5BEB4;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">M</div><div><p style="font-size:11px;font-weight:600;">Miki_漂髮控</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">漂完啲頭髮爛到想喊，戴咗Cloud-Wrap瞓覺，兩個禮拜髮質肉眼可見好返</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(165,190,180,0.2);color:#5a8a7a;padding:2px 6px;">漂髮修復</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#B4A5C8;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">A</div><div><p style="font-size:11px;font-weight:600;">Annie_精算師</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">計過數，salon焗油一次$380起跳，Cloud-Wrap $198用成年，邊個抵一目了然</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(180,165,200,0.15);color:#8a6ab0;padding:2px 6px;">精明之選</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#C8AF9B;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">F</div><div><p style="font-size:11px;font-weight:600;">Fiona_團購王</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">自己買完即刻開團，10個朋友跟住買，$198冇人話貴，個個都話點解唔早啲買</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(200,175,155,0.2);color:#9a7a5a;padding:2px 6px;">團購之選</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#AAB9D2;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">S</div><div><p style="font-size:11px;font-weight:600;">Sandy_送禮達人</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">買咗四件組$588送俾媽媽同姊妹，佢哋本身唔信，用完全部自己回購</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(170,185,210,0.2);color:#5a7aaa;padding:2px 6px;">送禮首選</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#D2B9A5;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">L</div><div><p style="font-size:11px;font-weight:600;">Luna_及腰長髮</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">頭髮85cm，之前所有睡帽都裝唔晒，Cloud-Wrap係第一個真正夠裝嘅</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(210,185,165,0.2);color:#9a7a5a;padding:2px 6px;">長髮首選</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#AFC3A5;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">R</div><div><p style="font-size:11px;font-weight:600;">Rachel_爆炸頭</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">天生自然捲髮量驚人，普通睡帽根本塞唔入，呢個輕鬆裝晒仲有空間</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(175,195,165,0.2);color:#5a8a4a;padding:2px 6px;">捲髮救星</span></div></div>
+            <div style="background:var(--white);padding:16px;border:1px solid var(--border-light);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:32px;height:32px;border-radius:50%;background:#7A8B9A;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">T</div><div><p style="font-size:11px;font-weight:600;">多髮男Thomas</p><p style="font-size:9px;color:var(--accent-gold);">★★★★★</p></div></div><p class="serif-cn" style="font-size:11px;color:var(--text-secondary);line-height:1.6;">男仔頭髮多一樣有困擾，呢個大容量連我啲厚髮都裝到，朝早唔使再整半鐘</p><div style="margin-top:8px;"><span style="font-size:8px;background:rgba(122,139,154,0.15);color:#5a7080;padding:2px 6px;">男士大容量</span></div></div>
+        </div>
     </div>
 </div>
 
@@ -649,7 +713,7 @@
         <div class="promo-inner">
             <div class="ico2"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg></div>
             <h3>消費滿 HK$1,500 送神秘禮品</h3>
-            <p>購買任何組合，訂單金額達 HK$1,500 或以上，即可獲贈限量版蠶絲眼罩一個（價值 HK$198）。</p>
+            <p>購買任何組合，訂單金額達 HK$1,500 或以上，即可獲贈限量版蠶絲眼罩一個。</p>
             <p class="hl">數量有限，送完即止</p>
         </div>
         <div style="margin-top:28px;"><a class="btn-p" onclick="switchTo('products')" style="background:var(--bg);color:var(--text-primary);border-color:var(--bg);">立即選購</a></div>
@@ -713,6 +777,18 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     function closeMob() { document.getElementById('mob-menu').style.display = 'none'; }
+
+    // Review panel switching
+    function showPanel(n) {
+        document.getElementById('rp1').style.display = n===1?'block':'none';
+        document.getElementById('rp2').style.display = n===2?'block':'none';
+        document.getElementById('rp3').style.display = n===3?'block':'none';
+        ['pt1','pt2','pt3'].forEach((id,i)=>{
+            const b=document.getElementById(id);
+            if(i+1===n){b.style.background='var(--text-primary)';b.style.color='var(--bg)';b.style.borderColor='var(--accent-gold)';}
+            else{b.style.background='transparent';b.style.color='var(--text-secondary)';b.style.borderColor='var(--border)';}
+        });
+    }
 
     // === COUNTDOWN ===
     function updateCD() {
@@ -813,7 +889,7 @@
             return `<div class="line"><span>${i.name} x ${i.quantity}</span><span>HK$${i.price * i.quantity}</span></div>`;
         }).join('');
         if (total >= 1500) {
-            s.innerHTML += `<div class="gift-box"><p class="g-title">恭喜！您已獲得贈品</p><p class="g-sub">限量版蠶絲眼罩 (價值 HK$198)</p></div>`;
+            s.innerHTML += `<div class="gift-box"><p class="g-title">恭喜！您已獲得贈品</p><p class="g-sub">限量版蠶絲眼罩</p></div>`;
         }
         document.getElementById('summary-total').innerText = `HK$${total}`;
         document.getElementById('ck-modal').classList.add('open');

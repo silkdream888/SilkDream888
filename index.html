@@ -325,11 +325,11 @@
             <button class="pm-close" onclick="closePM()">✕</button>
             <div class="pm-ico"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg></div>
             <h3>限時優惠</h3>
-            <p class="pm-hl">消費滿 HK$1,500<br/>送限量版蠶絲眼罩</p>
+            <p class="pm-hl">消費滿 HK$700<br/>送真絲眼罩</p>
             <p class="pm-sub">數量有限，送完即止</p>
         </div>
         <div class="pm-bottom">
-            <p class="serif-cn">立即選購任意組合，訂單滿 $1,500 即可獲贈高級蠶絲眼罩。</p>
+            <p class="serif-cn">立即選購任意組合，訂單滿 $700 即可獲贈真絲眼罩。</p>
             <button class="btn-p" onclick="closePM();switchTo('products');">立即選購</button>
         </div>
     </div>
@@ -723,8 +723,8 @@
         <p style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-light);margin-bottom:24px;" class="serif-cn">限時優惠</p>
         <div class="promo-inner">
             <div class="ico2"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg></div>
-            <h3>消費滿 HK$1,500 送神秘禮品</h3>
-            <p>購買任何組合，訂單金額達 HK$1,500 或以上，即可獲贈限量版蠶絲眼罩一個。</p>
+            <h3>消費滿 HK$700 送真絲眼罩</h3>
+            <p>購買任何組合，訂單金額達 HK$700 或以上，即可獲贈真絲眼罩一個。</p>
             <p class="hl">數量有限，送完即止</p>
         </div>
         <div style="margin-top:28px;"><a class="btn-p" onclick="switchTo('products')" style="background:var(--bg);color:var(--text-primary);border-color:var(--bg);">立即選購</a></div>
@@ -871,7 +871,8 @@
                 const d = document.createElement('div');
                 d.style.cssText = 'border-bottom:1px solid var(--border-light);padding:20px 0;';
                 d.innerHTML = `
-                    <p style="font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">${item.name}</p>
+                    <p style="font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px;">${item.name}</p>
+                    <p style="font-size:10px;color:var(--text-secondary);margin-bottom:8px;">尺碼：均碼（54-58cm）（可以調節）</p>
                     <p style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--accent-rose);margin-bottom:12px;">HK$${item.price}</p>
                     <div style="display:flex;justify-content:space-between;align-items:center;">
                         <div style="display:flex;border:1px solid var(--border);">
@@ -897,10 +898,10 @@
         let total = 0;
         s.innerHTML = cart.map(i => {
             total += i.price * i.quantity;
-            return `<div class="line"><span>${i.name} x ${i.quantity}</span><span>HK$${i.price * i.quantity}</span></div>`;
+            return `<div class="line"><span>${i.name} x ${i.quantity}<br><span style="font-size:10px;color:var(--text-light);">均碼（54-58cm）</span></span><span>HK$${i.price * i.quantity}</span></div>`;
         }).join('');
-        if (total >= 1500) {
-            s.innerHTML += `<div class="gift-box"><p class="g-title">恭喜！您已獲得贈品</p><p class="g-sub">限量版蠶絲眼罩</p></div>`;
+        if (total >= 700) {
+            s.innerHTML += `<div class="gift-box"><p class="g-title">恭喜！您已獲得贈品</p><p class="g-sub">真絲眼罩</p></div>`;
         }
         document.getElementById('summary-total').innerText = `HK$${total}`;
         document.getElementById('ck-modal').classList.add('open');
@@ -923,7 +924,7 @@
             email: this.email.value,
             phone: this.phone.value,
             address: this.address.value,
-            items: cart.map(i => `${i.name} x ${i.quantity}`).join(', '),
+            items: cart.map(i => `${i.name} x ${i.quantity} [均碼54-58cm]`).join(', '),
             total: totalAmount,
             currency: 'HKD'
         };
